@@ -1,0 +1,38 @@
+﻿@model RCDT.Models.SessionUserModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+@using (Html.BeginForm())
+{
+  @Html.AntiForgeryToken()
+
+  <div class="container mt-2">
+    <div style="margin-top:50px">
+      <div class="text-center" style="margin-top:300px">
+        <h1 class="display-4">RCDT</h1>
+
+        <div class="form-group">
+          <div class="col-md-12">
+             <input type="text" class="userIDForm" name="userID" placeholder="User ID" id="userID" required name="userID">
+              <input type="number" class="seshKeyForm" name="sessionKey" placeholder="Session key" id="sessionKey" required name="sessionKey">
+          </div>
+        </div>
+
+        <div class="col-md-offset-2 col-md-12">
+           @Html.ValidationMessageFor(model => model.sessionKey, "", new { @class = "text-danger"})
+           @Html.ValidationMessageFor(model => model.userID, "", new { @class = "text-danger"})
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-5 col-md-12">
+                <input type="submit" value="Submit" class="btn btn-default" />
+                <input type="reset" value="Clear" class="btn btn-default" />
+            </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+}
