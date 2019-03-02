@@ -4,7 +4,7 @@ namespace Users
 {
     //This class will handle all user accounts who are participants. This class extends the user class and sets the 
     //permissions and account information in the constructor.
-    class Participant : User
+    public class Participant : User
     {
         public Participant(string userName, string password)
         {

@@ -35,13 +35,13 @@ namespace Users
             base.createTaskPermission = true;
             base.removeTaskPermission = true;
             base.experimentCreatePermission = true;
-            base.experimentEditPerimission = true;
+            base.experimentEditPermission = true;
             base.experimentDisposalPermission = true;
             //------------------------------------------------------------------------------------------------------------------------------
             //this group of variables focues on the users ability to use and access data.
-            base.archiveDataTaskPermission = true;
-            base.manageDatabasePermission = true;
-            base.accessDatabasePermission = true;
+            base.archiveTaskDataPermission = true;
+            base.manageDataBasePermission = true;
+            base.accessDataBasePermission = true;
         }
     }
 }

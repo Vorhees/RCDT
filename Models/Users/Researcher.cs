@@ -4,7 +4,7 @@ namespace Users
 {
     //This class will handle all user accounts who are researchers. This class extends the user class and sets the permissions 
     //and account information in the constructor.
-    class Researcher : User
+    public class Researcher : User
     {
         public Researcher(string userName, string password)
         {
@@ -27,12 +27,12 @@ namespace Users
             base.taskEditPermission = true;
             base.taskDisposalPermission = true;
             base.experimentCreatePermission = true;
-            base.experimentEditPerimission = true;
+            base.experimentEditPermission = true;
             base.experimentDisposalPermission = true;
             //------------------------------------------------------------------------------------------------------------------------------
             //this group of variables focues on the users ability to use and access data.
             base.accessDataPermission = true;
-            base.archiveDataTaskPermission = true;
+            base.archiveTaskDataPermission = true;
             base.IRBPermission = true;
         }
     }

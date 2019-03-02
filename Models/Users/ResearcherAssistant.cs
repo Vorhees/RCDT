@@ -23,10 +23,10 @@ namespace Users
             base.makeMovePermission = true;
             base.editSessionKeyPermission = true;
             base.IRBPermission = true;
-            base.archiveDataTaskPermission = true;
+            base.archiveTaskDataPermission = true;
             base.accessDataPermission = true;
             base.experimentCreatePermission = true;
-            base.experimentEditPerimission = true;
+            base.experimentEditPermission = true;
             base.changeImageThemePermission = true;
             base.changeBoardThemePermission = true;
             base.taskEditPermission = true;
