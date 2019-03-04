@@ -6,9 +6,8 @@ namespace Users
     //account information in the constructor.
     class Admin : User
     {
-        public Admin(string userName, string password)
+        public Admin(string userName, string password) : base(userName, password)
         {
-            
             //this group of variables focuses on the user's own account and its edit permissions.
             base.userName = userName;
             base.password = password;
