@@ -32,3 +32,4 @@ C:\Users\jimmy\OneDrive\Desktop\RCDT\RCDT\obj\Debug\netcoreapp2.2\Razor\Views\Da
 C:\Users\jimmy\OneDrive\Desktop\RCDT\RCDT\obj\Debug\netcoreapp2.2\Razor\Views\Login\Index.g.cshtml.cs
 C:\Users\jimmy\OneDrive\Desktop\RCDT\RCDT\obj\Debug\netcoreapp2.2\Razor\Views\SessionUserLogin\Index.g.cshtml.cs
 C:\Users\jimmy\OneDrive\Desktop\RCDT\RCDT\obj\Debug\netcoreapp2.2\Razor\Views\AdminDashboard\Index.g.cshtml.cs
+C:\Users\jimmy\OneDrive\Desktop\RCDT\RCDT\obj\Debug\netcoreapp2.2\Razor\Views\Chessboard\Index.g.cshtml.cs

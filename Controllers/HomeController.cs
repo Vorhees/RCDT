@@ -20,7 +20,7 @@ namespace RCDT.Controllers
         {
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Dashboard");
+                return RedirectToAction("Index", "Chessboard");
             }
 
             return View(seshUserModel);
