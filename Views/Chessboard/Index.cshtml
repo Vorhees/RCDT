@@ -3,10 +3,11 @@
 }
 
 <h1>@ViewData["Title"]</h1>
+<head>
  <style>
             .chess-board { border-spacing: 0; border-collapse: collapse; }
             .chess-board th { padding: .5em; }
-            .chess-board td { border: 1px solid; width: 2em; height: 2em; }
+            .chess-board td { border: 1px solid; width: 8em; height: 8em; }
             .chess-board .light { background: #eee; }
             .chess-board .dark { background: #000; }
         </style>
@@ -14,6 +15,7 @@
     <body>
         <table class="chess-board">
             <tbody>
+                <!---
                 <tr>
                     <th></th>
                     <th>a</th>
@@ -25,8 +27,53 @@
                     <th>g</th>
                     <th>h</th>
                 </tr>
+                --->
                 <tr>
-                    <th>8</th>
+                   <!-- <th>8</th> -->
+                    <td class="light" id="8a"></td>
+                    <td class="dark" id="8b"></td>
+                    <td class="light" id="8c"></td>
+                    <td class="dark" id="8d"></td>
+                    <td class="light" id="8e"></td>
+                    <td class="dark" id="8f"></td>
+                    <td class="light" id="8g"></td>
+                    <td class="dark" id="8h"></td>
+                </tr>
+                <tr>
+                    <!-- <th>7</th> -->
+                    <td class="dark" id="7a"></td>
+                    <td class="light" id="7b"></td>
+                    <td class="dark" id="7c"></td>
+                    <td class="light" id="7d"></td>
+                    <td class="dark" id="7e"></td>
+                    <td class="light" id="7f"></td>
+                    <td class="dark" id="7g"></td>
+                    <td class="light" id="7h"></td>
+                </tr>
+                <tr>
+                    <!-- <th>6</th> -->
+                    <td class="light" id="6a"></td>
+                    <td class="dark" id="6b"></td>
+                    <td class="light" id="6c"></td>
+                    <td class="dark" id="6d"></td>
+                    <td class="light" id="6e"></td>
+                    <td class="dark" id="6f"></td>
+                    <td class="light" id="6g"></td>
+                    <td class="dark" id="6h"></td>
+                </tr>
+                <tr>
+                    <!-- <th>5</th> -->
+                    <td class="dark" id="5a"></td>
+                    <td class="light" id="5b"></td>
+                    <td class="dark" id="5c"></td>
+                    <td class="light" id="5d"></td>
+                    <td class="dark" id="5e"></td>
+                    <td class="light" id="5f"></td>
+                    <td class="dark" id="5g"></td>
+                    <td class="light" id="5h"></td>
+                </tr>
+                <tr>
+                    <!-- <th>4</th> -->
                     <td class="light"></td>
                     <td class="dark"></td>
                     <td class="light"></td>
@@ -37,7 +84,7 @@
                     <td class="dark"></td>
                 </tr>
                 <tr>
-                    <th>7</th>
+                    <!-- <th>3</th> -->
                     <td class="dark"></td>
                     <td class="light"></td>
                     <td class="dark"></td>
@@ -48,7 +95,7 @@
                     <td class="light"></td>
                 </tr>
                 <tr>
-                    <th>6</th>
+                    <!-- <th>2</th> -->
                     <td class="light"></td>
                     <td class="dark"></td>
                     <td class="light"></td>
@@ -59,51 +106,7 @@
                     <td class="dark"></td>
                 </tr>
                 <tr>
-                    <th>5</th>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                </tr>
-                <tr>
-                    <th>4</th>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                </tr>
-                <tr>
-                    <th>2</th>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                </tr>
-                <tr>
-                    <th>1</th>
+                    <!-- <th>1</th> -->
                     <td class="dark"></td>
                     <td class="light"></td>
                     <td class="dark"></td>
