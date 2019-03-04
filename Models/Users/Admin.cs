@@ -4,7 +4,7 @@ namespace Users
 {
     //This class will handle all user accounts who are Admins. This class extends the user class and sets the permissions and 
     //account information in the constructor.
-    class Admin : User
+    public class Admin : User
     {
         public Admin(string userName, string password) : base(userName, password)
         {

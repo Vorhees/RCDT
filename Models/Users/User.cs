@@ -48,7 +48,7 @@ namespace Users
     
         public User(string username, string password)
         {
-            this.username = username;
+            this.userName = username;
             this.password = password;
         }
         public string getUserName()

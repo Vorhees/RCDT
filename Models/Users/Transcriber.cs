@@ -6,7 +6,7 @@ namespace Users
     //and account information in the constructor.
     class Transcriber : User
     {
-        public Transcriber(string userName, string password)
+        public Transcriber(string userName, string password) : base(userName, password)
         {
             //This group of variables focuses on the users own account and its edit permissions
             base.userName = userName;

@@ -6,7 +6,7 @@ namespace Users
     //and account information in the constructor.
     public class Researcher : User
     {
-        public Researcher(string userName, string password)
+        public Researcher(string userName, string password) : base(userName, password)
         {
             //this group of variables focuses on the user's own account and its edit permissions.
             base.userName = userName;
