@@ -46,10 +46,9 @@ namespace Users
     //------------------------------------------------------------------------------------------------------------------------------
     
     
-        public User(string username, string password)
+        public User()
         {
-            this.username = username;
-            this.password = password;
+            /* Add constructor details here */
         }
         public string getUserName()
         {
