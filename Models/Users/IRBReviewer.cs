@@ -7,7 +7,7 @@ namespace Users
     class IRBReviewer : User
     {
         
-        public IRBReviewer(string userName, string password)
+        public IRBReviewer(string userName, string password) : base(userName, password)
         {
             //this group of variables focuses on the user's own account and its edit permissions.
             base.userName = userName;

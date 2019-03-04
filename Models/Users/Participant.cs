@@ -6,7 +6,7 @@ namespace Users
     //permissions and account information in the constructor.
     public class Participant : User
     {
-        public Participant(string userName, string password)
+        public Participant(string userName, string password) : base(userName, password)
         {
             //this group of variables focuses on the user's own account and its edit permissions.
             base.userName = userName;
