@@ -25,7 +25,9 @@
 </style>
 </head>
     <body>
+       <div id="originDiv" ondrop="drop(event)" ondragover="allowDrop(event)">
         <img src="wwwroot\images\anchor.jpg" runat="server" asp-append-version="true" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
+        </div>
         <table class="chess-board">
             <tbody>
                 <!---
@@ -43,8 +45,8 @@
                 --->
                 <tr>
                    <!-- <th>8</th> -->
-                    <td class="light" id="8a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                    <div class="light" id="8adiv"
+                    <td class="light" id="8a">
+                    <div class="light" id="8adiv" ondrop="drop(event)" ondragover="allowDrop(event)"
                     ></div>
                     </td>
                     <td class="dark" id="8b">
