@@ -14130,11 +14130,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jimmy\\OneDrive\\Desktop\\RCDT\\RCDT\\RCDT.csproj",
+      "projectUniqueName": "c:\\Users\\jimmy\\OneDrive\\Desktop\\RCDT\\RCDT\\RCDT.csproj",
       "projectName": "RCDT",
-      "projectPath": "C:\\Users\\jimmy\\OneDrive\\Desktop\\RCDT\\RCDT\\RCDT.csproj",
+      "projectPath": "c:\\Users\\jimmy\\OneDrive\\Desktop\\RCDT\\RCDT\\RCDT.csproj",
       "packagesPath": "C:\\Users\\jimmy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jimmy\\OneDrive\\Desktop\\RCDT\\RCDT\\obj\\",
+      "outputPath": "c:\\Users\\jimmy\\OneDrive\\Desktop\\RCDT\\RCDT\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
