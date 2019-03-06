@@ -17,7 +17,7 @@ namespace RCDT.Models
 
         [BsonElement("Email")]
         public string Email { get; set; }
-
+        
         [BsonElement("isResearcher")]
         public bool isResearcher { get; set; }
         

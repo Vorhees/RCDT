@@ -4,6 +4,7 @@ using System.Text.Encodings.Web;
 
 namespace RCDT.Controllers
 {
+   // [Authorize(Policy = "RequireAdminRole")]
     public class AdminDashboardController : Controller
     {
         // [Authorize]

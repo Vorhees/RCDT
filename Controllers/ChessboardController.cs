@@ -6,10 +6,21 @@ using System.Threading.Tasks;
 
 namespace RCDT.Controllers
 {
+    //[Authorize(Roles = "Participant")]
     public class ChessboardController : Controller
     {
          public IActionResult Index()
         {
+            return View();
+        }
+
+        public ActionResult boardClick(string id)
+        {
+            if (id == "8a")
+            {
+                RedirectToAction("Index", "Home");
+            }
+
             return View();
         }
     }

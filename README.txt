@@ -10,6 +10,8 @@ README FOR RCDT
 3/1/2019 - Added all files from C9 to this workspace. Corrected syntax errors. 
            Application is runnable.
 
+3/4/2019 - Added chessboard GUI and chessboard controller.
+
 
 ==========================================================================
 ==========================================================================

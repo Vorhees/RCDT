@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace RCDT.Controllers
 {
+    [Authorize(Roles = "Participant")]
     public class SessionUserLoginController : Controller
     {
         public IActionResult Index()

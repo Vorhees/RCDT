@@ -3,6 +3,9 @@ using RCDT.Models;
 using RCDT.Services;
 using Microsoft.AspNetCore.Mvc;
 
+/*
+    API
+ */
 namespace RCDT.Controllers
 {
     [Route("api/[controller]")]

@@ -2,16 +2,15 @@
     ViewData["Title"] = "Chessboard";
 }
 
-<h1>@ViewData["Title"]</h1>
 <head>
  <style>
             .chess-board { border-spacing: 0; border-collapse: collapse; }
             .chess-board th { padding: .5em; }
-            .chess-board td { border: 1px solid; width: 8em; height: 8em; }
+            .chess-board td { border: 1px solid; width: 7em; height: 7em; }
             .chess-board .light { background: #eee; }
             .chess-board .dark { background: #000; }
-        </style>
-    </head>
+</style>
+</head>
     <body>
         <table class="chess-board">
             <tbody>
@@ -30,91 +29,339 @@
                 --->
                 <tr>
                    <!-- <th>8</th> -->
-                    <td class="light" id="8a"></td>
-                    <td class="dark" id="8b"></td>
-                    <td class="light" id="8c"></td>
-                    <td class="dark" id="8d"></td>
-                    <td class="light" id="8e"></td>
-                    <td class="dark" id="8f"></td>
-                    <td class="light" id="8g"></td>
-                    <td class="dark" id="8h"></td>
+                    <td class="light" id="8a">
+                    <button class="light" id="8aButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="8b">
+                    <button class="dark" id="8bButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="8c">
+                    <button class="light" id="8cButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="8d">
+                    <button class="dark" id="8dButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="8e">
+                    <button class="light" id="8eButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+                    
+                    <td class="dark" id="8f">
+                    <button class="dark" id="8fButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="8g">
+                    <button class="light" id="8gButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="8h">
+                    <button class="dark" id="8hButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
                 </tr>
                 <tr>
                     <!-- <th>7</th> -->
-                    <td class="dark" id="7a"></td>
-                    <td class="light" id="7b"></td>
-                    <td class="dark" id="7c"></td>
-                    <td class="light" id="7d"></td>
-                    <td class="dark" id="7e"></td>
-                    <td class="light" id="7f"></td>
-                    <td class="dark" id="7g"></td>
-                    <td class="light" id="7h"></td>
+                    <td class="dark" id="7a">
+                    <button class="dark" id="7aButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="7b">
+                    <button class="light" id="7bButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="7c">
+                    <button class="dark" id="7cButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="7d">
+                    <button class="light" id="7dButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="7e">
+                    <button class="dark" id="7eButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="7f">
+                    <button class="light" id="7fButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="7g">
+                    <button class="dark" id="7gButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="7h">
+                    <button class="light" id="7hButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
                 </tr>
                 <tr>
                     <!-- <th>6</th> -->
-                    <td class="light" id="6a"></td>
-                    <td class="dark" id="6b"></td>
-                    <td class="light" id="6c"></td>
-                    <td class="dark" id="6d"></td>
-                    <td class="light" id="6e"></td>
-                    <td class="dark" id="6f"></td>
-                    <td class="light" id="6g"></td>
-                    <td class="dark" id="6h"></td>
+                    <td class="light" id="6a">
+                    <button class="light" id="6aButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="6b">
+                    <button class="dark" id="6bButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="6c">
+                    <button class="light" id="6cButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="6d">
+                    <button class="dark" id="6dButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="6e">
+                    <button class="light" id="6eButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+                    
+                    <td class="dark" id="6f">
+                    <button class="dark" id="6fButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="6g">
+                    <button class="light" id="6gButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="6h">
+                    <button class="dark" id="6hButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
                 </tr>
                 <tr>
                     <!-- <th>5</th> -->
-                    <td class="dark" id="5a"></td>
-                    <td class="light" id="5b"></td>
-                    <td class="dark" id="5c"></td>
-                    <td class="light" id="5d"></td>
-                    <td class="dark" id="5e"></td>
-                    <td class="light" id="5f"></td>
-                    <td class="dark" id="5g"></td>
-                    <td class="light" id="5h"></td>
+                    <td class="dark" id="5a">
+                    <button class="dark" id="5aButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="5b">
+                    <button class="light" id="5bButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="5c">
+                    <button class="dark" id="5cButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="5d">
+                    <button class="light" id="5dButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="5e">
+                    <button class="dark" id="5eButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="5f">
+                    <button class="light" id="5fButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="5g">
+                    <button class="dark" id="5gButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="5h">
+                    <button class="light" id="5hButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
                 </tr>
                 <tr>
                     <!-- <th>4</th> -->
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
+                    <td class="light" id="4a">
+                    <button class="light" id="4aButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="4b">
+                    <button class="dark" id="4bButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="4c">
+                    <button class="light" id="4cButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="4d">
+                    <button class="dark" id="4dButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="4e">
+                    <button class="light" id="4eButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+                    
+                    <td class="dark" id="4f">
+                    <button class="dark" id="4fButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="4g">
+                    <button class="light" id="4gButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="4h">
+                    <button class="dark" id="4hButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
                 </tr>
                 <tr>
                     <!-- <th>3</th> -->
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
+                    <td class="dark" id="3a">
+                    <button class="dark" id="3aButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="3b">
+                    <button class="light" id="3bButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="3c">
+                    <button class="dark" id="3cButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="3d">
+                    <button class="light" id="3dButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="3e">
+                    <button class="dark" id="3eButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+                    
+                    <td class="light" id="3f">
+                    <button class="light" id="3fButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="3g">
+                    <button class="dark" id="3gButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="3h">
+                    <button class="light" id="3hButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
                 </tr>
                 <tr>
                     <!-- <th>2</th> -->
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
+                    <td class="light" id="2a">
+                    <button class="light" id="2aButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="2b">
+                    <button class="dark" id="2bButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="2c">
+                    <button class="light" id="2cButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="2d">
+                    <button class="dark" id="2dButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="2e">
+                    <button class="light" id="2eButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+                    
+                    <td class="dark" id="2f">
+                    <button class="dark" id="2fButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="2g">
+                    <button class="light" id="2gButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="2h">
+                    <button class="dark" id="2hButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
                 </tr>
                 <tr>
                     <!-- <th>1</th> -->
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
+                    <td class="dark" id="1a">
+                    <button class="dark" id="1aButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="1b">
+                    <button class="light" id="1bButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="1c">
+                    <button class="dark" id="1cButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="1d">
+                    <button class="light" id="1dButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="1e">
+                    <button class="dark" id="1eButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+                    
+                    <td class="light" id="1f">
+                    <button class="light" id="1fButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="dark" id="1g">
+                    <button class="dark" id="1gButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
+
+                    <td class="light" id="1h">
+                    <button class="light" id="1hButton"
+                    style="width:100%;height:100%"></button>
+                    </td>
                 </tr>
             </tbody>
         </table>
