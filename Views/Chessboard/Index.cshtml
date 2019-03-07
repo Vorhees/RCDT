@@ -8,6 +8,7 @@
     }
     function drag(ev){
         ev.dataTransfer.setData("text/html", ev.target_id);
+        console.log("I am dragged");
     }
     function drop(ev){
         ev.preventDefault();
@@ -25,7 +26,7 @@
 </style>
 </head>
     <body>
-        <img src="wwwroot\images\anchor.jpg" runat="server" asp-append-version="true" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
+        <img src="~/images/anchor.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
         <table class="chess-board">
             <tbody>
                 <!---
