@@ -15,8 +15,8 @@
 
         <div class="form-group">
           <div class="col-md-12">
-             <input type="text" class="userIDForm" name="userID" placeholder="User ID" id="userID" required name="userID">
-              <input type="number" class="seshKeyForm" name="sessionKey" placeholder="Session key" id="sessionKey" required name="sessionKey">
+             <input type="text" class="userIDForm" name="userID" placeholder="'A'" id="userID" required name="userID">
+              <input type="number" class="seshKeyForm" name="sessionKey" placeholder="#" id="sessionKey" required name="sessionKey">
           </div>
         </div>
 
@@ -27,8 +27,8 @@
 
         <div class="form-group">
             <div class="col-md-offset-5 col-md-12">
-                <input type="submit" value="Submit" class="btn btn-default" />
-                <input type="reset" value="Clear" class="btn btn-default" />
+                <input type="image" src="~/images/checkmark.png" value="Submit" class="btn btn-default" />
+                <input type="image" src="~/images/cancel.png" value="Reset" class="btn btn-default" onclick="this.form.reset()" />
             </div>
         </div>
 
