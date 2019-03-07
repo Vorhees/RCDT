@@ -12,6 +12,8 @@ README FOR RCDT
 
 3/4/2019 - Added chessboard GUI and chessboard controller.
 
+3/7/2019 - Added/Fixed drag/drop functionality on chessboard. 
+
 
 ==========================================================================
 ==========================================================================
