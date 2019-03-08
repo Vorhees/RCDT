@@ -13,12 +13,15 @@
     function drop(ev){
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
-        ev.target.appendChild(document.getElementById(data));
+        var nodeCopy = document.getElementById(data).cloneNode(true);
+        nodeCopy.id = "newId";
+        ev.target.appendChild(nodeCopy);
         console.log("I am dropped");
     }
 
 </script>
- <style>
+<style>
+            .item-bank td:nth-child(0) { border-spacing: 40px; }
             .chess-board { border-spacing: 0; border-collapse: collapse; }
             .chess-board th { padding: .5em; }
             .chess-board td { border: 1px solid; width: 6em; height: 6em; }
@@ -30,10 +33,10 @@
         <table class="item-bank-with-board">
             <tr>
                 <td>
-                    <div style="width:200px;height:500px;border:5px solid #000;" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div style="width:250px;height:500px;border:5px solid #000;" ondrop="drop(event)" ondragover="allowDrop(event)">
                         <img src="~/images/anchor.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
                     </div>
-            </td>
+                </td>
             <td>
                 <table class="chess-board" align="right">
                     <tbody>
