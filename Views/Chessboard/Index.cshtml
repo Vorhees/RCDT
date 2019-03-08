@@ -6,7 +6,8 @@
 
     var count = 0;
 
-    function allowDrop(ev){
+    function allowDrop(ev)
+    {
         ev.preventDefault();
     }
     function drag(ev){
@@ -20,7 +21,8 @@
         ev.target.appendChild(document.getElementById(data));
         console.log("I am dropped as original");
     }
-    function drop(ev){
+    function drop(ev) 
+    {
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
 
