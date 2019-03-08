@@ -3,6 +3,9 @@
 }
 <head>
 <script>
+
+    var count = 0;
+
     function allowDrop(ev){
         ev.preventDefault();
     }
@@ -10,13 +13,29 @@
         ev.dataTransfer.setData("text", ev.target.id);
         console.log("I am dragged");
     }
+    function drop_board(ev)
+    {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+        console.log("I am dropped as original");
+    }
     function drop(ev){
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
-        var nodeCopy = document.getElementById(data).cloneNode(true);
-        nodeCopy.id = "newId";
-        ev.target.appendChild(nodeCopy);
-        console.log("I am dropped");
+
+        if (!document.getElementById(data).parentNode.isEqualNode(document.getElementById("itemBank")))
+        {
+            drop_board(ev);
+        }
+        else
+        {
+            var nodeCopy = document.getElementById(data).cloneNode(true);
+            nodeCopy.id = "draggable" + count;
+            count++;
+            ev.target.appendChild(nodeCopy);
+            console.log("I am dropped");
+        }
     }
 
 </script>
@@ -33,7 +52,7 @@
         <table class="item-bank-with-board">
             <tr>
                 <td>
-                    <div style="width:250px;height:500px;border:5px solid #000;" ondrop="drop(event)">
+                    <div style="width:250px;height:500px;border:5px solid #000;" ondrop="drop(event)" id="itemBank">
                         <img src="~/images/anchor.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
                     </div>
                 </td>
