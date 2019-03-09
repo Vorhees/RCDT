@@ -10,7 +10,8 @@
     {
         ev.preventDefault();
     }
-    function drag(ev){
+    function drag(ev)
+    {
         ev.dataTransfer.setData("text", ev.target.id);
         console.log("I am dragged");
     }
@@ -42,371 +43,354 @@
 
 </script>
 <style>
-            .item-bank td:nth-child(0) { border-spacing: 40px; }
-            .chess-board { border-spacing: 0; border-collapse: collapse; }
-            .chess-board th { padding: .5em; }
-            .chess-board td { border: 1px solid; width: 6em; height: 6em; }
+            .container { width: 100%; }
+            .chess-board { table-layout: fixed; border-spacing: 0; border-collapse: collapse; }
+            .chess-board td { table-layout: fixed; border: 1px solid; width: 6em; height: 6em; }
             .chess-board .light { background: #eee; }
             .chess-board .dark { background: #000; }
 </style>
 </head>
     <body>
-        <table class="item-bank-with-board">
+
+        <div style="position:absolute;left:70px;width:300px;height:500px;border:5px solid #000; float: left; margin-right: 30px;" ondrop="drop(event)" id="itemBank">
+            <img src="~/images/anchor.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
+        </div>
+
+        <div id="chatBox" style="position:absolute;right:70px;width:640px;height:350px;border:5px solid #000;float: right;
+        margin-left: 30px; margin-top: 420px">
+        <p>THIS IS THE CHATBOX</p>
+        </div>
+
+        <table class="chess-board">   
             <tr>
-                <td>
-                    <div style="width:250px;height:500px;border:5px solid #000;" ondrop="drop(event)" id="itemBank">
-                        <img src="~/images/anchor.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
+                <td class="light" id="8a" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div class="light" id="8adiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                ></div>
+                </td>
+
+                    <td class="dark" id="8b" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="8bdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+
+                    <td class="light" id="8c" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="8cdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+
+                    <td class="dark" id="8d" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="8ddiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+
+                    <td class="light" id="8e" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="8ediv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+
+                    <td class="dark" id="8f" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="8fdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+
+                    <td class="light" id="8g" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="8gdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+
+                    <td class="dark" id="8h" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="8hdiv" ondrop="drop(event)" ondragover="allowDrop(event)">
                     </div>
-                </td>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-            <td>
-                <table class="chess-board" align="right">
-                    <tbody>
-                        <!---
-                        <tr>
-                            <th></th>
-                            <th>a</th>
-                            <th>b</th>
-                            <th>c</th>
-                            <th>d</th>
-                            <th>e</th>
-                            <th>f</th>
-                            <th>g</th>
-                            <th>h</th>
-                        </tr>
-                        --->
-                        <!-- <th>8</th> -->
-                            <td class="light" id="8a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="8adiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    </td>
 
-                            <td class="dark" id="8b" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="8bdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                </tr>
+                <tr>
+                    <!-- <th>7</th> -->
+                    <td class="dark" id="7a" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="7adiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+                    <td class="light" id="7b" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="7bdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+                    <td class="dark" id="7c" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="7cdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+                    <td class="light" id="7d" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="7ddiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+                    <td class="dark" id="7e" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="7ediv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+                    <td class="light" id="7f" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="7fdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+                    <td class="dark" id="7g" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="7gdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+                    <td class="light" id="7h" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="7hdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- <th>6</th> -->
+                    <td class="light" id="6a" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="6adiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="light" id="8c" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="8cdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="dark" id="6b" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="6bdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="dark" id="8d" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="8ddiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="light" id="6c" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="6cdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="light" id="8e" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="8ediv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="dark" id="6d" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="6ddiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="dark" id="8f" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="8fdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="light" id="6e" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="6ediv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+                    
+                    <td class="dark" id="6f" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="6fdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="light" id="8g" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="8gdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="light" id="6g" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="6gdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="dark" id="8h" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="8hdiv" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            </div>
-                            </td>
+                    <td class="dark" id="6h" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="6hdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- <th>5</th> -->
+                    <td class="dark" id="5a" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="5adiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                        </tr>
-                        <tr>
-                            <!-- <th>7</th> -->
-                            <td class="dark" id="7a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="7adiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-                            <td class="light" id="7b" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="7bdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-                            <td class="dark" id="7c" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="7cdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-                            <td class="light" id="7d" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="7ddiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-                            <td class="dark" id="7e" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="7ediv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-                            <td class="light" id="7f" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="7fdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-                            <td class="dark" id="7g" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="7gdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-                            <td class="light" id="7h" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="7hdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <!-- <th>6</th> -->
-                            <td class="light" id="6a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="6adiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="light" id="5b" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="5bdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="dark" id="6b" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="6bdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="dark" id="5c" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="5cdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="light" id="6c" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="6cdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="light" id="5d" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="5ddiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="dark" id="6d" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="6ddiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="dark" id="5e" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="5ediv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="light" id="6e" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="6ediv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-                            
-                            <td class="dark" id="6f" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="6fdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="light" id="5f" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="5fdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="light" id="6g" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="6gdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="dark" id="5g" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="5gdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="dark" id="6h" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="6hdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <!-- <th>5</th> -->
-                            <td class="dark" id="5a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="5adiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="light" id="5h" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="5hdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- <th>4</th> -->
+                    <td class="light" id="4a" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="4adiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="light" id="5b" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="5bdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="dark" id="4b" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="4bdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="dark" id="5c" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="5cdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="light" id="4c" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="4cdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="light" id="5d" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="5ddiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="dark" id="4d" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="4ddiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="dark" id="5e" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="5ediv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="light" id="4e" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="4ediv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+                    
+                    <td class="dark" id="4f" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="4fdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="light" id="5f" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="5fdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="light" id="4g" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="4gdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="dark" id="5g" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="5gdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="dark" id="4h" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="4hdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- <th>3</th> -->
+                    <td class="dark" id="3a" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="3adiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="light" id="5h" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="5hdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <!-- <th>4</th> -->
-                            <td class="light" id="4a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="4adiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="light" id="3b" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="3bdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="dark" id="4b" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="4bdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="dark" id="3c" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="3cdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="light" id="4c" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="4cdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="light" id="3d" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="3ddiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="dark" id="4d" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="4ddiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="dark" id="3e" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="3ediv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+                    
+                    <td class="light" id="3f" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="3fdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="light" id="4e" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="4ediv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-                            
-                            <td class="dark" id="4f" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="4fdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="dark" id="3g" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="3gdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="light" id="4g" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="4gdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="light" id="3h" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="3hdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- <th>2</th> -->
+                    <td class="light" id="2a" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="2adiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="dark" id="4h" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="4hdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <!-- <th>3</th> -->
-                            <td class="dark" id="3a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="3adiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="dark" id="2b" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="2bdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="light" id="3b" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="3bdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="light" id="2c" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="2cdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="dark" id="3c" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="3cdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="dark" id="2d" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="2ddiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="light" id="3d" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="3ddiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="light" id="2e" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="2ediv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+                    
+                    <td class="dark" id="2f" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="2fdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="dark" id="3e" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="3ediv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-                            
-                            <td class="light" id="3f" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="3fdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="light" id="2g" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="2gdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="dark" id="3g" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="3gdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="dark" id="2h" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="2hdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- <th>1</th> -->
+                    <td class="dark" id="1a" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="1adiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="light" id="3h" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="3hdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <!-- <th>2</th> -->
-                            <td class="light" id="2a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="2adiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="light" id="1b" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="1bdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="dark" id="2b" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="2bdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="dark" id="1c" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="1cdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="light" id="2c" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="2cdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="light" id="1d" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="1ddiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="dark" id="2d" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="2ddiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="dark" id="1e" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="1ediv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
+                    
+                    <td class="light" id="1f" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="1fdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="light" id="2e" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="2ediv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-                            
-                            <td class="dark" id="2f" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="2fdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
+                    <td class="dark" id="1g" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="dark" id="1gdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
 
-                            <td class="light" id="2g" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="2gdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-
-                            <td class="dark" id="2h" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="2hdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <!-- <th>1</th> -->
-                            <td class="dark" id="1a" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="1adiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-
-                            <td class="light" id="1b" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="1bdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-
-                            <td class="dark" id="1c" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="1cdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-
-                            <td class="light" id="1d" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="1ddiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-
-                            <td class="dark" id="1e" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="1ediv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-                            
-                            <td class="light" id="1f" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="1fdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-
-                            <td class="dark" id="1g" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="dark" id="1gdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-
-                            <td class="light" id="1h" ondrop="drop(event)" ondragover="allowDrop(event)">
-                            <div class="light" id="1hdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
-                            ></div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                </td>
+                    <td class="light" id="1h" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="light" id="1hdiv" ondrop="drop(event)" ondragover="allowDrop(event)"
+                    ></div>
+                    </td>
                 </tr>
         </table>
+
     </body>
