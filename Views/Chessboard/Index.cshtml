@@ -56,16 +56,19 @@
             <img src="~/images/anchor.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
         </div>
 
-        <div id="chatBox" style="position:absolute;right:70px;width:640px;height:350px;border:5px solid #000;float: right;
-        margin-left: 30px; margin-top: 420px">
-            <form action="#" method="post">
-                <fieldset>
-                    <input type="text" placeholder="......" autofocus style="width:550px;margin-top:275px; margin-left:5px;" />
-                    <input type="hidden" />
+        <div id="chatBox" style="position:absolute;right:70px;width:640px;border:5px solid #000;float:right;
+        margin-left:30px; margin-top:310px;overflow-y:auto;height:400px">
 
-                    <input type="image" src="~/images/send.png" value="Send Message" class="btn btn-default" />
+            <!-- Temporary ul --->
+            <ul id="messagesList"></ul>
+        </div>
+        <div id="enterMessage" style="position:absolute;right:70px;float:right;
+        margin-left:30px; margin-top:450px;">
+                <fieldset>
+                    <input type="text" placeholder="......" autofocus style="width:570px;margin-top:275px;" id="messageInput" />
+
+                    <input type="image" src="~/images/send.png" value="Send Message" class="btn btn-default" id="sendButton" />
                 </fieldset>
-            </form>
         </div>
 
         <table class="chess-board">   
@@ -399,5 +402,7 @@
                     </td>
                 </tr>
         </table>
-
     </body>
+
+    <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/chat.js"></script>

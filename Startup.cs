@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RCDT.Models;
 using RCDT.Services;
+using RCDT.Hubs;
 
 namespace RCDT
 {
@@ -43,6 +44,7 @@ namespace RCDT
             */
             services.AddScoped<AdminUserService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddSignalR();
             services.AddAuthentication();
         }
 
@@ -66,6 +68,10 @@ namespace RCDT
             });
             app.UseAuthentication();
             app.UseCookiePolicy();
+            app.UseSignalR( routes =>
+            {
+                routes.MapHub<ChatHub>("/chatHub");
+            });
 
             app.UseMvc(routes =>
             {
