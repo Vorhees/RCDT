@@ -5,7 +5,12 @@
 <script>
 
     var count = 0;
-
+    function removeItem(data)
+    {
+        var child = document.getElementById(data);
+        child.parentNode.removeChild(child);
+        count--;
+    }
     function allowDrop(ev)
     {
         ev.preventDefault();
@@ -19,8 +24,13 @@
     {
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
-        ev.target.appendChild(document.getElementById(data));
-        console.log("I am dropped as original");
+        if (ev.target.isEqualNode(document.getElementById("itemBank")))
+        {
+            removeItem(data);
+        } else {
+            ev.target.appendChild(document.getElementById(data));
+            console.log("I am dropped as original");
+        }
     }
     function drop(ev) 
     {
@@ -52,7 +62,7 @@
 </head>
     <body>
 
-        <div style="position:absolute;left:70px;width:300px;height:500px;border:5px solid #000; float: left; margin-right: 30px;" ondrop="drop(event)" id="itemBank">
+        <div style="position:absolute;left:70px;width:300px;height:500px;border:5px solid #000; float: left; margin-right: 30px;" ondrop="drop(event)" ondragover="allowDrop(event)" id="itemBank">
             <img src="~/images/anchor.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31">
         </div>
 
