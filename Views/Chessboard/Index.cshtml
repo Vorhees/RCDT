@@ -407,15 +407,14 @@
                                 </table>
                         </td>
                         <td>
-                                <div id="chatBox" style=";width:360px;border:5px solid#000; height:300px">
-
+                                <div id="chatBox" style="height:730px;width:360px;border:5px solid#000;overflow-y:scroll;">
                                     <!-- Temporary ul --->
-                                    <ul id="messagesList"></ul>
+                                <!--<ul id="messagesList"></ul> -->
                                 </div>
-                                <div id="enterMessage"> 
+                                <div id="enterMessage" style="margin-top:2px"> 
                                     <fieldset>
-                                        <input type="text" placeholder="......" autofocus id="messageInput" style="width:285px;"/>
-                                        <input type="image" src="~/images/send.png" value="Send Message" class="btn btn-default" id="sendButton" />
+                                        <input type="text" placeholder="......" autofocus id="messageInput" style="width:295px;height:36px;"/>
+                                        <input type="image" src="~/images/send.png" value="Send Message" class="btn btn-default" id="sendButton" style="width:60px;height:40px;"/>
                                     </fieldset>
                                 </div>
                         </td>

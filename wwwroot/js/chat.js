@@ -13,7 +13,7 @@ connection.on("ReceiveMessage", function (message) {
 
     p.textContent = encodedMsg;
 
-    document.getElementById("messagesList").appendChild(p);
+    document.getElementById("chatBox").appendChild(p);
 
 });
 
