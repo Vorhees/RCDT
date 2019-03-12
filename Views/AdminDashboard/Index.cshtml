@@ -1,6 +1,24 @@
 @{
-    ViewData["Title"] = "Admin Dashboard";
+ ViewData["Title"] = "Admin Dashboard";
 }
 
+<script type="text/javascript">
+	function RandNum(){
+		var randNum = Math.floor(Math.random() * 9999 + 1);
+		document.getElementById('outputDiv').innerHTML=
+		"The generated number is " + randNum;
+        console.log("Number: " + randNum);
+	}
+</script>
+
 <h1>@ViewData["Title"]</h1>
+<p>This is the admin dashboard, TBC..should only be available if a valid admin successfully logs in</p> 
 <p>This is the admin dashboard, TBC..should only be available if a valid admin successfully logs in</p>
+
+<hr>
+
+<input type="button" value="Random Number Generator" onclick="RandNum();">
+
+<hr>
+
+<div id="outputDiv"></div> 
