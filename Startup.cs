@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RCDT.Models;
-using RCDT.Services;
+//using RCDT.Services;
 using RCDT.Hubs;
 
 namespace RCDT
@@ -42,7 +42,6 @@ namespace RCDT
                     //.AddEntityFrameworkStores<DbContext>
                     .AddDefaultTokenProviders();
             */
-            services.AddScoped<AdminUserService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSignalR();
             services.AddAuthentication();
