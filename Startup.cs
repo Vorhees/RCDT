@@ -16,6 +16,8 @@ using Microsoft.Extensions.DependencyInjection;
 using RCDT.Models;
 //using RCDT.Services;
 using RCDT.Hubs;
+using RCDT.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace RCDT
 {
@@ -42,6 +44,9 @@ namespace RCDT
                     //.AddEntityFrameworkStores<DbContext>
                     .AddDefaultTokenProviders();
             */
+
+            services.AddDbContext<DataContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSignalR();
             services.AddAuthentication();
