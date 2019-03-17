@@ -1,3 +1,7 @@
+@using System.Collections.Generic
+@using System.Linq
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Authentication
 @model RCDT.Models.LoginModel
 
 @{
@@ -13,7 +17,7 @@
             <div class="col-md-4"></div>
             <div class="col-md-4" style="margin-top:150px">
                 <h3>Log in</h3>
-                <form>
+                <form method="post">
                     <div class="form-group">
                         <input type="text" class="form-control" name="username" placeholder="Enter Username" id="username" required name="username">
                         @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })

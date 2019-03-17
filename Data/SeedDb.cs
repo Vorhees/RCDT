@@ -2,6 +2,12 @@ using RCDT.Models;
 using System;
 using System.Linq;
 
+/*
+    This class is used in Program.cs to seed initial users in the database.
+    It is used to test if users are actually seeded in the db. Will not stay
+    for long.
+*/
+
 namespace RCDT.Data
 {
     public static class SeedDb
