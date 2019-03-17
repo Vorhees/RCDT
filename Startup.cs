@@ -47,7 +47,9 @@ namespace RCDT
 
             services.AddDbContext<DataContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            
             services.AddSignalR();
             services.AddAuthentication();
         }

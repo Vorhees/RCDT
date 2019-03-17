@@ -1,6 +1,6 @@
 using System;
 
-namespace Users
+namespace RCDT.Models
 {
     public class User 
     {
