@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace RCDT.Migrations
 {
-    public partial class AddingRoles : Migration
+    public partial class AddedRoles : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

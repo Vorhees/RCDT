@@ -14,7 +14,7 @@ namespace RCDT.Data
             //context.Database.EnsureCreated();
 
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-            var UserManager = serviceProvider.GetRequiredService<UserManager<IDUser>>();
+            var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
             string[] roles = { "admin", "researcher", "research assisant", "irbreviewer", "transcriber", "participant"};
 
@@ -31,14 +31,14 @@ namespace RCDT.Data
                 }
             }
 
-            var powerUser = new IDUser
+            var powerUser = new ApplicationUser
             {
-                UserName = config.GetSection("AdminUserSettings")["Username"],
-                Email = config.GetSection("AdminUserSettings")["Email"]
+                UserName = config.GetSection("AppSettings")["Email"],
+                Email = config.GetSection("AppSettings")["Email"]
             };
 
-            string userPassword = config.GetSection("AdminUserSettings")["Password"];
-            var user = await UserManager.FindByEmailAsync(config.GetSection("AdminUserSettings")["Email"]);
+            string userPassword = config.GetSection("AppSettings")["Password"];
+            var user = await UserManager.FindByEmailAsync(config.GetSection("AppSettings")["Email"]);
 
             if (user == null)
             {

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace RCDT.Data
 {
-    public class DataContext : IdentityDbContext<IDUser>
+    public class DataContext : IdentityDbContext<ApplicationUser>
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
@@ -16,7 +16,7 @@ namespace RCDT.Data
         }
 
         public DbSet<AdminUser> adminUser { get; set; }
-        public DbSet<IDUser> admin { get; set; }
+        public DbSet<ApplicationUser> admin { get; set; }
 
         /*
         protected override void OnModelCreating(ModelBuilder modelBuilder)

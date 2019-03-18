@@ -10,8 +10,8 @@ using RCDT.Data;
 namespace RCDT.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190317233422_AddingRoles")]
-    partial class AddingRoles
+    [Migration("20190318065357_AddedRoles")]
+    partial class AddedRoles
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -144,7 +144,7 @@ namespace RCDT.Migrations
                     b.ToTable("adminUser");
                 });
 
-            modelBuilder.Entity("RCDT.Models.IDUser", b =>
+            modelBuilder.Entity("RCDT.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -204,7 +204,7 @@ namespace RCDT.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("RCDT.Models.IDUser")
+                    b.HasOne("RCDT.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -212,7 +212,7 @@ namespace RCDT.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("RCDT.Models.IDUser")
+                    b.HasOne("RCDT.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -225,7 +225,7 @@ namespace RCDT.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("RCDT.Models.IDUser")
+                    b.HasOne("RCDT.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -233,7 +233,7 @@ namespace RCDT.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("RCDT.Models.IDUser")
+                    b.HasOne("RCDT.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

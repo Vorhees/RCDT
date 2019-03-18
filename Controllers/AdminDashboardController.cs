@@ -4,10 +4,11 @@ using System.Text.Encodings.Web;
 
 namespace RCDT.Controllers
 {
-    //[Authorize(Policy = "RequireAdminRole")]
+    [Authorize(Policy = "RequireAdminRole")]
+    //[Authorize(Roles="admin")]
     public class AdminDashboardController : Controller
     {
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }
