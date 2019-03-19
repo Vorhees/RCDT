@@ -13,6 +13,7 @@ using RCDT.Models;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace RCDT.Controllers
 {
@@ -25,12 +26,15 @@ namespace RCDT.Controllers
       // private readonly IEmailSender _emailSender;
        private readonly ILogger _logger;
 
+       private readonly IHttpContextAccessor _context;
+
        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager,
-                             ILogger<AccountController> logger)
+                             ILogger<AccountController> logger, IHttpContextAccessor context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+            _context = context;
         }
 
         [HttpGet]
@@ -83,6 +87,16 @@ namespace RCDT.Controllers
             {
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            _logger.LogInformation("Logged out");
+
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
         /* Older code.
