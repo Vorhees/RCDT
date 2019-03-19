@@ -76,3 +76,8 @@ body {
   border-color: white;
   color: white;
 }
+
+#homeImage {
+  width: 45px;
+  height: 45px;
+}

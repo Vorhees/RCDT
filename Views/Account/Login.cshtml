@@ -16,13 +16,14 @@
             <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
-                    <input asp-for="Email" class="form-control" name="Email" placeholder="Enter Email" id="email" required name="email"/>
+                    <input asp-for="Email" class="form-control" name="Email" placeholder="'xxxx@xxxx'" id="email" required name="email"/>
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="Password" asp-for="Password" class="form-control" name="Password" placeholder="Enter Password" id="password" required name="password"/>
+                    <input type="Password" asp-for="Password" class="form-control" name="Password" placeholder="xxxxxxxxxxx" id="password" required name="password"/>
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
+                <!--
                 <div class="form-group">
                     <div class="checkbox">
                         <label asp-for="RememberMe">
@@ -31,10 +32,12 @@
                         </label>
                     </div>
                 </div>
+                --->
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary form-control mb-2">Log in</button>
-                    <button class="btn btn-primary form-control" type="button" onclick="location.href='@Url.Action("Index" , "Home")'"> Cancel
-                    </button>
+                    <div class="col-md-offset-5 col-md-12">
+                        <input type="image" value="Submit" class="btn btn-default" src="~/images/login.png"/>
+                        <input type="image" value="Cancel" class="btn btn-default" type="button" src="~/images/cancellogin.png" onclick="location.href='@Url.Action("Index" , "Home")'" />
+                    </div>
                 </div>
             </form>
         </section>

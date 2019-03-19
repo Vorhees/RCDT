@@ -12,7 +12,6 @@ namespace RCDT.Data
         public static async Task CreateRoles(IServiceProvider serviceProvider, IConfiguration config)
         {
             //context.Database.EnsureCreated();
-
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
