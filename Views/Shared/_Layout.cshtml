@@ -47,14 +47,19 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            @if (SignInManager.IsSignedIn(User))
-                            {
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
                                 <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logout" class="navbar-right">
-                                    <input type="image" class="btn btn-link navbar-btn nav-link text-dark" value="Submit" src="~/images/logout.png" style="width:50px;height:45px;">
+                                    <input type="image" class="btn btn-link navbar-btn nav-link text-dark" value="Submit" src="~/images/logout.png" style="width:47px;height:50px;">
                                 </form>
-                            }
-                        </li>
+                            </li>
+                            <li class="nav-item">
+                                <a class="navbar-brand" asp-controller="AdminDashboard" asp-action="Index">
+                                <img src="~/images/admin.png" id="adminImage" style="width:44px;height:40px;" />
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
