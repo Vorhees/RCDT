@@ -24,12 +24,14 @@
         {
             ev.preventDefault();
             var data = ev.dataTransfer.getData("text");
-            if (ev.target.isEqualNode(document.getElementById("itemBank")))
+            if(ev.target.isEqualNode(document.getElementById("itemBank")) || ev.target.parentNode.isEqualNode(document.getElementById("itemBank")))
             {
-            removeItem(data);
-            } else {
-            ev.target.appendChild(document.getElementById(data));
-            console.log("I am dropped as original");
+                removeItem(data);
+            }
+            if(ev.target.children.length == 0 && ev.target.nodeName != "IMG" && !ev.target.isEqualNode(document.getElementById("itemBank")))
+            {
+                ev.target.appendChild(document.getElementById(data));
+                console.log("I am dropped as original");
             }
         }
         function drop(ev) 
@@ -43,12 +45,16 @@
             }
             else
             {
-                if (!ev.target.isEqualNode(document.getElementById("itemBank"))){
-                    var nodeCopy = document.getElementById(data).cloneNode(true);
-                    nodeCopy.id = "draggable" + count;
-                    count++;
-                    ev.target.appendChild(nodeCopy);
-                    console.log("I am dropped");
+                if (!ev.target.isEqualNode(document.getElementById("itemBank")))
+                {
+                    if(ev.target.children.length == 0 && ev.target.nodeName != "IMG")
+                    {
+                        var nodeCopy = document.getElementById(data).cloneNode(true);
+                        nodeCopy.id = "draggable" + count;
+                        count++;
+                        ev.target.appendChild(nodeCopy);
+                        console.log("I am dropped");
+                    }
                 }
             }
         }
