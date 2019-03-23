@@ -99,6 +99,46 @@ namespace RCDT.Controllers
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
+        [HttpGet]
+        [Authorize(Policy = "RequireAdminRole")]
+        public IActionResult Register(string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterViewModel registerModel, string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser { UserName = registerModel.Email,Email = registerModel.Email};
+
+                var result = await _userManager.CreateAsync(user, registerModel.Password);
+
+                if (result.Succeeded)
+                {
+                    _logger.LogInformation("User created a new account.");
+                    
+                    // Temp. add as researcher
+                    await _userManager.AddToRoleAsync(user, "researcher");
+
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+
+                    _logger.LogInformation("User created a new account");
+
+                    return RedirectToLocal(returnUrl);
+                }
+            }
+            
+            return View(registerModel);
+        }
+
         /* Older code.
         public IActionResult Index()
         {

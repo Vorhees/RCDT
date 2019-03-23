@@ -13,15 +13,5 @@ namespace RCDT.Controllers
         {
             return View();
         }
-
-        public ActionResult boardClick(string id)
-        {
-            if (id == "8a")
-            {
-                RedirectToAction("Index", "Home");
-            }
-
-            return View();
-        }
     }
 }

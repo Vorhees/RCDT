@@ -1,3 +1,4 @@
+@model RegisterViewModel
 @{
     ViewData["Title"] = "Registration Page";
 }
@@ -7,18 +8,15 @@
     <div class="col-md-4"></div>
     <div class="col-md-4" style="margin-top:150px">
       <h3>Sign Up</h3>
-      <form>
+      <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
         <div class="form-group">
-          <input type="text" class="form-control" required name="username" placeholder="Enter Username">
+          <input type="email" class="form-control" required name="email" placeholder="Enter Email">
         </div>
         <div class="form-group">
           <input type="password" class="form-control" required name="password" placeholder="Enter Password">
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" required name="password" placeholder="Reenter Password">
-        </div>
-        <div class="form-group">
-          <input type="email" class="form-control" required name="email" placeholder="Enter Email">
+          <input type="password" class="form-control" required name="password" placeholder="Re-enter Password">
         </div>
         <div class="form-group text-center">
         <button type="submit" class="btn btn-primary form-control mb-2">
