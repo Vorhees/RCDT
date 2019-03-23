@@ -55,6 +55,7 @@ namespace RCDT
             services.AddAuthorization(options => 
             {
                 options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("admin"));
+                options.AddPolicy("RequireResearcherRole", policy => policy.RequireRole("researcher"));
             });
         }
 

@@ -64,7 +64,7 @@ namespace RCDT.Controllers
                 {
                     _logger.LogInformation("User logged in");
 
-                    return RedirectToAction("Index", "AdminDashboard");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -132,7 +132,7 @@ namespace RCDT.Controllers
 
                     _logger.LogInformation("User created a new account");
 
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Index", "Home");
                 }
             }
             
