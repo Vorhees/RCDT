@@ -14,6 +14,7 @@ using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Http;
+using RCDT.Data;
 
 namespace RCDT.Controllers
 {
@@ -27,7 +28,7 @@ namespace RCDT.Controllers
        private readonly ILogger _logger;
 
        private readonly IHttpContextAccessor _context;
-
+       // DataContext dataContext;
        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager,
                              ILogger<AccountController> logger, IHttpContextAccessor context)
         {
@@ -103,6 +104,8 @@ namespace RCDT.Controllers
         [Authorize(Policy = "RequireAdminRole")]
         public IActionResult Register(string returnUrl = null)
         {
+           // ViewBag.Name = new SelectList(dataContext.Roles.Where(u => !u.Name.Contains("admin")).ToList(), "Name", "Name");
+
             ViewData["ReturnUrl"] = returnUrl;
 
             return View();
@@ -111,9 +114,10 @@ namespace RCDT.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel registerModel, string returnUrl = null)
+        public async Task<IActionResult> Register(RegisterViewModel registerModel, string Roles, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
+            Roles = Request.Form["Roles"].ToString();
 
             if (ModelState.IsValid)
             {
@@ -125,7 +129,7 @@ namespace RCDT.Controllers
                 {
                     _logger.LogInformation("User created a new account.");
                     
-                    // Temp. add as researcher
+                    // Temp. add as researcher for now. 
                     await _userManager.AddToRoleAsync(user, "researcher");
 
                     await _signInManager.SignInAsync(user, isPersistent: false);

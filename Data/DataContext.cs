@@ -15,6 +15,11 @@ namespace RCDT.Data
     
         }
 
+        public DataContext()
+        {
+            
+        }
+
         public DbSet<AdminUser> adminUser { get; set; }
         public DbSet<ApplicationUser> admin { get; set; }
 
