@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using RCDT.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace RCDT.Data
@@ -15,10 +17,12 @@ namespace RCDT.Data
     
         }
 
-        public DataContext()
+        /*
+        public DataContext() : base()
         {
             
         }
+        */
 
         public DbSet<AdminUser> adminUser { get; set; }
         public DbSet<ApplicationUser> admin { get; set; }

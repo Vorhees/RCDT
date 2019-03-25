@@ -27,15 +27,15 @@ namespace RCDT.Controllers
       // private readonly IEmailSender _emailSender;
        private readonly ILogger _logger;
 
-       private readonly IHttpContextAccessor _context;
-       // DataContext dataContext;
+       //private readonly IHttpContextAccessor _context;
+       private readonly DataContext _context;
        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager,
-                             ILogger<AccountController> logger, IHttpContextAccessor context)
+                             ILogger<AccountController> logger, DataContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
-            _context = context;
+           _context = context;
         }
 
         [HttpGet]
@@ -104,7 +104,7 @@ namespace RCDT.Controllers
         [Authorize(Policy = "RequireAdminRole")]
         public IActionResult Register(string returnUrl = null)
         {
-           // ViewBag.Name = new SelectList(dataContext.Roles.Where(u => !u.Name.Contains("admin")).ToList(), "Name", "Name");
+           ViewBag.Name = new SelectList(_context.Roles.Where(u => !u.Name.Contains("Admin") && !u.Name.Contains("Participant")).ToList(), "Name", "Name");
 
             ViewData["ReturnUrl"] = returnUrl;
 
@@ -130,7 +130,7 @@ namespace RCDT.Controllers
                     _logger.LogInformation("User created a new account.");
                     
                     // Temp. add as researcher for now. 
-                    await _userManager.AddToRoleAsync(user, "researcher");
+                    await _userManager.AddToRoleAsync(user, registerModel.UserRoles);
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
 

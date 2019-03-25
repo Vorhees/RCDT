@@ -3,6 +3,8 @@
     ViewData["Title"] = "Registration Page";
 }
 
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
 <div class="container">
   <div class="row">
     <div class="col-md-4"></div>
@@ -23,18 +25,13 @@
           <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
         </div>
         <div class="form-group">
-          <select id="Roles" style="width:100%;">
-            <option value="researcher">Researcher</option>
-            <option value="researchAssistant">Research Assistant</option>
-            <option value="transcriber">Transcriber</option>
-            <option value="irbReviewer">IRB Reviewer</option>
-          </select>
+        @Html.DropDownList("UserRoles", (SelectList)ViewBag.Name, new { style = "width: 340px"})
         </div>
         <div class="form-group text-center">
         <button type="submit" class="btn btn-primary form-control mb-2">
           Submit
         </button>
-        <button class="btn btn-primary form-control" type="button" onclick="location.href='@Url.Action("Index" , "Home")'"> Cancel
+        <button class="btn btn-primary form-control" type="button" onclick="location.href='@Url.Action("Index" , "AdminDashboard")'"> Cancel
         </button>
       </div>
       </form>
@@ -42,3 +39,4 @@
     <div class="col-md-4"></div>
   </div>
 </div>
+}

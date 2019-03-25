@@ -15,7 +15,7 @@ namespace RCDT.Data
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
-            string[] roles = { "admin", "researcher", "research assisant", "irbreviewer", "transcriber", "participant"};
+            string[] roles = { "Admin", "Researcher", "Research Assistant", "IRB Reviewer", "Transcriber", "Participant"};
 
             IdentityResult roleResult;
 

@@ -10,8 +10,8 @@ using RCDT.Data;
 namespace RCDT.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190318065357_AddedRoles")]
-    partial class AddedRoles
+    [Migration("20190325052359_InitialRoleCreation")]
+    partial class InitialRoleCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
