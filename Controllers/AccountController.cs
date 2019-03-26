@@ -111,6 +111,24 @@ namespace RCDT.Controllers
             return View();
         }
 
+        [HttpGet]
+        [Authorize(Policy = "RequireResearcherRole")]
+        public IActionResult RegisterParticipant(string returnUrl = null)
+        {
+           ViewBag.Name = new SelectList(_context.Roles.Where(u => !u.Name.Contains("Admin") && !u.Name.Contains("IRB Reviewer") && !u.Name.Contains("Transcriber")).ToList(), "Name", "Name");
+
+            ViewData["ReturnUrl"] = returnUrl;
+
+            return View();
+        }
+
+        /*
+        public async Task<IActionResult> RegisterParticipant(RegisterViewModel registerViewModel, string Roles, string returnUrl = null)
+        {
+            
+        }
+        */
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
