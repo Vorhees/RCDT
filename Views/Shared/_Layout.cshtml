@@ -25,7 +25,6 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
                 @if (!User.IsInRole("Admin") && !User.IsInRole("Research Assistant") && !User.IsInRole("IRB Reviewer") && !User.IsInRole("Transcriber") && !User.IsInRole("Researcher"))
                 {
                     <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Login">RCDT</a>
@@ -71,15 +70,12 @@
                         </a>
                     }
                 </div>
-            </div>
         </nav>
     </header>
-    <div class="container">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
+    <partial name="_CookieConsentPartial" />
+    <main role="main" class="pb-3">
             @RenderBody()
-        </main>
-    </div>
+    </main>
 
     <!---
     <footer class="border-top footer text-muted">
