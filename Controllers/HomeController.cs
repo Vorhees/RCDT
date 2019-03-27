@@ -17,16 +17,18 @@ namespace RCDT.Controllers
             return View();
         }
 
+        
         [HttpPost]
-        public ActionResult Index(SessionUserModel seshUserModel)
+        public ActionResult Index(RegisterParticipantViewModel participantViewModel)
         {
             if (ModelState.IsValid)
             {
                 return RedirectToAction("Index", "Chessboard");
             }
 
-            return View(seshUserModel);
+            return View(participantViewModel);
         }
+        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

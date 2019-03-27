@@ -78,6 +78,46 @@ namespace RCDT.Controllers
             return View(loginModel);
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> LoginParticipant(string returnUrl = null)
+        {
+            // Clears existing cookies
+            await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
+
+            ViewData["ReturnUrl"] = returnUrl;
+
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> LoginParticipant(LoginParticipantViewModel loginParticipantModel, string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(loginParticipantModel.UserID, loginParticipantModel.SessionKey, loginParticipantModel.RememberMe, lockoutOnFailure: false);
+
+                if (result.Succeeded)
+                {
+                    _logger.LogInformation("User logged in");
+
+                    return RedirectToAction("Index", "Chessboard");
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+
+                    return View(loginParticipantModel);
+                }
+            }
+
+            return View(loginParticipantModel);
+        }
         private IActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
@@ -115,19 +155,45 @@ namespace RCDT.Controllers
         [Authorize(Policy = "RequireResearcherRole")]
         public IActionResult RegisterParticipant(string returnUrl = null)
         {
-           ViewBag.Name = new SelectList(_context.Roles.Where(u => !u.Name.Contains("Admin") && !u.Name.Contains("IRB Reviewer") && !u.Name.Contains("Transcriber")).ToList(), "Name", "Name");
+           /*
+           ViewBag.Name = new SelectList(_context.Roles.Where(u => !u.Name.Contains("Admin") && !u.Name.Contains("IRB Reviewer") && !u.Name.Contains("Transcriber") && !u.Name.Contains("Researcher") && !u.Name.Contains("Research Assistant")).ToList(), "Name", "Name");
+           */
 
             ViewData["ReturnUrl"] = returnUrl;
 
             return View();
         }
 
-        /*
-        public async Task<IActionResult> RegisterParticipant(RegisterViewModel registerViewModel, string Roles, string returnUrl = null)
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RegisterParticipant(RegisterParticipantViewModel participantViewModel, string returnUrl = null)
         {
-            
+            ViewData["ReturnUrl"] = returnUrl;
+
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser { UserName = participantViewModel.UserID };
+
+                var result = await _userManager.CreateAsync(user, participantViewModel.SessionKey);
+
+                if (result.Succeeded)
+                {
+                    _logger.LogInformation("Participant was successfully created");
+
+                    await _userManager.AddToRoleAsync(user, "Participant");
+
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+
+                    _logger.LogInformation("Participant's account was created");
+
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
+            return View(participantViewModel);
         }
-        */
+        
 
         [HttpPost]
         [AllowAnonymous]
@@ -135,7 +201,7 @@ namespace RCDT.Controllers
         public async Task<IActionResult> Register(RegisterViewModel registerModel, string Roles, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-            Roles = Request.Form["Roles"].ToString();
+            //Roles = Request.Form["Roles"].ToString();
 
             if (ModelState.IsValid)
             {

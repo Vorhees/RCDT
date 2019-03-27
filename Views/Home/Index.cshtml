@@ -1,4 +1,4 @@
-﻿@model RCDT.Models.SessionUserModel
+﻿@model RCDT.Models.RegisterParticipantViewModel
 
 @{
     ViewData["Title"] = "Home";
@@ -21,8 +21,8 @@
         </div>
 
         <div class="col-md-offset-2 col-md-12">
-           @Html.ValidationMessageFor(model => model.sessionKey, "", new { @class = "text-danger"})
-           @Html.ValidationMessageFor(model => model.userID, "", new { @class = "text-danger"})
+           @Html.ValidationMessageFor(model => model.SessionKey, "", new { @class = "text-danger"})
+           @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger"})
         </div>
 
         <div class="form-group">

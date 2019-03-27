@@ -40,6 +40,15 @@ namespace RCDT
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 1;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+            });
+
 
             services.AddDbContext<DataContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
