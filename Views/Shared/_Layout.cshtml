@@ -25,7 +25,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                @if (!User.IsInRole("Admin") && !User.IsInRole("Research Assistant") && !User.IsInRole("IRB Reviewer") && !User.IsInRole("Transcriber") && !User.IsInRole("Researcher"))
+                @if (!User.IsInRole("Admin") && !User.IsInRole("Research Assistant") && !User.IsInRole("IRB Reviewer") && !User.IsInRole("Transcriber") && !User.IsInRole("Researcher") && !User.IsInRole("Participant"))
                 {
                     <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Login">RCDT</a>
                 }

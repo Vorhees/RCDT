@@ -1,38 +1,32 @@
-﻿@model RCDT.Models.RegisterParticipantViewModel
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 @{
     ViewData["Title"] = "Home";
 }
-
-@using (Html.BeginForm())
-{
-  @Html.AntiForgeryToken()
 
   <div class="container mt-2">
     <div style="margin-top:50px">
       <div class="text-center" style="margin-top:200px">
         <h1 class="display-4">RCDT</h1>
 
-        <div class="form-group">
+        @if (!SignInManager.IsSignedIn(User))
+        {
           <div class="col-md-12">
-             <input type="text" class="userIDForm" name="userID" placeholder="'A'" id="userID" required name="userID">
-              <input type="number" class="seshKeyForm" name="sessionKey" placeholder="#" id="sessionKey" required name="sessionKey">
+            <a class="button" asp-controller="Account" asp-action="LoginParticipant">
+            <img src="~/images/participant.png" id="participantImage" style="width:80px;height:70px;" />
+            </a>
           </div>
-        </div>
-
-        <div class="col-md-offset-2 col-md-12">
-           @Html.ValidationMessageFor(model => model.SessionKey, "", new { @class = "text-danger"})
-           @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger"})
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-5 col-md-12">
-                <input type="image" src="~/images/checkmark.png" value="Submit" class="btn btn-default" />
-                <input type="image" src="~/images/cancel.png" value="Reset" class="btn btn-default" onclick="this.form.reset()" />
-            </div>
-        </div>
-
+        }
+        else
+        {
+          <div class="col-md-12">
+            <a class="button">
+            <img src="~/images/participant.png" id="participantImage" style="width:80px;height:70px;" />
+            </a>
+          </div>
+        }
       </div>
     </div>
   </div>
-}

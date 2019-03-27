@@ -78,9 +78,8 @@ namespace RCDT.Controllers
             return View(loginModel);
         }
 
-        [HttpPost]
+        [HttpGet]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> LoginParticipant(string returnUrl = null)
         {
             // Clears existing cookies
@@ -183,7 +182,8 @@ namespace RCDT.Controllers
 
                     await _userManager.AddToRoleAsync(user, "Participant");
 
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    // Signs Participant in after registration.
+                    //await _signInManager.SignInAsync(user, isPersistent: false);
 
                     _logger.LogInformation("Participant's account was created");
 

@@ -1,0 +1,31 @@
+﻿@model RCDT.Models.LoginParticipantViewModel
+
+@{
+    ViewData["Title"] = "Login Participant";
+}
+
+  <div class="container mt-2">
+    <div style="margin-top:50px">
+      <div class="text-center" style="margin-top:200px">
+        <h1 class="display-4">RCDT</h1>
+
+        <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+          <div class="col-md-12">
+             <input type="text" class="userIDForm" name="UserID" placeholder="'A'" id="UserID" required name="UserID">
+              <input type="number" class="seshKeyForm" name="SessionKey" placeholder="#" id="SessionKey" required name="SessionKey">
+          </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-5 col-md-12">
+                <input type="image" src="~/images/checkmark.png" value="Submit" class="btn btn-default" />
+                <input type="image" src="~/images/cancel.png" value="Reset" class="btn btn-default" onclick="this.form.reset()" />
+            </div>
+        </div>
+       </form>
+
+      </div>
+    </div>
+  </div>

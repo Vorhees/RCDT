@@ -22,6 +22,14 @@ README FOR RCDT
             To log in as Transcriber: Email -> testTranscriber1@test.com | Password -> Testpw4!
             To log in as IRB Reviewer: Email -> testIRBReviewer1@test.com | Password -> Testpw5!
 
+3/27/2019 - Participants can be registered by the researcher and can log               in.
+
+            To log in as Participant: User ID = A | Session Key = 1
+                                      User ID = B | Session Key = 2
+                                      User ID = C | Session Key = 3
+                                      User ID = D | Session Key = 4
+
+
 ==========================================================================
 ==========================================================================
 ==========================================================================

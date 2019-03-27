@@ -65,6 +65,7 @@ namespace RCDT
             {
                 options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
                 options.AddPolicy("RequireResearcherRole", policy => policy.RequireRole("Researcher"));
+                options.AddPolicy("RequireParticipantRole", policy => policy.RequireRole("Participant"));
             });
         }
 

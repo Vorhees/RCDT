@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RCDT.Controllers
 {
-    //[Authorize(Roles = "Participant")]
+    [Authorize(Policy = "RequireParticipantRole")]
     public class ChessboardController : Controller
     {
          public IActionResult Index()

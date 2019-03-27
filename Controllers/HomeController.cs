@@ -17,7 +17,7 @@ namespace RCDT.Controllers
             return View();
         }
 
-        
+        /*
         [HttpPost]
         public ActionResult Index(RegisterParticipantViewModel participantViewModel)
         {
@@ -28,7 +28,7 @@ namespace RCDT.Controllers
 
             return View(participantViewModel);
         }
-        
+        */
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
