@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RCDT.Data;
 using System.Text.Encodings.Web;
+using RCDT.Models;
 
 namespace RCDT.Controllers
 {
@@ -8,9 +10,29 @@ namespace RCDT.Controllers
     //[Authorize(Roles="admin")]
     public class AdminDashboardController : Controller
     {
+        private DataContext _context;
+
+        public AdminDashboardController(DataContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
             return View();
         }
+
+        public IActionResult Manage()
+        {
+            return View();
+        }
+        
+
+        /*
+        public ActionResult Manage()
+        {
+            
+        }
+        */
     }
 }
