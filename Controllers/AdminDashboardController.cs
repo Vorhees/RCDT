@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using RCDT.Data;
 using System.Text.Encodings.Web;
 using RCDT.Models;
+using System.Linq;
 
 namespace RCDT.Controllers
 {
@@ -24,7 +25,7 @@ namespace RCDT.Controllers
 
         public IActionResult Manage()
         {
-            return View();
+            return View(_context.Users.ToList());
         }
         
 
