@@ -5,14 +5,55 @@
     <script>
 
         var count = 0;
-        var saverString = "";
         function saveBoard()
         {
-            if (document.getElementById("8a").hasChildNodes())
+        var saverString = "";
+            for (i = 8; i > 0; i--)
             {
-                saverString += "8a : ";
-                saverString += document.getElementById("8a").children[0].src + "\n";
-                console.log(saverString);
+                var data = "";
+                for (j = 0; j < 7; j++)
+                {
+                    data = i + "";
+                    if (j == 0)
+                    {
+                        data += "a";
+                    }
+                    else if (j==1)
+                    {
+                        data += "b";
+                    }
+                    else if (j==2)
+                    {
+                        data += "c";
+                    }
+                    else if (j==3)
+                    {
+                        data += "d";
+                    }
+                    else if (j==4)
+                    {
+                        data += "e";
+                    }
+                    else if (j==5)
+                    {
+                        data += "f";
+                    }
+                    else if (j==6)
+                    {
+                        data += "g";
+                    }
+                    else if (j==7)
+                    {
+                        data += "h";
+                    }
+                    if (document.getElementById(data).children.length != 0)
+                    {
+                        saverString += data;
+                        saverString += document.getElementById(data).children[0].src;
+                        saverString += "\n";
+                        console.log(saverString);
+                    }
+                }
             }
         }
         function removeItem(data)
