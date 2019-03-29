@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace RCDT.Controllers
 {
-    [Authorize(Policy = "RequireAdminRole")]
+    //[Authorize(Policy = "RequireAdminRole")]
     //[Authorize(Roles="admin")]
     public class AdminDashboardController : Controller
     {

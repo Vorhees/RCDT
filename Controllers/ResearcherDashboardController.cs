@@ -11,7 +11,7 @@ namespace RCDT.Controllers
 {
     public class ResearcherDashboardController : Controller
     {
-        [Authorize(Policy = "RequireResearcherRole")]
+        //[Authorize(Policy = "RequireResearcherRole")]
         public IActionResult Index()
         {
             return View();
