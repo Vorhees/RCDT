@@ -5,6 +5,16 @@
     <script>
 
         var count = 0;
+        var saverString = "";
+        function saveBoard()
+        {
+            if (document.getElementById("8a").hasChildNodes())
+            {
+                saverString += "8a : ";
+                saverString += document.getElementById("8a").children[0].src + "\n";
+                console.log(saverString);
+            }
+        }
         function removeItem(data)
         {
             var child = document.getElementById(data);
@@ -57,6 +67,7 @@
                     }
                 }
             }
+            saveBoard();
         }
 
     </script>
