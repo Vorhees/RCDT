@@ -48,7 +48,8 @@
                     }
                     if (document.getElementById(data).children.length != 0)
                     {
-                        saverString += data;
+                        console.log(data);
+                        saverString += data + " : ";
                         saverString += document.getElementById(data).children[0].src;
                         saverString += "\n";
                         console.log(saverString);
