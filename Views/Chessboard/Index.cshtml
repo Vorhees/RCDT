@@ -1,6 +1,9 @@
+@inject UserManager<ApplicationUser> UserManager
+
 @{
     ViewData["Title"] = "Chessboard";
 }
+
 <head>
     <script>
 
@@ -329,6 +332,7 @@
                 </div>
                 <div id="enterMessage" style="margin-top:2px"> 
                     <fieldset>
+                        <input type="hidden" id="userInput" value="@UserManager.GetUserName(User)" disabled />
                         <input type="text" placeholder="......" autofocus id="messageInput" style="width:295px;height:36px;"/>
                         <input type="image" src="~/images/send.png" value="Send Message" class="btn btn-default" id="sendButton" style="width:60px;height:40px;"/>
                     </fieldset>

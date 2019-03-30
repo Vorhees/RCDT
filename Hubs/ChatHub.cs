@@ -1,13 +1,17 @@
 using Microsoft.AspNetCore.SignalR;
+using RCDT.Data;
 using System.Threading.Tasks;
 
 namespace RCDT.Hubs
 {
     public class ChatHub : Hub
     {
-        public async Task SendMessage(string message)
+        //private Models.ApplicationUser user;
+        public async Task SendMessage(string username, string message)
         {
-            await Clients.All.SendAsync("ReceiveMessage", message);
+            //username = user.UserName;
+
+            await Clients.All.SendAsync("ReceiveMessage", username,  message);
         }
     }
 }
