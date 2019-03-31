@@ -14,7 +14,7 @@ namespace RCDT.Data
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
-    
+
         }
 
         /*
@@ -39,6 +39,10 @@ namespace RCDT.Data
             .Ignore(col => col.TwoFactorEnabled)
             .Ignore(col => col.AccessFailedCount)
             .Ignore(col => col.LockoutEnd);
+
+            // modelBuilder.Entity<ApplicationUser>(mb => {
+            //     mb.Property( u => u.UserName).
+            // })
         }
     }
 }

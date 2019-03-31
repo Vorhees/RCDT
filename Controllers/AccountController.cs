@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Http;
 using RCDT.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace RCDT.Controllers
 {
@@ -99,7 +100,7 @@ namespace RCDT.Controllers
 
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(loginParticipantModel.UserID, loginParticipantModel.SessionKey, loginParticipantModel.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(loginParticipantModel.SessionKey, loginParticipantModel.UserID, loginParticipantModel.RememberMe, lockoutOnFailure: false);
 
                 if (result.Succeeded)
                 {
@@ -169,12 +170,14 @@ namespace RCDT.Controllers
         public async Task<IActionResult> RegisterParticipant(RegisterParticipantViewModel participantViewModel, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-
+            // //bool comboExist = await _context.Users.AnyAsync(
+            //     x => x.UserName == participantViewModel.UserID);
+                
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = participantViewModel.UserID, Id = participantViewModel.SessionKey, Role = "Participant" };
+                var user = new ApplicationUser { UserName = participantViewModel.SessionKey, Role = "Participant" };
 
-                var result = await _userManager.CreateAsync(user, participantViewModel.SessionKey);
+                var result = await _userManager.CreateAsync(user, participantViewModel.UserID);
 
                 if (result.Succeeded)
                 {

@@ -2,6 +2,13 @@
 @{
     ViewData["Title"] = "Registration Page";
 }
+<script>
+  function randSessionKey()
+  {
+    var rand = Math.floor(Math.random() * 9999) + 1
+    document.getElementById("seshKey").value = rand;
+  }
+</script>
 
 <div class="container">
   <div class="row">
@@ -14,9 +21,12 @@
           <input type="text" class="form-control" required name="UserID" placeholder="Enter User ID">
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" required name="SessionKey" placeholder="Enter Session Key">
+          <input type="text" class="form-control" required name="SessionKey" placeholder="######" id="seshKey">
         </div>
         <div class="form-group text-center">
+        <button type="button" class="btn btn-primary form-control mb-2" onclick="randSessionKey();" >
+          Generate Session Key
+        </button>
         <button type="submit" class="btn btn-primary form-control mb-2">
           Submit
         </button>

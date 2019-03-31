@@ -42,7 +42,7 @@ namespace RCDT
 
             services.Configure<IdentityOptions>(options =>
             {
-                options.Password.RequireDigit = true;
+                options.Password.RequireDigit = false;
                 options.Password.RequiredLength = 1;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
