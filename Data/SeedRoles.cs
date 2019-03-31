@@ -45,7 +45,7 @@ namespace RCDT.Data
 
                 if (createPowerUser.Succeeded)
                 {
-                    await UserManager.AddToRoleAsync(powerUser, "admin");
+                    await UserManager.AddToRoleAsync(powerUser, "Admin");
 
                     //context.admin.Add(powerUser);
 

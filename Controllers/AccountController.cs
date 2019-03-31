@@ -172,7 +172,7 @@ namespace RCDT.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = participantViewModel.UserID, Role = "Participant" };
+                var user = new ApplicationUser { UserName = participantViewModel.UserID, Id = participantViewModel.SessionKey, Role = "Participant" };
 
                 var result = await _userManager.CreateAsync(user, participantViewModel.SessionKey);
 
@@ -205,18 +205,17 @@ namespace RCDT.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = registerModel.Email,Email = registerModel.Email };
+                var user = new ApplicationUser { UserName = registerModel.Email,Email = registerModel.Email, Role = registerModel.UserRoles };
 
                 var result = await _userManager.CreateAsync(user, registerModel.Password);
 
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account.");
-                    
-                    // Temp. add as researcher for now. 
+                
                     await _userManager.AddToRoleAsync(user, registerModel.UserRoles);
 
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    //await _signInManager.SignInAsync(user, isPersistent: false);
 
                     _logger.LogInformation("User created a new account");
 
