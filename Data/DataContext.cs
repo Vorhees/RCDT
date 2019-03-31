@@ -24,16 +24,21 @@ namespace RCDT.Data
         }
         */
 
-        public DbSet<AdminUser> adminUser { get; set; }
+       // public DbSet<AdminUser> adminUser { get; set; }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
 
-        /*
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<AdminUser>().ToTable("Admin");
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<ApplicationUser>()
+            .Ignore(col => col.PhoneNumber)
+            .Ignore(col => col.PhoneNumberConfirmed)
+            .Ignore(col => col.TwoFactorEnabled)
+            .Ignore(col => col.AccessFailedCount)
+            .Ignore(col => col.LockoutEnd);
         }
-        */
-        
     }
 }

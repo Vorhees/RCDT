@@ -1,40 +1,41 @@
-using RCDT.Models;
-using System;
-using System.Linq;
 
-/*
-    This class is used in Program.cs to seed initial users in the database.
-    It is used to test if users are actually seeded in the db. Will not stay
-    for long.
-*/
+// using RCDT.Models;
+// using System;
+// using System.Linq;
 
-namespace RCDT.Data
-{
-    public static class SeedDb
-    {
-        public static void Initialize(DataContext context)
-        {
-            context.Database.EnsureCreated();
+// /*
+//     This class is used in Program.cs to seed initial users in the database.
+//     It is used to test if users are actually seeded in the db. Will not stay
+//     for long.
+// */
 
-            if (context.adminUser.Any())
-            {
-                return; // Db is seeded if any admin user is found.
-            }
+// namespace RCDT.Data
+// {
+//     public static class SeedDb
+//     {
+//         public static void Initialize(DataContext context)
+//         {
+//             context.Database.EnsureCreated();
 
-            var adminUsers = new AdminUser[]
-            {
-                new AdminUser {Username="jimmyN123", Password="12345", Email="jimmy@gmail.com"},
-                new AdminUser {Username="isaiahF123", Password="123454", Email="isaiah@gmail.com"},
-                new AdminUser {Username="bobbyN123", Password="1234425", Email="bobby@gmail.com"},
-                new AdminUser {Username="vuD123", Password="42312345", Email="vu@gmail.com"},
-            };
+//             if (context.adminUser.Any())
+//             {
+//                 return; // Db is seeded if any admin user is found.
+//             }
 
-            foreach (AdminUser a in adminUsers)
-            {
-                context.adminUser.Add(a);
-            }
+//             var adminUsers = new AdminUser[]
+//             {
+//                 new AdminUser {Username="jimmyN123", Password="12345", Email="jimmy@gmail.com"},
+//                 new AdminUser {Username="isaiahF123", Password="123454", Email="isaiah@gmail.com"},
+//                 new AdminUser {Username="bobbyN123", Password="1234425", Email="bobby@gmail.com"},
+//                 new AdminUser {Username="vuD123", Password="42312345", Email="vu@gmail.com"},
+//             };
 
-            context.SaveChanges();
-        }
-    }
-}
+//             foreach (AdminUser a in adminUsers)
+//             {
+//                 context.adminUser.Add(a);
+//             }
+
+//             context.SaveChanges();
+//         }
+//     }
+// }

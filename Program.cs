@@ -28,7 +28,7 @@ namespace RCDT
                     var serviceProvider = services.GetRequiredService<IServiceProvider>();
                     var configuration = services.GetRequiredService<IConfiguration>();
                     
-                    SeedRoles.CreateRoles(serviceProvider, configuration).Wait();
+                    //SeedRoles.CreateRoles(serviceProvider, configuration).Wait();
 
                     //SeedDb.Initialize(context);
                 }
