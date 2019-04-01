@@ -25,13 +25,15 @@ namespace RCDT.Controllers
     {
        private readonly UserManager<ApplicationUser> _userManager;
        private readonly SignInManager<ApplicationUser> _signInManager;
+       //private readonly UserManager<ParticipantUser> _participantUserManager;
+       //private readonly SignInManager<ParticipantUser> _participantSignInManager;
       // private readonly IEmailSender _emailSender;
        private readonly ILogger _logger;
 
        //private readonly IHttpContextAccessor _context;
        private readonly DataContext _context;
-       public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager,
-                             ILogger<AccountController> logger, DataContext context)
+       public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, 
+       ILogger<AccountController> logger, DataContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -175,7 +177,7 @@ namespace RCDT.Controllers
                 
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = participantViewModel.SessionKey, Role = "Participant", ParticipantUserId = participantViewModel.UserID };
+                var user = new ApplicationUser { UserName = participantViewModel.SessionKey, ParticipantUserId = participantViewModel.UserID, Role = "Participant" };
 
                 var result = await _userManager.CreateAsync(user, participantViewModel.UserID);
 

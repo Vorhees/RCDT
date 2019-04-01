@@ -9,8 +9,8 @@ using RCDT.Data;
 namespace RCDT.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190401013010_AddedParticipantUserIDColumn")]
-    partial class AddedParticipantUserIDColumn
+    [Migration("20190401062226_AddedParticipantUserId")]
+    partial class AddedParticipantUserId
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

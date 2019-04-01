@@ -2,7 +2,7 @@
 
 namespace RCDT.Migrations
 {
-    public partial class AddedParticipantUserIDColumn : Migration
+    public partial class AddedParticipantUserId : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
