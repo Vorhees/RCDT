@@ -15,24 +15,49 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <table id="example1" class="table table-bordered table-striped">
-            <thead>
-            <tr>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Role</th>
-            </tr>
-            </thead>
-            <tbody>
-                @foreach (var user in Model)
-                {
-                    <tr>
-                    <td>@Html.DisplayFor(modelItem => user.UserName)</td>
-                    <td>@Html.DisplayFor(modelItem => user.Email)</td>
-                    <td>@Html.DisplayFor(modelItem => user.Role)</td>
-                    </tr>
-                }
-            </table>
+                <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        @if (user.Role != "Participant")
+                        {
+                            <tr>
+                            <td>@Html.DisplayFor(modelItem => user.UserName)</td>
+                            <td>@Html.DisplayFor(modelItem => user.Email)</td>
+                            <td>@Html.DisplayFor(modelItem => user.Role)</td>
+                            </tr>
+                        }
+                    }
+                </table>
+
+                <table id="example2" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Session Key</th>
+                    <th>Role</th>
+                </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        @if (user.Role == "Participant")
+                        {
+                            <tr>
+                            <td>@Html.DisplayFor(modelItem => user.ParticipantUserId)</td>
+                            <td>@Html.DisplayFor(modelItem => user.UserName)</td>
+                            <td>@Html.DisplayFor(modelItem => user.Role)</td>
+                            </tr>
+                        }
+                    }
+                </table>
         </div>
         <!-- /.box-body -->
         </div>
