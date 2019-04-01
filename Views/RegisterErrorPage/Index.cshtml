@@ -1,0 +1,17 @@
+@{
+    ViewData["Title"] = "Register Error Page";
+}
+
+ <div class="container">
+  <div class="row">
+    <div class="col-md-4"></div>
+        <div class="col-md-4" style="margin-top:150px">
+                <h4>Error: Username/Email already taken</h4>
+                <div class="form-group text-center">
+                    <button class="btn btn-primary form-control" type="button" onclick="location.href='@Url.Action("Register" , "Account")'"> Go back
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -205,6 +205,13 @@ namespace RCDT.Controllers
         {
             ViewData["ReturnUrl"] = returnUrl;
             //Roles = Request.Form["Roles"].ToString();
+            bool duplicateExists = await _context.Users.AnyAsync
+            (u => u.Email == registerModel.Email);
+            
+            if (duplicateExists)
+            {
+                return RedirectToAction("Index", "RegisterErrorPage");
+            }
 
             if (ModelState.IsValid)
             {
