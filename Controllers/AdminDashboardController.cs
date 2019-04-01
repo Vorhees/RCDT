@@ -24,7 +24,7 @@ namespace RCDT.Controllers
             return View();
         }
 
-        public IActionResult Manage()
+        public IActionResult ManageUsers()
         {
             return View(_context.Users.ToList());
         }
