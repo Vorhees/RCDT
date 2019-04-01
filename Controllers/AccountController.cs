@@ -175,7 +175,7 @@ namespace RCDT.Controllers
                 
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = participantViewModel.SessionKey, Role = "Participant" };
+                var user = new ApplicationUser { UserName = participantViewModel.SessionKey, Role = "Participant", ParticipantUserId = participantViewModel.UserID };
 
                 var result = await _userManager.CreateAsync(user, participantViewModel.UserID);
 
