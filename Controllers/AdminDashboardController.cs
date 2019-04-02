@@ -76,9 +76,9 @@ namespace RCDT.Controllers
                 {
                     var user = await _userManager.FindByEmailAsync(id);
                     var newPassword = _userManager.PasswordHasher.HashPassword(user, user.PasswordHash);
-                    var emailToken = await _userManager.GenerateChangeEmailTokenAsync(user, user.Email);
+                    //var emailToken = await _userManager.GenerateChangeEmailTokenAsync(user, user.Email);
 
-                    //user.Email = appUser.Email;
+                    user.Email = appUser.Email;
                     user.UserName = appUser.UserName;
                     user.PasswordHash = newPassword;				
 

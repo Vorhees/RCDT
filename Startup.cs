@@ -14,10 +14,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RCDT.Models;
-//using RCDT.Services;
 using RCDT.Hubs;
 using RCDT.Data;
 using Microsoft.EntityFrameworkCore;
+using RCDT.Services;
 
 namespace RCDT
 {
@@ -67,6 +67,9 @@ namespace RCDT
                 options.AddPolicy("RequireResearcherRole", policy => policy.RequireRole("Researcher"));
                 options.AddPolicy("RequireParticipantRole", policy => policy.RequireRole("Participant"));
             });
+
+            services.AddTransient<IEmailSender, EmailSender>();
+            services.Configure<AuthMessageSenderOptions>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

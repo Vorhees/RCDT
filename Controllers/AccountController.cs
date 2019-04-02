@@ -12,10 +12,10 @@ using Microsoft.Extensions.Options;
 using RCDT.Models;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Http;
 using RCDT.Data;
 using Microsoft.EntityFrameworkCore;
+using RCDT.Services;
 
 namespace RCDT.Controllers
 {
@@ -27,18 +27,18 @@ namespace RCDT.Controllers
        private readonly SignInManager<ApplicationUser> _signInManager;
        //private readonly UserManager<ParticipantUser> _participantUserManager;
        //private readonly SignInManager<ParticipantUser> _participantSignInManager;
-      // private readonly IEmailSender _emailSender;
+       private IEmailSender _emailSender;
        private readonly ILogger _logger;
 
        //private readonly IHttpContextAccessor _context;
        private readonly DataContext _context;
-       public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, 
-       ILogger<AccountController> logger, DataContext context)
+       public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ILogger<AccountController> logger, DataContext context, IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
            _context = context;
+           _emailSender = emailSender;
         }
 
         [HttpGet]
@@ -203,10 +203,10 @@ namespace RCDT.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel registerModel, string Roles, string returnUrl = null)
+        public async Task<IActionResult> Register(RegisterViewModel registerModel, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-            //Roles = Request.Form["Roles"].ToString();
+
             bool duplicateExists = await _context.Users.AnyAsync
             (u => u.Email == registerModel.Email);
             
@@ -227,6 +227,11 @@ namespace RCDT.Controllers
                 
                     await _userManager.AddToRoleAsync(user, registerModel.UserRoles);
 
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
+
+                    await _emailSender.SendEmailAsync(registerModel.Email, "Confirm your email", $"Please confirm your account by <a href='{ HtmlEncoder.Default.Encode(callbackUrl) }'> Clicking here </a>");
+
                     //await _signInManager.SignInAsync(user, isPersistent: false);
 
                     _logger.LogInformation("User created a new account");
@@ -236,6 +241,23 @@ namespace RCDT.Controllers
             }
             
             return View(registerModel);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> ConfirmEmail(string userId, string code)
+        {
+            if (userId == null || code == null)
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Home");
+            }
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                throw new ApplicationException($"Unable to load user with ID '{userId}'.");
+            }
+            var result = await _userManager.ConfirmEmailAsync(user, code);
+            return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
         /* Older code.
