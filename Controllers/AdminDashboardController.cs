@@ -5,6 +5,9 @@ using System.Text.Encodings.Web;
 using RCDT.Models;
 using System.Linq;
 using System;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace RCDT.Controllers
 {
@@ -13,28 +16,95 @@ namespace RCDT.Controllers
     public class AdminDashboardController : Controller
     {
         private DataContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public AdminDashboardController(DataContext context)
+        public AdminDashboardController(DataContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _context.Users.Select(user =>
+            new ApplicationUser{
+                Email = user.Email,
+                UserName = user.UserName,
+                Role = user.Role,
+            }).ToListAsync());
         }
 
         public IActionResult ManageUsers()
         {
             return View(_context.Users.ToList());
         }
-        
 
-        /*
-        public ActionResult Manage()
+        public async Task<IActionResult> EditUser(string id)
         {
-            
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.FindByNameAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(new ApplicationUser
+            {
+                UserName = user.UserName,
+                Email = user.Email,
+                Role = user.Role
+            });
         }
-        */
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditUser(string id, ApplicationUser appUser)
+        {
+            if (id != appUser.Email)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var user = await _userManager.FindByEmailAsync(id);
+
+                    user.Email = appUser.Email;
+                    user.UserName = appUser.UserName;
+                    user.PasswordHash = appUser.PasswordHash;
+
+                    await _userManager.UpdateAsync(user);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!RegisterViewModelExists(appUser.Email))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                
+                return RedirectToAction(nameof(ManageUsers));
+            }
+
+            return View(appUser);
+        }
+
+        private bool RegisterViewModelExists(string username)
+        {
+            return _context.Users.Any(e => e.Email == username);
+        }
+        
     }
 }

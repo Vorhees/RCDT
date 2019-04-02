@@ -21,6 +21,7 @@
                     <th>Username</th>
                     <th>Email</th>
                     <th>Role</th>
+                    <th>Options</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -32,6 +33,9 @@
                             <td>@Html.DisplayFor(modelItem => user.UserName)</td>
                             <td>@Html.DisplayFor(modelItem => user.Email)</td>
                             <td>@Html.DisplayFor(modelItem => user.Role)</td>
+                            <td>
+                                <a asp-action="EditUser" asp-route-id="@user.Email">Edit</a>
+                            </td>
                             </tr>
                         }
                     }
@@ -43,6 +47,7 @@
                     <th>User ID</th>
                     <th>Session Key</th>
                     <th>Role</th>
+                    <th>Options</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -54,6 +59,9 @@
                             <td>@Html.DisplayFor(modelItem => user.ParticipantUserId)</td>
                             <td>@Html.DisplayFor(modelItem => user.UserName)</td>
                             <td>@Html.DisplayFor(modelItem => user.Role)</td>
+                            <td>
+                                <a asp-action="EditUser" asp-route-id="@user.UserName">Edit</a>
+                            </td>
                             </tr>
                         }
                     }
