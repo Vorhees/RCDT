@@ -75,13 +75,16 @@ namespace RCDT.Controllers
                 try
                 {
                     var user = await _userManager.FindByEmailAsync(id);
+                    var newPassword = _userManager.PasswordHasher.HashPassword(user, user.PasswordHash);
+                    var emailToken = await _userManager.GenerateChangeEmailTokenAsync(user, user.Email);
 
-                    user.Email = appUser.Email;
+                    //user.Email = appUser.Email;
                     user.UserName = appUser.UserName;
-                    user.PasswordHash = appUser.PasswordHash;
+                    user.PasswordHash = newPassword;				
 
                     await _userManager.UpdateAsync(user);
-                    await _context.SaveChangesAsync();
+                    //await _userManager.ChangeEmailAsync(user, user.Email, emailToken);
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -104,6 +107,38 @@ namespace RCDT.Controllers
         private bool RegisterViewModelExists(string username)
         {
             return _context.Users.Any(e => e.Email == username);
+        }
+
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.FindByEmailAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(new ApplicationUser 
+            {
+                UserName = user.UserName,
+                Email = user.Email,
+                Role = user.Role
+            });
+        }
+
+        [HttpPost, ActionName("DeleteUser")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var user = await _userManager.FindByEmailAsync(id);
+            await _userManager.DeleteAsync(user);
+
+            return RedirectToAction("ManageUsers", "AdminDashboard");
         }
         
     }
