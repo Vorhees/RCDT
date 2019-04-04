@@ -1,5 +1,4 @@
 @model IEnumerable<RCDT.Models.ApplicationUser>
-@inject UserManager<ApplicationUser> UserManager
 
 @{
     ViewData["Title"] = "Manage Users";
@@ -27,15 +26,15 @@
                 <tbody>
                     @foreach (var user in Model)
                     {
-                        @if (user.Role != "Participant")
+                        @if (user.Role != "Participant" && user.UserName != "testAdmin1@test.com")
                         {
                             <tr>
                             <td>@Html.DisplayFor(modelItem => user.UserName)</td>
                             <td>@Html.DisplayFor(modelItem => user.Email)</td>
                             <td>@Html.DisplayFor(modelItem => user.Role)</td>
                             <td>
-                                <a asp-action="EditUser" asp-route-id="@user.Email">Edit</a>
-                                <a asp-action="DeleteUser" asp-route-id="@user.Email">Delete</a>
+                                <a asp-action="EditUser" asp-route-id="@user.UserName">Edit</a>
+                                <a asp-action="DeleteUser" asp-route-id="@user.UserName">Delete</a>
                             </td>
                             </tr>
                         }

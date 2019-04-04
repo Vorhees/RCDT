@@ -25,7 +25,7 @@ namespace RCDT.Services
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("fakeemail.x99@gmail.com", "Admin"),
+                From = new EmailAddress("fakeemail.x99@gmail.com", "RCDT Admin"),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message

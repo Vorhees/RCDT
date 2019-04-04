@@ -9,7 +9,7 @@
     <h4>User: @Model.Email</h4>
 
     <form asp-action="DeleteUser">
-        <input type="hidden" asp-for="Email" />
+        <input type="hidden" asp-for="UserName" />
         <input type="submit" value="Delete" class="btn btn-default" /> |
         <a asp-action="ManageUsers">Back to table</a>
     </form>

@@ -13,11 +13,11 @@ namespace RCDT.Models
         //public int Id { get; set; }
 
         [Required]
-        [EmailAddress(ErrorMessage = "Please enter a valid email")]
-        public string Email { get; set; }
+        //[EmailAddress(ErrorMessage = "Please enter a valid email")]
+        public string Username { get; set; }
 
         [Required]
-        [StringLength(20,MinimumLength = 6, ErrorMessage = "Please enter a valid password")]
+        //[StringLength(20,MinimumLength = 6, ErrorMessage = "Please enter a valid password")]
         public string Password { get; set; }
 
         [Display(Name = "Remember me?")]

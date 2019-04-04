@@ -12,6 +12,9 @@ namespace RCDT.Models
         public string UserRoles { get; set; }
         
         [Required]
+        public string Username { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

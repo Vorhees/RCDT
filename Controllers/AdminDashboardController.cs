@@ -65,31 +65,36 @@ namespace RCDT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditUser(string id, ApplicationUser appUser)
         {
-            if (id != appUser.Email)
-            {
-                return NotFound();
-            }
+            // if (id != appUser.UserName)
+            // {
+            //     return NotFound();
+            // }
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var user = await _userManager.FindByEmailAsync(id);
-                    var newPassword = _userManager.PasswordHasher.HashPassword(user, user.PasswordHash);
-                    //var emailToken = await _userManager.GenerateChangeEmailTokenAsync(user, user.Email);
+                    var user = await _userManager.FindByNameAsync(id);
+                    Console.WriteLine(user);
+                    //var newPassword = _userManager.PasswordHasher.HashPassword(user, appUser.PasswordHash);
 
                     user.Email = appUser.Email;
                     user.UserName = appUser.UserName;
-                    user.PasswordHash = newPassword;				
+                    //user.PasswordHash = newPassword;
+                    //appUser.EmailConfirmed = false;
 
+
+                    var emailToken = await _userManager.GenerateChangeEmailTokenAsync(user, user.Email);
+
+                    await _userManager.ChangeEmailAsync(user, user.Email, emailToken);
                     await _userManager.UpdateAsync(user);
-                    //await _userManager.ChangeEmailAsync(user, user.Email, emailToken);
 
                 }
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!RegisterViewModelExists(appUser.Email))
                     {
+                        Console.WriteLine("Db error");
                         return NotFound();
                     }
                     else
@@ -135,7 +140,7 @@ namespace RCDT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(string id)
         {
-            var user = await _userManager.FindByEmailAsync(id);
+            var user = await _userManager.FindByNameAsync(id);
             await _userManager.DeleteAsync(user);
 
             return RedirectToAction("ManageUsers", "AdminDashboard");

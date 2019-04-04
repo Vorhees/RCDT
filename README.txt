@@ -29,6 +29,11 @@ README FOR RCDT
                                       User ID = C | Session Key = 3
                                       User ID = D | Session Key = 4
 
+4/4/2019 - Added functional edit/delete manage page for admins.
+           Changes to login/registration: Username field is added in registration, when logging in,
+                                          make sure to log in with USERNAME, not email.
+                                          
+
 
 ==========================================================================
 ==========================================================================

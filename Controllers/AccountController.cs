@@ -62,7 +62,7 @@ namespace RCDT.Controllers
 
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(loginModel.Email, loginModel.Password, loginModel.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(loginModel.Username, loginModel.Password, loginModel.RememberMe, lockoutOnFailure: false);
 
                 if (result.Succeeded)
                 {
@@ -217,7 +217,7 @@ namespace RCDT.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = registerModel.Email,Email = registerModel.Email, Role = registerModel.UserRoles };
+                var user = new ApplicationUser { UserName = registerModel.Username,Email = registerModel.Email, Role = registerModel.UserRoles };
 
                 var result = await _userManager.CreateAsync(user, registerModel.Password);
 
@@ -230,7 +230,7 @@ namespace RCDT.Controllers
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(registerModel.Email, "Confirm your email", $"Please confirm your account by <a href='{ HtmlEncoder.Default.Encode(callbackUrl) }'> Clicking here </a>");
+                    await _emailSender.SendEmailAsync(registerModel.Email, "Confirm your email", $"Please confirm your account by: <a href='{ HtmlEncoder.Default.Encode(callbackUrl) }'> Clicking here </a>");
 
                     //await _signInManager.SignInAsync(user, isPersistent: false);
 
