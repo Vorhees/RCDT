@@ -131,7 +131,7 @@ namespace RCDT.Controllers
                 return NotFound();
             }
 
-            var user = await _userManager.FindByEmailAsync(id);
+            var user = await _userManager.FindByNameAsync(id);
 
             if (user == null)
             {

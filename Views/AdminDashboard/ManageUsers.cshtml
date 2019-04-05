@@ -4,23 +4,42 @@
     ViewData["Title"] = "Manage Users";
 }
 
-<!-- Main content -->
-<section class="content">
-    <div class="row">
-    <div class="col-md-11">
-        <div class="box">
-        <div class="box-header">
-            <h3 class="box-title">Manage Users</h3>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
+<script>
+    function toggleUserTable()
+    {
+        var ut = document.getElementById("userTable");
+        var pt = document.getElementById("participantTable");
+
+        ut.style.display = (ut.style.display == "table") ? "none" : "table";
+        pt.style.display = "none";
+    }
+    function toggleParticipantTable()
+    {
+        var pt = document.getElementById("participantTable");
+        var ut = document.getElementById("userTable");
+
+        pt.style.display = (pt.style.display == "table") ? "none" : "table";
+        ut.style.display = "none";
+    }
+</script>
+
+<div id="wrapperButton">
+            <button id="showUserTable" type="button" class="btn btn-dark" onclick="toggleUserTable();">Manage Users</button>
+            <div id="divideButton"></div>
+            <button id="showParticipantTable" type="button" class="btn btn-dark" onclick="toggleParticipantTable();">Manage Participants</button>
+</div>
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="manage-table">
+                <table id="userTable" class="table table-hover" style="display: none; width: 0px; margin-right: 10px;">
                 <thead>
                 <tr>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Options</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Options</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -33,15 +52,14 @@
                             <td>@Html.DisplayFor(modelItem => user.Email)</td>
                             <td>@Html.DisplayFor(modelItem => user.Role)</td>
                             <td>
-                                <a  class="btn btn-info" asp-action="EditUser" asp-route-id="@user.UserName">Edit</a>
+                               <a  class="btn btn-info" asp-action="EditUser" asp-route-id="@user.UserName">Edit</a>
                                <a  class="btn btn-danger" asp-action="DeleteUser" asp-route-id="@user.UserName">Delete</a>
                             </td>
                             </tr>
                         }
                     }
                 </table>
-
-                <table id="example2" class="table table-bordered table-striped">
+                <table id="participantTable" class="table table-hover" style="display: none; width: 0px; margin-left: 80px;">
                 <thead>
                 <tr>
                     <th>User ID</th>
@@ -60,18 +78,14 @@
                             <td>@Html.DisplayFor(modelItem => user.UserName)</td>
                             <td>@Html.DisplayFor(modelItem => user.Role)</td>
                             <td>
-                                <a asp-action="EditUser" asp-route-id="@user.UserName">Edit</a>
+                               <a  class="btn btn-info" asp-action="EditUser" asp-route-id="@user.UserName">Edit</a>
+                               <a  class="btn btn-danger" asp-action="DeleteUser" asp-route-id="@user.UserName">Delete</a>
                             </td>
                             </tr>
                         }
                     }
                 </table>
+            </div>
         </div>
-        <!-- /.box-body -->
-        </div>
-        <!-- /.box -->
     </div>
-    <!-- /.col -->
-    </div>
-    <!-- /.row -->
 </section>

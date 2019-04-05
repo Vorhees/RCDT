@@ -6,10 +6,9 @@
 
 <h3>Are you sure you want to delete this user?</h3>
 <div>
-    <h4>User: @Model.Email</h4>
+    <h4>User: @Model.UserName</h4>
 
     <form asp-action="DeleteUser">
-        <input type="hidden" asp-for="UserName" />
         <input type="submit" value="Delete" class="btn btn-default" /> |
         <a asp-action="ManageUsers">Back to table</a>
     </form>
