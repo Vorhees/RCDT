@@ -43,6 +43,63 @@ namespace RCDT.Controllers
             return View(_context.Users.ToList());
         }
 
+        public async Task<IActionResult> EditParticipant(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.FindByNameAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(new ApplicationUser
+            {
+                UserName = user.UserName,
+                ParticipantUserId = user.ParticipantUserId,
+                Role = user.Role
+            });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditParticipant(string id, ApplicationUser appUser)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var user = await _userManager.FindByNameAsync(id);
+                    var newPassword = _userManager.PasswordHasher.HashPassword(user, appUser.ParticipantUserId);
+
+                    user.UserName = appUser.UserName;
+                    user.ParticipantUserId = appUser.ParticipantUserId;
+                    user.PasswordHash = newPassword;
+                    
+                    await _userManager.UpdateAsync(user);
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!RegisterViewModelExists(appUser.UserName))
+                    {
+                        Console.WriteLine("Db error");
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                
+                return RedirectToAction(nameof(ManageUsers));
+            }
+
+            return View(appUser);
+        }
         public async Task<IActionResult> EditUser(string id)
         {
             if (id == null)
@@ -85,7 +142,7 @@ namespace RCDT.Controllers
                     user.Email = appUser.Email;
                     user.UserName = appUser.UserName;
                     user.PasswordHash = newPassword;
-
+                    
                     var emailToken = await _userManager.GenerateChangeEmailTokenAsync(user, user.Email);
 
                     await _userManager.ChangeEmailAsync(user, user.Email, emailToken);

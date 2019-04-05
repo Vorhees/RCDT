@@ -2,13 +2,6 @@
 @{
     ViewData["Title"] = "Registration Page";
 }
-<script>
-  function randSessionKey()
-  {
-    var rand = Math.floor(Math.random() * 9999) + 1
-    document.getElementById("seshKey").value = rand;
-  }
-</script>
 
 <div class="container">
   <div class="row">
@@ -38,3 +31,5 @@
     <div class="col-md-4"></div>
   </div>
 </div>
+
+<script src="~/js/seshKeyGen.js"></script>
