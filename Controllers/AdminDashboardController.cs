@@ -8,6 +8,7 @@ using System;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using RCDT.Services;
 
 namespace RCDT.Controllers
 {
@@ -18,10 +19,13 @@ namespace RCDT.Controllers
         private DataContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public AdminDashboardController(DataContext context, UserManager<ApplicationUser> userManager)
+        private IEmailSender _emailSender;
+
+        public AdminDashboardController(DataContext context, UserManager<ApplicationUser> userManager, IEmailSender emailSender)
         {
             _context = context;
             _userManager = userManager;
+            _emailSender = emailSender;
         }
 
         public async Task<IActionResult> Index()
@@ -76,17 +80,23 @@ namespace RCDT.Controllers
                 {
                     var user = await _userManager.FindByNameAsync(id);
                     Console.WriteLine(user);
-                    //var newPassword = _userManager.PasswordHasher.HashPassword(user, appUser.PasswordHash);
+                    var newPassword = _userManager.PasswordHasher.HashPassword(user, appUser.PasswordHash);
 
                     user.Email = appUser.Email;
                     user.UserName = appUser.UserName;
-                    //user.PasswordHash = newPassword;
-                    //appUser.EmailConfirmed = false;
-
+                    user.PasswordHash = newPassword;
 
                     var emailToken = await _userManager.GenerateChangeEmailTokenAsync(user, user.Email);
 
                     await _userManager.ChangeEmailAsync(user, user.Email, emailToken);
+
+                    user.EmailConfirmed = false;
+
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
+
+                    await _emailSender.SendEmailAsync(user.Email, "Confirm your NEW email", $"Please confirm your account by: <a href='{ HtmlEncoder.Default.Encode(callbackUrl) }'> Clicking here </a>");
+                    
                     await _userManager.UpdateAsync(user);
 
                 }

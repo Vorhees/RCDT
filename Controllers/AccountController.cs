@@ -217,7 +217,7 @@ namespace RCDT.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = registerModel.Username,Email = registerModel.Email, Role = registerModel.UserRoles };
+                var user = new ApplicationUser { UserName = registerModel.Username, Email = registerModel.Email, Role = registerModel.UserRoles };
 
                 var result = await _userManager.CreateAsync(user, registerModel.Password);
 
