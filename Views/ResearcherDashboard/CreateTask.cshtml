@@ -1,0 +1,39 @@
+@model RCDT.Models.DDMT
+@{
+    ViewData["Title"] = "Create Task";
+}
+
+@using (Html.BeginForm("CreateTask", "ResearcherDashboard", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4" style="margin-top:150px">
+      <h3>Create Task</h3>
+      <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+          <input type="number" class="form-control" required name="TaskSessionID" placeholder="Enter Task Session ID">
+          <span asp-validation-for="TaskSessionID" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+          <input type="number" class="form-control" required name="participantNumber" placeholder="# of Participants">
+          <span asp-validation-for="participantNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+          <input type="number" class="form-control" required name="confederateNumber" placeholder="# of Confederates">
+          <span asp-validation-for="confederateNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary form-control mb-2">
+          Create Task
+        </button>
+        <button class="btn btn-primary form-control" type="button" onclick="location.href='@Url.Action("Index" , "ResearcherDashboard")'"> Cancel
+        </button>
+      </div>
+      </form>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
+}

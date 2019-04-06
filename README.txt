@@ -32,6 +32,8 @@ README FOR RCDT
 4/4/2019 - Added functional edit/delete manage page for admins.
            Changes to login/registration: Username field is added in registration, when logging in,
                                           make sure to log in with USERNAME, not email.
+
+4/6/2019 - Added DDMT to database and task creation page. Db Table Columns will be added or removed in the next few weeks. 
                                           
 
 

@@ -26,6 +26,7 @@ namespace RCDT.Data
 
        // public DbSet<AdminUser> adminUser { get; set; }
         //public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<DDMT> DDMT { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<AdminUser>().ToTable("Admin");
