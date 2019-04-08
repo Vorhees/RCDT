@@ -13,24 +13,9 @@ namespace RCDT.Hubs
 
             await Clients.All.SendAsync("ReceiveMessage", username,  message);
             
-            //Save Chat in Database, need to figure out how our db is set up
-            //DB.SaveChat(username, message);
-
+            //Save Chat in Database
+            //SaveChat(username, message);
         }
-    //    public override System.Threading.Tasks.Task OnConnected()
-    //     {
-    //           // Get UserID. Assumed the user is logged before connecting to chat and userid is saved in session.
-    //           string UserID = (string)HttpContext.Current.Session["userid"];
-
-    //           // Get ChatHistory and call the client function. See below
-    //           this.GetHistory(UserID); 
-
-    //           // Get ConnID
-    //           string ConnID =  Context.ConnectionId; 
-
-    //           // Save them in DB. You got to create a DB class to handle this. (Optional)
-    //           //DB.UpdateConnID(UserID, ConnID); 
-    //     }
 
     //     private void GetHistory(UserID)
     //     {
