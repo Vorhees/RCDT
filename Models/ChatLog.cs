@@ -13,7 +13,7 @@ namespace RCDT.Models
         public string UserName { get; set; }
 
         [Required]
-        public DateTime DateTime { get; set; }
+        public DateTime dateTime { get; set; }
 
         [Required]
         public string Message { get; set; }
