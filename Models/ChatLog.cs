@@ -4,9 +4,12 @@ using System.ComponentModel.DataAnnotations;
 namespace RCDT.Models
 {
     public class ChatLog
-    {
+    { 
         [Required]
         [Key]
+        public int MessageId { get; set; }
+
+        [Required]
         public int TaskSessionId { get; set; }
         
         [Required]

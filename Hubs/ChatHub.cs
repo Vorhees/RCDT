@@ -9,7 +9,7 @@ namespace RCDT.Hubs
     {
         //private Models.ApplicationUser user;
         private readonly DataContext _context;
-
+        public int messageID = 0;
         public ChatHub(DataContext context)
         {
             _context = context;
@@ -28,6 +28,7 @@ namespace RCDT.Hubs
                 UserName = username,
                 dateTime = DateTime.UtcNow,
                 Message = message,
+                MessageId = messageID,
             };
             _context.ChatLog.Add(chat);
             _context.SaveChanges();

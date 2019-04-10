@@ -10,8 +10,8 @@ using RCDT.Data;
 namespace RCDT.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190331004350_RoleColumn")]
-    partial class RoleColumn
+    [Migration("20190410080658_Stable")]
+    partial class Stable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,7 +41,7 @@ namespace RCDT.Migrations
                         .IsUnique()
                         .HasName("RoleNameIndex");
 
-                    b.ToTable("AspNetRoles");
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -60,7 +60,7 @@ namespace RCDT.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetRoleClaims");
+                    b.ToTable("RoleClaims");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -79,7 +79,7 @@ namespace RCDT.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserClaims");
+                    b.ToTable("UserClaims");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
@@ -97,7 +97,7 @@ namespace RCDT.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserLogins");
+                    b.ToTable("UserLogins");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
@@ -110,7 +110,7 @@ namespace RCDT.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetUserRoles");
+                    b.ToTable("UserRoles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -125,15 +125,13 @@ namespace RCDT.Migrations
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable("AspNetUserTokens");
+                    b.ToTable("UserTokens");
                 });
 
             modelBuilder.Entity("RCDT.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AccessFailedCount");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
@@ -145,25 +143,19 @@ namespace RCDT.Migrations
 
                     b.Property<bool>("LockoutEnabled");
 
-                    b.Property<DateTimeOffset?>("LockoutEnd");
-
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256);
 
+                    b.Property<string>("ParticipantUserId");
+
                     b.Property<string>("PasswordHash");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.Property<bool>("PhoneNumberConfirmed");
 
                     b.Property<string>("Role");
 
                     b.Property<string>("SecurityStamp");
-
-                    b.Property<bool>("TwoFactorEnabled");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
@@ -177,7 +169,45 @@ namespace RCDT.Migrations
                         .IsUnique()
                         .HasName("UserNameIndex");
 
-                    b.ToTable("AspNetUsers");
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("RCDT.Models.ChatLog", b =>
+                {
+                    b.Property<int>("MessageId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Message")
+                        .IsRequired();
+
+                    b.Property<int>("TaskSessionId");
+
+                    b.Property<string>("UserName")
+                        .IsRequired();
+
+                    b.Property<DateTime>("dateTime");
+
+                    b.HasKey("MessageId");
+
+                    b.ToTable("ChatLog");
+                });
+
+            modelBuilder.Entity("RCDT.Models.DDMT", b =>
+                {
+                    b.Property<int>("TaskSessionID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("confederateNumber");
+
+                    b.Property<int>("participantNumber");
+
+                    b.Property<string>("taskReport");
+
+                    b.Property<DateTime>("taskTime");
+
+                    b.HasKey("TaskSessionID");
+
+                    b.ToTable("DDMT");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

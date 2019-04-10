@@ -172,18 +172,20 @@ namespace RCDT.Migrations
 
             modelBuilder.Entity("RCDT.Models.ChatLog", b =>
                 {
-                    b.Property<int>("TaskSessionId")
+                    b.Property<int>("MessageId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Message")
                         .IsRequired();
+
+                    b.Property<int>("TaskSessionId");
 
                     b.Property<string>("UserName")
                         .IsRequired();
 
                     b.Property<DateTime>("dateTime");
 
-                    b.HasKey("TaskSessionId");
+                    b.HasKey("MessageId");
 
                     b.ToTable("ChatLog");
                 });
