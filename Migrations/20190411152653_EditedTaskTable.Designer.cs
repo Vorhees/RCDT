@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using RCDT.Data;
@@ -9,9 +10,10 @@ using RCDT.Data;
 namespace RCDT.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20190411152653_EditedTaskTable")]
+    partial class EditedTaskTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -195,7 +197,8 @@ namespace RCDT.Migrations
                     b.Property<int>("TaskSessionID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("TaskType");
+                    b.Property<string>("TaskType")
+                        .IsRequired();
 
                     b.Property<int>("confederateNumber");
 

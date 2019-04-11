@@ -45,19 +45,39 @@ namespace RCDT.Controllers
             return View();
         }
 
-        // [HttpPost]
-        // [AllowAnonymous]
-        // [ValidateAntiForgeryToken]
-        // public  Task<IActionResult> CreateTask(DDMT d, string returnUrl = null)
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public  async Task<IActionResult> CreateTask(TaskModel taskModel, string returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+
+            if (ModelState.IsValid)
+            {
+                var task = new TaskModel { 
+                    TaskType = "DDMT", 
+                    TaskSessionID = taskModel.TaskSessionID, 
+                    participantNumber = taskModel.participantNumber, 
+                    confederateNumber = taskModel.confederateNumber, 
+                    taskReport = "", 
+                    taskTime = DateTime.UtcNow };
+
+                _context.Tasks.Add(task);
+               await _context.SaveChangesAsync();
+
+               return RedirectToAction("Index", "ResearcherDashboard");
+            }
+
+            return View();
+        }
+
+        // private IEnumerable<SelectListItem> GetTaskTypes()
         // {
-        //     ViewData["ReturnUrl"] = returnUrl;
-
-        //     if (ModelState.IsValid)
+        //     return new SelectListItem[]
         //     {
-        //         return RedirectToAction("Index", "ResearcherDashboard");
-        //     }
-
-        //     return View();
+        //         new SelectListItem() { Text = "DDMT", Value = "DDMT" },
+        //         new SelectListItem() { Text = "TBC", Value = "To be added" }
+        //     };
         // }
     }
 }
