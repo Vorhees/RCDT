@@ -66,6 +66,7 @@ namespace RCDT
                 options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
                 options.AddPolicy("RequireResearcherRole", policy => policy.RequireRole("Researcher"));
                 options.AddPolicy("RequireParticipantRole", policy => policy.RequireRole("Participant"));
+                options.AddPolicy("RequireValidTaskRole", policy => policy.RequireRole("Participant", "Researcher"));
             });
 
             services.AddTransient<IEmailSender, EmailSender>();

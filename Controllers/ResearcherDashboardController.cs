@@ -21,12 +21,20 @@ namespace RCDT.Controllers
     public class ResearcherDashboardController : Controller
     {
         private DataContext _context;
+        
         //[Authorize(Policy = "RequireResearcherRole")]
         public ResearcherDashboardController(DataContext context)
         {
             _context = context;
         }
-        public IActionResult Index()
+
+        public IActionResult Index(int id)
+        {
+
+            return View();
+        }
+        
+        public IActionResult StartTask()
         {
             return View();
         }
@@ -34,6 +42,11 @@ namespace RCDT.Controllers
         public IActionResult ManageParticipants()
         {
             return View(_context.Users.ToList());
+        }
+
+        public IActionResult ManageTasks()
+        {
+            return View(_context.Tasks.ToList());
         }
 
         [HttpGet]

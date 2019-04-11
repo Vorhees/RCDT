@@ -1,0 +1,48 @@
+@model IEnumerable<RCDT.Models.TaskModel>
+
+@{
+    ViewData["Title"] = "Manage Tasks";
+}
+
+<section class="content">
+    <div class="row">
+    <div class="col-md-11">
+        <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Manage Tasks</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+                <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Task Session ID</th>
+                    <th>Task Type</th>
+                    <th># Participants</th>
+                    <th># Confederates</th>
+                    <th>Options</th>
+                </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                        <td>@Html.DisplayFor(modelItem => user.TaskSessionID)</td>
+                        <td>@Html.DisplayFor(modelItem => user.TaskType)</td>
+                        <td>@Html.DisplayFor(modelItem => user.participantNumber)</td>
+                        <td>@Html.DisplayFor(modelItem => user.confederateNumber)</td>
+                        <td>
+                            <a  class="btn btn-info" asp-controller="Chessboard" asp-action="Index" asp-route-id="@user.TaskSessionID">Start Task</a>
+                        </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+    <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
