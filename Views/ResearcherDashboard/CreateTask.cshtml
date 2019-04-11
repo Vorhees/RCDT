@@ -14,7 +14,7 @@
       <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
         <div asp-validation-summary="All" class="text-danger"></div>
         <div class="form-group">
-          <input type="number" class="form-control" required name="TaskSessionID" placeholder="Enter Task Session ID">
+          <input type="number" class="form-control" required name="TaskSessionID" placeholder="Enter Task Session ID" id="seshKey">
           <span asp-validation-for="TaskSessionID" class="text-danger"></span>
         </div>
         <div class="form-group">
@@ -26,6 +26,9 @@
           <span asp-validation-for="confederateNumber" class="text-danger"></span>
         </div>
         <div class="form-group text-center">
+        <button type="button" class="btn btn-primary form-control mb-2" onclick="randSessionKey();" >
+          Generate Task Session ID
+        </button>
         <button type="submit" class="btn btn-primary form-control mb-2">
           Create Task
         </button>
@@ -38,3 +41,5 @@
   </div>
 </div>
 }
+
+<script src="~/js/seshKeyGen.js"></script>
