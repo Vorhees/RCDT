@@ -10,6 +10,6 @@ namespace RCDT.Models
     {
         public string Role { get; set; }
         public string ParticipantUserId { get; set; }
-        public string SessionID { get; set; }
+        public string TaskSessionID { get; set; }
     }
 }
