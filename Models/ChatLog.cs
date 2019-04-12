@@ -10,7 +10,7 @@ namespace RCDT.Models
         public int MessageId { get; set; }
 
         [Required]
-        public int TaskSessionId { get; set; }
+        public string TaskSessionId { get; set; }
         
         [Required]
         public string UserName { get; set; }

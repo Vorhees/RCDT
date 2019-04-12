@@ -52,7 +52,7 @@ namespace RCDT.Hubs
 
             var chat = new ChatLog 
             {
-                TaskSessionId = 1,
+                TaskSessionId = group,
                 UserName = username,
                 dateTime = DateTime.UtcNow,
                 Message = message,
