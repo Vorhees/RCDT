@@ -31,7 +31,6 @@ namespace RCDT.Controllers
 
         public IActionResult Index(int id)
         {
-
             return View();
         }
         
@@ -83,6 +82,41 @@ namespace RCDT.Controllers
             }
 
             return View();
+        }
+
+        public async Task<IActionResult> DeleteTask(int id)
+        {
+            if (id == 0)
+            {
+                return NotFound();
+            }
+
+            var task = await _context.Tasks.FindAsync(id);
+
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            return View(new TaskModel
+            {
+                TaskSessionID = task.TaskSessionID,
+                TaskType = task.TaskType,
+                participantNumber = task.participantNumber,
+                confederateNumber = task.confederateNumber
+            });
+        }
+
+        [HttpPost, ActionName("DeleteTask")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var task = await _context.Tasks.FindAsync(id);
+
+            _context.Remove<TaskModel>(task);
+            _context.SaveChanges();
+
+            return RedirectToAction("ManageTasks", "ResearcherDashboard");
         }
 
         // private IEnumerable<SelectListItem> GetTaskTypes()
