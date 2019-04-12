@@ -120,6 +120,7 @@ namespace RCDT.Controllers
 
             return View(loginParticipantModel);
         }
+
         private IActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
