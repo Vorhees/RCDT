@@ -13,7 +13,7 @@ namespace RCDT.Models
 
         [Required]
         [Key]
-        public int TaskSessionID { get; set; }
+        public string TaskSessionID { get; set; }
 
         [Required]
         [Range(1, 6)]
@@ -25,7 +25,7 @@ namespace RCDT.Models
 
         public string taskReport { get; set; }
 
-        public DateTime taskTime { get; set; }
+        public DateTime taskCreatedTime { get; set; }
         
         // [NotMapped]
         // public IEnumerable<SelectListItem> TaskSelect { get; set; }

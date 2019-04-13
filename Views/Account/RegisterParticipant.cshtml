@@ -1,35 +1,38 @@
 @model RegisterParticipantViewModel
+
 @{
     ViewData["Title"] = "Registration Page";
 }
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4" style="margin-top:150px">
-      <h3>Register Participant</h3>
-      <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
-        <div asp-validation-summary="All" class="text-danger"></div>
-        <div class="form-group">
-          <input type="text" class="form-control" required name="UserID" placeholder="Enter User ID">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4" style="margin-top:150px">
+        <h3>Register Participant</h3>
+        <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+          <div asp-validation-summary="All" class="text-danger"></div>
+          <div class="form-group">
+            <input type="text" class="form-control" required name="UserID" placeholder="Enter User ID">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" required name="SessionKey" placeholder="######" id="seshKey">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" required name="TaskSessionID" placeholder="Task Session ID">
+          </div>
+          <button type="button" class="btn btn-primary form-control mb-2" onclick="randSessionKey();" >
+            Generate Session Key
+          </button>
+          <button type="submit" class="btn btn-primary form-control mb-2">
+            Submit
+          </button>
+          <button class="btn btn-primary form-control" type="button" onclick="location.href='@Url.Action("Index" , "ResearcherDashboard")'"> Cancel
+          </button>
         </div>
-        <div class="form-group">
-          <input type="text" class="form-control" required name="SessionKey" placeholder="######" id="seshKey">
-        </div>
-        <div class="form-group text-center">
-        <button type="button" class="btn btn-primary form-control mb-2" onclick="randSessionKey();" >
-          Generate Session Key
-        </button>
-        <button type="submit" class="btn btn-primary form-control mb-2">
-          Submit
-        </button>
-        <button class="btn btn-primary form-control" type="button" onclick="location.href='@Url.Action("Index" , "ResearcherDashboard")'"> Cancel
-        </button>
+        </form>
       </div>
-      </form>
+      <div class="col-md-4"></div>
     </div>
-    <div class="col-md-4"></div>
   </div>
-</div>
 
 <script src="~/js/seshKeyGen.js"></script>

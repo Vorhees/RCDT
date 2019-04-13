@@ -1,5 +1,5 @@
 @inject UserManager<ApplicationUser> UserManager
-@model IEnumerable<RCDT.Models.TaskModel>
+@model ApplicationUser
 
 @{
     ViewData["Title"] = "Chessboard";
@@ -350,13 +350,8 @@
                         <input type="image" src="~/images/send.png" value="Send Message" class="btn btn-default" id="sendButton" style="width:60px;height:40px;"/>
                     </fieldset>
                 </div>
-                <select id="group">
-                    @foreach (var task in Model)
-                    {
-                        <option value="task.TaskSessionID">@Html.DisplayFor(item => task.TaskSessionID)</option>
-                    }
-                </select>
-                <input type="button" id="joinGroup" value="Join group"/>
+                <input type="hidden" id="group" value="@Model.TaskSessionID" />
+                <p>TaskSessionID "Group" : @Model.TaskSessionID </p>
             </td>
         </tr>
     </table>

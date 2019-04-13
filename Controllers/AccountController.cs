@@ -104,11 +104,13 @@ namespace RCDT.Controllers
             {
                 var result = await _signInManager.PasswordSignInAsync(loginParticipantModel.SessionKey, loginParticipantModel.UserID, loginParticipantModel.RememberMe, lockoutOnFailure: false);
 
+                var user = await _userManager.FindByNameAsync(loginParticipantModel.SessionKey);
+
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in");
 
-                    return RedirectToAction("Index", "Chessboard");
+                    return RedirectToAction("Index", "Chessboard", new {id = user.TaskSessionID});
                 }
                 else
                 {
@@ -178,7 +180,7 @@ namespace RCDT.Controllers
                 
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = participantViewModel.SessionKey, ParticipantUserId = participantViewModel.UserID, Role = "Participant" };
+                var user = new ApplicationUser { UserName = participantViewModel.SessionKey, ParticipantUserId = participantViewModel.UserID, TaskSessionID = participantViewModel.TaskSessionID, Role = "Participant" };
 
                 var result = await _userManager.CreateAsync(user, participantViewModel.UserID);
 

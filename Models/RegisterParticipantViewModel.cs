@@ -17,5 +17,9 @@ namespace RCDT.Models
         [Display(Name = "SessionKey")]
         [Range(1, 9999, ErrorMessage = "Please enter a valid session key")]
         public string SessionKey { get; set; }
+
+        [Required]
+        [Display(Name = "Task Session ID")]
+        public string TaskSessionID { get; set; }
     }
 }

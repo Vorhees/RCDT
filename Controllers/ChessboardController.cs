@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RCDT.Data;
 using RCDT.Models;
@@ -12,14 +13,21 @@ namespace RCDT.Controllers
     public class ChessboardController : Controller
     {
          private readonly DataContext _context;
-         public ChessboardController(DataContext context)
+         private readonly UserManager<ApplicationUser> _userManager;
+         public ChessboardController(DataContext context, UserManager<ApplicationUser> userManager)
          {
              _context = context;
+             _userManager = userManager;
          }
          
-         public IActionResult Index()
-        {
-            return View(_context.Tasks.ToList());
-        }
+         public IActionResult Index(string id)
+         {
+             var user = new ApplicationUser
+             {
+                 TaskSessionID = id
+             };
+
+             return View(user);
+         }
     }
 }

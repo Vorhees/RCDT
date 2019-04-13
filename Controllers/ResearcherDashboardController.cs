@@ -73,7 +73,7 @@ namespace RCDT.Controllers
                     participantNumber = taskModel.participantNumber, 
                     confederateNumber = taskModel.confederateNumber, 
                     taskReport = "", 
-                    taskTime = DateTime.UtcNow };
+                    taskCreatedTime = DateTime.UtcNow };
 
                 _context.Tasks.Add(task);
                await _context.SaveChangesAsync();
@@ -84,9 +84,9 @@ namespace RCDT.Controllers
             return View();
         }
 
-        public async Task<IActionResult> DeleteTask(int id)
+        public async Task<IActionResult> DeleteTask(string id)
         {
-            if (id == 0)
+            if (id == null)
             {
                 return NotFound();
             }
@@ -109,7 +109,7 @@ namespace RCDT.Controllers
 
         [HttpPost, ActionName("DeleteTask")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(string id)
         {
             var task = await _context.Tasks.FindAsync(id);
 
