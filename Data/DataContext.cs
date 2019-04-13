@@ -28,6 +28,7 @@ namespace RCDT.Data
         //public DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<TaskModel> Tasks { get; set; }
         public DbSet<ChatLog> ChatLog { get; set; }
+        public DbSet<ChessBoardMoveLog> ChessBoardMoveLog { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<AdminUser>().ToTable("Admin");
