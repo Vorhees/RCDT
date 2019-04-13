@@ -6,6 +6,16 @@
 }
 
 <head>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function()
+        {
+            $("button").click(function()
+            {
+                $("p").hide();
+            });
+        });
+    </script>
     <script>
 
         var count = 0;
@@ -95,6 +105,8 @@
     </style>
 </head>
 <div class="container">
+    <p>Not loaded yet.</p>
+    <button>Click me to hide paragraphs</button>
     <table>
         <tr>
             <td>
@@ -341,7 +353,7 @@
                 <select id="group">
                     @foreach (var task in Model)
                     {
-                        <option value="@Html.DisplayFor(item => task.TaskSessionID)">@Html.DisplayFor(item => task.TaskSessionID)</option>
+                        <option value="task.TaskSessionID">@Html.DisplayFor(item => task.TaskSessionID)</option>
                     }
                 </select>
                 <input type="button" id="joinGroup" value="Join group"/>

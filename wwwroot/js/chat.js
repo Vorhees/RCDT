@@ -75,7 +75,7 @@ document.getElementById("joinGroup").addEventListener("click", function(event)
     var groupElement = document.getElementById("group");
     var groupValue = groupElement.options[groupElement.selectedIndex].value;
 
-    console.log("I joined the group: " + groupValue.toString());
+    console.log("I joined the group: " + groupValue);
 
     connection.invoke("JoinGroup", groupValue).catch(function (err)
     {
