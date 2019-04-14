@@ -19,6 +19,7 @@
                 <tr>
                     <th>User ID</th>
                     <th>Session Key</th>
+                    <th>Task Session ID</th>
                     <th>Role</th>
                 </tr>
                 </thead>
@@ -30,6 +31,7 @@
                             <tr>
                             <td>@Html.DisplayFor(modelItem => user.ParticipantUserId)</td>
                             <td>@Html.DisplayFor(modelItem => user.UserName)</td>
+                            <td>@Html.DisplayFor(modelItem => user.TaskSessionID)</td>
                             <td>@Html.DisplayFor(modelItem => user.Role)</td>
                             </tr>
                         }
