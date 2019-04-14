@@ -106,15 +106,21 @@ namespace RCDT.Controllers
 
                 var user = await _userManager.FindByNameAsync(loginParticipantModel.SessionKey);
 
-                if (result.Succeeded)
+                if (result.Succeeded && !string.IsNullOrEmpty(user.TaskSessionID))
                 {
                     _logger.LogInformation("User logged in");
 
                     return RedirectToAction("Index", "Chessboard", new {id = user.TaskSessionID});
                 }
+                if (string.IsNullOrEmpty(user.TaskSessionID))
+                {
+                    ModelState.AddModelError(string.Empty, "You do not have a task session ID assigned.");
+
+                    return View(loginParticipantModel);
+                }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt");
 
                     return View(loginParticipantModel);
                 }
