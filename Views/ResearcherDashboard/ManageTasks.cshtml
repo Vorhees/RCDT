@@ -33,7 +33,7 @@
                         <td>@Html.DisplayFor(modelItem => user.confederateNumber)</td>
                         <td>
                             <a  class="btn btn-outline-success" asp-controller="Chessboard" asp-action="Index" asp-route-id="@user.TaskSessionID">Start Task</a>
-                            <a  class="btn btn-outline-warning" asp-controller="Chessboard" asp-action="Index" asp-route-id="@user.TaskSessionID">Edit Task</a>
+                            <a  class="btn btn-outline-warning" asp-controller="ResearcherDashboard" asp-action="EditTask" asp-route-id="@user.TaskSessionID">Edit Task</a>
                             <a  class="btn btn-outline-info" asp-controller="Chessboard" asp-action="Index" asp-route-id="@user.TaskSessionID">View Task</a>
                             <a  class="btn btn-outline-danger" asp-controller="ResearcherDashboard" asp-action="DeleteTask" asp-route-id="@user.TaskSessionID">Delete Task</a>
                         </td>

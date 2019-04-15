@@ -1,0 +1,43 @@
+@model RCDT.Models.TaskModel
+
+@{
+    ViewData["Title"] = "Edit Task";
+}
+
+<div class="container">
+        <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4" style="margin-top:150px">
+            <h5>Current Task Session ID: @Model.TaskSessionID</h5>
+            <h5>Current Task Type: @Model.TaskType</h5>
+            <h5>Current # of Participants: @Model.participantNumber</h5>  
+            <h5>Current # of Confederates: @Model.confederateNumber</h5>
+                <form asp-action="EditTask">
+                    <div id="taskSessionId" class="form-group">  
+                        <input type="text" class="form-control" placeholder="@Model.TaskSessionID" disabled /> 
+                        <span asp-validation-for="TaskSessionID" class="text-danger"></span>  
+                    </div>
+                    <div id="taskType" class="form-group">  
+                        <input type="text" class="form-control" placeholder="@Model.TaskType" disabled /> 
+                        <span asp-validation-for="TaskType" class="text-danger"></span>  
+                    </div>
+                    <div id="participantNumber" class="form-group">  
+                        <input type="number" required name="participantNumber" class="form-control" placeholder="New # of Participants" /> 
+                        <span asp-validation-for="participantNumber" class="text-danger"></span>  
+                    </div>
+                    <div id="confederateNumber" class="form-group">  
+                        <input type="number" required name="confederateNumber" class="form-control" placeholder="New # of Confederates" /> 
+                        <span asp-validation-for="confederateNumber" class="text-danger"></span>  
+                    </div>   
+                    <div class="form-group text-center">
+                        <button type="submit" value="Save" class="btn btn-success form-control mb-2"> Save Changes
+                        </button>
+                        <button class="btn btn-primary form-control" type="button" onclick="location.href='@Url.Action("ManageTasks" , "ResearcherDashboard")'"> Cancel
+                        </button>
+                    </div>  
+                </form>
+            </div>
+        </div>  
+    </div>
+
+    <script src="~/js/seshKeyGen.js"></script>

@@ -28,7 +28,7 @@ namespace RCDT.Controllers
         {
             _context = context;
         }
-
+ 
         public IActionResult Index(int id)
         {
             return View();
@@ -105,6 +105,48 @@ namespace RCDT.Controllers
                 participantNumber = task.participantNumber,
                 confederateNumber = task.confederateNumber
             });
+        }
+
+        public async Task<IActionResult> EditTask(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var task = await _context.Tasks.FindAsync(id);
+
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            return View(new TaskModel
+            {
+                TaskSessionID = task.TaskSessionID,
+                TaskType = "DDMT",
+                participantNumber = task.participantNumber,
+                confederateNumber = task.confederateNumber,
+                taskEditedTime = task.taskEditedTime
+            });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditTask(TaskModel tm, string id)
+        {
+            var task = await _context.Tasks.FindAsync(id);
+
+            task.TaskSessionID = task.TaskSessionID;
+            task.TaskType = "DDMT";
+            task.participantNumber = tm.participantNumber;
+            task.confederateNumber = tm.confederateNumber;
+            task.taskEditedTime = DateTime.Now;
+
+            _context.Tasks.Update(task);
+            _context.SaveChanges();
+
+            return RedirectToAction("ManageTasks", "ResearcherDashboard");
         }
 
         [HttpPost, ActionName("DeleteTask")]
