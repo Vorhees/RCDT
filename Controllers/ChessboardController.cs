@@ -6,6 +6,7 @@ using RCDT.Models;
 using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using System;
 
 namespace RCDT.Controllers
 {
@@ -28,6 +29,20 @@ namespace RCDT.Controllers
              };
 
              return View(user);
+         }
+         [HttpPost]
+         [AllowAnonymous]
+         [ValidateAntiForgeryToken]
+         public void addMoveToLog(ChessBoardMoveLog nextMove)
+         {
+                var move = new ChessBoardMoveLog
+                {
+                   MoveNumber = nextMove.MoveNumber,
+                   TaskSessionID = nextMove.TaskSessionID,
+                   UserName = nextMove.UserName,
+                   dateTime = DateTime.UtcNow,
+                   BoardState = nextMove.BoardState
+                };
          }
     }
 }
