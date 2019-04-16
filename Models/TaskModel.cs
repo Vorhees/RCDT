@@ -28,7 +28,7 @@ namespace RCDT.Models
         public DateTime taskCreatedTime { get; set; }
 
         public DateTime taskEditedTime { get; set; }
-        
+
         // [NotMapped]
         // public IEnumerable<SelectListItem> TaskSelect { get; set; }
     }   

@@ -27,7 +27,6 @@ namespace RCDT.Controllers
              {
                  TaskSessionID = id
              };
-
              return View(user);
          }
          [HttpPost]
@@ -36,7 +35,7 @@ namespace RCDT.Controllers
          {
                 var move = new ChessBoardMoveLog
                 {
-                   MoveNumber = nextMove.MoveNumber,
+                   MoveID = nextMove.MoveID,
                    TaskSessionID = nextMove.TaskSessionID,
                    UserName = nextMove.UserName,
                    dateTime = DateTime.UtcNow,

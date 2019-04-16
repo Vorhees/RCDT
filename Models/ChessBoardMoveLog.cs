@@ -8,7 +8,7 @@ namespace RCDT.Models
     {
         [Required]
         [Key]
-        public int MoveNumber { get; set; }
+        public int MoveID { get; set; }
 
         [Required]
         public string TaskSessionID { get; set; }

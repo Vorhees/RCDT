@@ -8,7 +8,7 @@ namespace RCDT.Models
 
         [Required]
         [Key]
-        public int TaskSessionID { get; set; }
+        public string TaskSessionID { get; set; }
 
         [Required]
         public int participantNumber { get; set; }
@@ -19,8 +19,6 @@ namespace RCDT.Models
         public string taskReport { get; set; }
 
         public DateTime taskTime { get; set; }
-
-        public int moveNumber { get; set; }
     }   
 
 
