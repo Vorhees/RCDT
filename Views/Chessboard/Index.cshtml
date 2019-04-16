@@ -32,7 +32,10 @@
                 }
             }
             console.log(saverString);
-            saverString += " ";
+            if (saverString == "")
+            {
+                saverString += " ";
+            }
             $.ajax({
                 type: 'POST',
                 url: '/Chessboard/AddMoveToLog',
