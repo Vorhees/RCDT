@@ -19,6 +19,8 @@ namespace RCDT.Models
         public string taskReport { get; set; }
 
         public DateTime taskTime { get; set; }
+
+        public int moveNumber { get; set; }
     }   
 
 
