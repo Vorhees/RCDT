@@ -32,9 +32,9 @@
                 }
             }
             console.log(saverString);
-            if (saverString == "")
+            if(saverString === "")
             {
-                saverString += " ";
+                saverString = "board Empty";
             }
             $.ajax({
                 type: 'POST',
