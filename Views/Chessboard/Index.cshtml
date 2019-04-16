@@ -110,7 +110,7 @@
 </head>
 <div class="container">
     <input type="hidden" id="sess" value="@Model.TaskSessionID"/>
-    <input type="hidden" id="UID" value="@Model.UserName"/>
+    <input type="hidden" id="UID" value="@UserManager.GetUserName(User)"/>
     <table>
         <tr>
             <td>
