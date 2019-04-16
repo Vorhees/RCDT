@@ -84,29 +84,6 @@ namespace RCDT.Controllers
             return View();
         }
 
-        public async Task<IActionResult> DeleteTask(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var task = await _context.Tasks.FindAsync(id);
-
-            if (task == null)
-            {
-                return NotFound();
-            }
-
-            return View(new TaskModel
-            {
-                TaskSessionID = task.TaskSessionID,
-                TaskType = task.TaskType,
-                participantNumber = task.participantNumber,
-                confederateNumber = task.confederateNumber
-            });
-        }
-
         public async Task<IActionResult> EditTask(string id)
         {
             if (id == null)
@@ -149,6 +126,29 @@ namespace RCDT.Controllers
             return RedirectToAction("ManageTasks", "ResearcherDashboard");
         }
 
+        public async Task<IActionResult> DeleteTask(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var task = await _context.Tasks.FindAsync(id);
+
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            return View(new TaskModel
+            {
+                TaskSessionID = task.TaskSessionID,
+                TaskType = task.TaskType,
+                participantNumber = task.participantNumber,
+                confederateNumber = task.confederateNumber
+            });
+        }
+
         [HttpPost, ActionName("DeleteTask")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(string id)
@@ -159,6 +159,23 @@ namespace RCDT.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("ManageTasks", "ResearcherDashboard");
+        }
+
+        public IActionResult ViewTask(string id)
+        {
+            // if (id == null)
+            // {
+            //     return NotFound();
+            // }
+
+            var task = _context.ChatLog.Where(taskID => taskID.TaskSessionId == id).ToList();
+
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            return View(task);
         }
 
         // private IEnumerable<SelectListItem> GetTaskTypes()
