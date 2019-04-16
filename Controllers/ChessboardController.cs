@@ -32,7 +32,6 @@ namespace RCDT.Controllers
          }
          [HttpPost]
          [AllowAnonymous]
-         [ValidateAntiForgeryToken]
          public void addMoveToLog(ChessBoardMoveLog nextMove)
          {
                 var move = new ChessBoardMoveLog
@@ -43,6 +42,8 @@ namespace RCDT.Controllers
                    dateTime = DateTime.UtcNow,
                    BoardState = nextMove.BoardState
                 };
+                _context.ChessBoardMoveLog.Add(move);
+                _context.SaveChanges();
          }
     }
 }

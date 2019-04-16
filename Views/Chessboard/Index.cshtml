@@ -7,21 +7,14 @@
 
 <head>
     <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function()
-        {
-            $("button").click(function()
-            {
-                $("p").hide();
-            });
-        });
-    </script>
     <script>
-
+        var moveNumber = 0;
         var count = 0;
         var letter = ["a","b","c","d","e","f","g","h"];
         function saveBoard()
         {
+        var taskSess = document.getElementById('sess').value;
+        var userName = document.getElementById('UID').value;
         var saverString = "";
             for (i = 8; i > 0; i--)
             {
@@ -39,6 +32,17 @@
                 }
             }
             console.log(saverString);
+            $.ajax({
+                type: 'POST',
+                url: '/Chessboard/AddMoveToLog',
+                dataType: 'json',
+                data: {
+                    'MoveNumber': moveNumber,
+                    'TaskSessionID': taskSess,
+                    'UserName': userName,
+                    'BoardState': saverString,
+                }
+            });
         }
         function removeItem(data)
         {
@@ -105,8 +109,8 @@
     </style>
 </head>
 <div class="container">
-    <p>Not loaded yet.</p>
-    <button>Click me to hide paragraphs</button>
+    <input type="hidden" id="sess" value="@Model.TaskSessionID"/>
+    <input type="hidden" id="UID" value="@Model.UserName"/>
     <table>
         <tr>
             <td>
