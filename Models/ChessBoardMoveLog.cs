@@ -17,7 +17,6 @@ namespace RCDT.Models
 
         public DateTime dateTime { get; set; }
 
-        [Required]
         public string BoardState { get; set; }
     }
 }
