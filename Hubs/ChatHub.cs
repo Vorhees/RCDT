@@ -3,6 +3,7 @@ using RCDT.Data;
 using System.Threading.Tasks;
 using RCDT.Models;
 using System;
+using System.Linq;
 
 namespace RCDT.Hubs
 {
@@ -10,6 +11,7 @@ namespace RCDT.Hubs
     {
         //private Models.ApplicationUser user;
         private readonly DataContext _context;
+        private static int countOfUsers = 0;
        // private readonly TaskModel taskModel;
 
         public int messageID = 0;
@@ -43,6 +45,10 @@ namespace RCDT.Hubs
 
         public Task JoinGroup(string group)
         {
+            var task = _context.Users.Where(taskID => taskID.TaskSessionID == group);
+
+            Console.WriteLine("Number of users in group: " + task.Count());
+
             return Groups.AddToGroupAsync(Context.ConnectionId, group);
         }
 
@@ -64,12 +70,17 @@ namespace RCDT.Hubs
 
         public override async Task OnConnectedAsync()
         {
+            countOfUsers++;
+
+            Console.WriteLine("Number of users connected: " + countOfUsers);
+
             await Clients.All.SendAsync("UserConnected", Context.ConnectionId);
             await base.OnConnectedAsync();
         }
 
         public override async Task OnDisconnectedAsync(Exception exception)
         {
+            countOfUsers--;
             await Clients.All.SendAsync("UserDisconnected", Context.ConnectionId);
             await base.OnDisconnectedAsync(exception);
         }

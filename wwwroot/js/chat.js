@@ -5,6 +5,7 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 // Disabled until connection is established.
 document.getElementById("sendButton").disabled = true;
 
+
 connection.on("ReceiveMessage", function (user, message) {
     
     var msg = message.replace( /&/g, "&amp;" ).replace( /</g, "&lt;" ).replace( />/g, "&gt;" );
@@ -20,11 +21,6 @@ connection.on("ReceiveMessage", function (user, message) {
 
 connection.on("UserConnected", function(connectionId)
 {
-   // var option = document.createElement("option");
-
-   // option.text = connectionId;
-   // option.value = connectionId;
-
     console.log("User is connected with connection ID: " + connectionId)
 
     var groupElement = document.getElementById("group");
@@ -51,6 +47,7 @@ connection.on("UserDisconnected", function(connectionId)
         if (groupElement.options[i].value == connectionId)
         {
             groupElement.remove(i);
+            console.log("USER: " + connectionId + " has left.");
         }
     }
 });
