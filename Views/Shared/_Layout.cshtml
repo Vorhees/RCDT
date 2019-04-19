@@ -23,59 +23,9 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <!--<header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                @if (!User.IsInRole("Admin") && !User.IsInRole("Research Assistant") && !User.IsInRole("IRB Reviewer") && !User.IsInRole("Transcriber") && !User.IsInRole("Researcher") && !User.IsInRole("Participant"))
-                {
-                    <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Login">RCDT</a>
-
-                }
-                else
-                {
-                    <div class="nav-left">
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <a class="navbar-brand" asp-controller="AdminDashboard" asp-action="Index">
-                                <img src="~/images/hamburger_menu_icon.png" id="adminImage" style="width:44px;height:40px;" />
-                            </a>
-                        }
-                    </div>
-                    <div class="nav-middle">
-                        <a class="navbar-brand">RCDT</a>
-                    </div>
-                }
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                <div class="nav-left">
-                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                        <img src="~/images/home_icon.png" id="homeImage" style="width:40px;height:40px;" />
-                    </a>
-                </div>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav" style="text-align:right">
-                        @if (SignInManager.IsSignedIn(User))
-                        {
-                            <li class="nav-item">
-                                <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logout" class="navbar-right">
-                                    <input type="image" class="btn btn-link navbar-btn nav-link text-dark" value="Submit" src="~/images/logout.png" style="width:47px;height:50px;">
-                                </form>
-                            </li>
-                        }
-                    </ul>
-                    @if (User.IsInRole("Researcher"))
-                    {
-                        <a class="navbar-brand" asp-controller="ResearcherDashboard" asp-action="Index">
-                            <img src="~/images/researcher.png" id="researcherImage" style="width:44px;height:40px;" />
-                        </a>
-                    }
-                </div>
-        </nav>
-    </header>-->
 
     <div class="wrapper">
+
     <!-- Sidebar -->
     <nav id="sidebar">
         <div class="sidebar-header ">
@@ -157,11 +107,10 @@
                 </ul>
             </li>
         </ul>
-
     </nav>
+
     <!-- Page Content -->
     <div id="content" class="fixed">
-
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 @if (!User.IsInRole("Admin") && !User.IsInRole("Research Assistant") && !User.IsInRole("IRB Reviewer") && !User.IsInRole("Transcriber") && !User.IsInRole("Researcher") && !User.IsInRole("Participant"))
@@ -170,7 +119,6 @@
                         <a class="navbar-brand"><h2>RCDT</h2></a>
                     </div>
                     <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                        <!--<img src="~/images/home_icon.png" id="homeImage" style="width:40px;height:40px;" />-->
                         Home
                     </a>
                     <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
@@ -178,9 +126,6 @@
                 else
                 {
                     <div class="nav-left">
-                            <!--<a class="navbar-brand" asp-controller="AdminDashboard" asp-action="Index">
-                                <img src="~/images/hamburger_menu_icon.png" id="adminImage" style="width:44px;height:40px;" />
-                            </a>*/-->
                             <input type="image" src="~/images/hamburger_menu_icon.png" id="sbCollapse" style="width:40px;height:40px;"> 
                                 <i class="fas fa-align-left"></i>
                         &nbsp
@@ -188,10 +133,7 @@
                     
                     <div class="nav-middle">
                         <a class="navbar-brand"><h2>RCDT</h2></a>
-                        <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                                <!--<img src="~/images/home_icon.png" id="homeImage" style="width:40px;height:40px;" />-->
-                                Home
-                        </a>
+                        <a class="navbar-brand" asp-controller="Home" asp-action="Index">Home</a>
                     </div>
                 }
                 <div class="nav-left">
@@ -208,12 +150,6 @@
                             </li>
                         }
                     </ul>
-                        <!--@if (User.IsInRole("Researcher"))
-                        {
-                            <a class="navbar-brand" asp-controller="ResearcherDashboard" asp-action="Index">
-                                <img src="~/images/researcher.png" id="researcherImage" style="width:44px;height:40px;" />
-                            </a>
-                        }-->
                 </div>
             </div>
         </nav>
@@ -222,6 +158,7 @@
             @RenderBody()
         </main>
     </div>
+    
     </div>
 
     <!---

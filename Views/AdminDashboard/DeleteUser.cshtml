@@ -6,7 +6,7 @@
 <div class="container mt-2">
     <div style="margin-top:50px">
       <div class="text-center" style="margin-top:200px">
-        <h1 class="display-4">Delete User: @Model.UserName ?</h1>
+            <h3>Delete User: "@Model.UserName"?</h3>
             <form asp-action="DeleteUser">
                 <input type="submit" value="Delete" class="btn btn-danger" />
                 <button class="btn btn-primary" type="button" onclick="location.href='@Url.Action("ManageUsers" , "AdminDashboard")'"> Cancel
