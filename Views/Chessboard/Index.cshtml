@@ -135,7 +135,7 @@
                 </div>
             </td>
             <td>
-                <table class="chess-board">   
+                <table class="chess-board" id="chessBoard">   
                         <tr>
                             <td class="light" id="8a" ondrop="drop(event)" ondragover="allowDrop(event)"> 
                             </td>
@@ -360,6 +360,8 @@
                 </div>
                 <input type="hidden" id="group" value="@Model.TaskSessionID" />
                 <p>TaskSessionID "Group" : @Model.TaskSessionID </p>
+                <input type="hidden" id="userCount" value="@Model.NumUsersInGroup" />
+                <p>Number of users in group : @Model.NumUsersInGroup </p>
             </td>
         </tr>
     </table>
