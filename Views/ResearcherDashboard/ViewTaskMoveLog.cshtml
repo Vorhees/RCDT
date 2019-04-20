@@ -1,16 +1,15 @@
-@model IEnumerable<RCDT.Models.ChatLog>
+@model IEnumerable<RCDT.Models.ChessBoardMoveLog>
 
 @{
-    ViewData["Title"] = "View Task Log";
+    ViewData["Title"] = "View Move Log";
 }
 <section class="content">
     <div class="row">
     <div class="col-md-11">
         <div class="box">
         <div class="box-header">
-            <h3 class="box-title">View Task Log</h3>
+            <h3 class="box-title">View Task Move Log</h3>
         </div>
-        <!-- /.box-header -->
         <div class="box-body">
                 <table id="example1" class="table table-hover">
                 <thead>
@@ -18,28 +17,22 @@
                     <th>Task Session ID</th>
                     <th>Username</th>
                     <th>Time</th>
-                    <th>Message</th>
-                    <th>Message ID</th>
+                    <th>BoardState</th>
                 </tr>
                 </thead>
                 <tbody>
                     @foreach (var user in Model)
                     {
                         <tr>
-                        <td>@Html.DisplayFor(modelItem => user.TaskSessionId)</td>
-                        <td>@Html.DisplayFor(modelItem => user.UserName)</td>
-                        <td>@Html.DisplayFor(modelItem => user.dateTime)</td>
-                        <td>@Html.DisplayFor(modelItem => user.Message)</td>
-                        <td>@Html.DisplayFor(modelItem => user.MessageId)</td>
+                        <td>@Html.DisplayFor(modelItem => TaskSessionId)</td>
+                        <td>@Html.DisplayFor(modelItem => UserName)</td>
+                        <td>@Html.DisplayFor(modelItem => dateTime)</td>
+                        <td>@Html.DisplayFor(modelItem => BoardState)</td>
                         </tr>
                     }
                 </table>
             </div>
-        <!-- /.box-body -->
         </div>
-        <!-- /.box -->
     </div>
-    <!-- /.col -->
     </div>
-    <!-- /.row -->
 </section>

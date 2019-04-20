@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Researcher Dashboard";
 }
-
 <section>
 <div class="row">
   <div class="col-md-4"></div>
@@ -37,6 +36,7 @@
                     <a  class="btn btn-danger" style="width:50px" asp-action="ViewTask" asp-route-id="@user.TaskSessionID"><font size="-5">View</font></a>
                     <a  class="btn btn-outline-info" style="width:50px" asp-action="EditTask" asp-route-id="@user.TaskSessionID"><font size="-5">Edit</font></a>
                     <a  class="btn btn-outline-danger" style="width:50px" asp-action="DeleteTask" asp-route-id="@user.TaskSessionID"><font size="-5">Delete</font></a>
+                    <a class="btn btn-danger" style=width:50px" asp-action="ViewTaskMoveLog" asp-route-id=@user.TaskSessionID"><font size="-5">Move Log</font></a>
                 </td>
             </tr>
           }
