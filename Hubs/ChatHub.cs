@@ -11,7 +11,8 @@ namespace RCDT.Hubs
     {
         //private Models.ApplicationUser user;
         private readonly DataContext _context;
-        private static int countOfUsers = 0;
+        // private static int countOfUsers = 0;
+        // private static int validUsers = 0;
        // private readonly TaskModel taskModel;
 
         public int messageID = 0;
@@ -45,12 +46,43 @@ namespace RCDT.Hubs
 
         public Task JoinGroup(string group)
         {
-            var task = _context.Users.Where(taskID => taskID.TaskSessionID == group);
+            // var task = _context.Users.Where(taskID => taskID.TaskSessionID == group);
 
-            Console.WriteLine("Number of users in group: " + task.Count());
+            // validUsers = task.Count();
+            
+            // Console.WriteLine("Total number of users in group: " + validUsers);
+
+            // // if (countOfUsers < validUsers)
+            // // {
+            // //     Console.WriteLine("NOT ENOUGH MEMBERS CONNECTED");
+            // // }
+            // // else
+            // // {
+            // //     Console.WriteLine("Enough members connected, You may begin the task");
+            // // }
+
+            // countOfUsers++;
+            // Console.WriteLine("Number of users connected: " + countOfUsers);
 
             return Groups.AddToGroupAsync(Context.ConnectionId, group);
         }
+
+        // public bool taskStartCheck()
+        // {
+        //     bool flag = false;
+
+        //     if (countOfUsers < validUsers)
+        //     {
+        //         Console.WriteLine("NOT ENOUGH MEMBERS CONNECTED");
+        //     }
+        //     else
+        //     {
+        //         Console.WriteLine("Enough members connected, You may begin the task");
+        //         flag = true;
+        //     }
+
+        //     return flag;
+        // }
 
         public async Task SendMessageToGroup(string group, string username, string message)
         {
@@ -70,17 +102,16 @@ namespace RCDT.Hubs
 
         public override async Task OnConnectedAsync()
         {
-            countOfUsers++;
-
-            Console.WriteLine("Number of users connected: " + countOfUsers);
-
             await Clients.All.SendAsync("UserConnected", Context.ConnectionId);
             await base.OnConnectedAsync();
         }
 
         public override async Task OnDisconnectedAsync(Exception exception)
         {
-            countOfUsers--;
+            // // Temporary
+            // countOfUsers = 0;
+            // validUsers = 0;
+
             await Clients.All.SendAsync("UserDisconnected", Context.ConnectionId);
             await base.OnDisconnectedAsync(exception);
         }

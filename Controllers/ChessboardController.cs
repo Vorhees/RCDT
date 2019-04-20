@@ -23,12 +23,18 @@ namespace RCDT.Controllers
          
          public IActionResult Index(string id)
          {
+
+             var numUsers = _context.Users.Where(taskID => taskID.TaskSessionID == id);
+
              var user = new ApplicationUser
              {
-                 TaskSessionID = id
+                 TaskSessionID = id,
+                 NumUsersInGroup = numUsers.Count()
              };
+
              return View(user);
          }
+
          [HttpPost]
          [AllowAnonymous]
          public void addMoveToLog(ChessBoardMoveLog nextMove)

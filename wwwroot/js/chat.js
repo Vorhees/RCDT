@@ -1,10 +1,14 @@
 "use strict";
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+var userCount = 0;
 
 // Disabled until connection is established.
 document.getElementById("sendButton").disabled = true;
 
+// Disabled until all group members join the connection.
+document.getElementById("itemBank").style.pointerEvents = "none";
+document.getElementById("chessBoard").style.pointerEvents = "none";
 
 connection.on("ReceiveMessage", function (user, message) {
     
@@ -21,6 +25,8 @@ connection.on("ReceiveMessage", function (user, message) {
 
 connection.on("UserConnected", function(connectionId)
 {
+    var totalNumInGroup = document.getElementById("userCount").value;
+
     console.log("User is connected with connection ID: " + connectionId)
 
     var groupElement = document.getElementById("group");
@@ -33,9 +39,21 @@ connection.on("UserConnected", function(connectionId)
         return console.error(err.toString());
     });
 
-    event.preventDefault();
+    userCount++;
 
-   // groupElement.add(option);
+    if (userCount < totalNumInGroup) {
+        console.log("Not enough users connected, Users Connected: " + userCount + "/" + totalNumInGroup);
+    }
+
+    if (userCount == totalNumInGroup)
+    {
+        console.log("Enough members joined, you can start the task");
+
+        document.getElementById("itemBank").style.pointerEvents = "auto";
+        document.getElementById("chessBoard").style.pointerEvents = "auto";
+    }
+
+    event.preventDefault();
 });
 
 connection.on("UserDisconnected", function(connectionId)
