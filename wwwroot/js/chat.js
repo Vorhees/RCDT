@@ -1,6 +1,4 @@
 "use strict";
-
-var userCount = 0;
 var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 
 // Disabled until connection is established.
@@ -25,14 +23,15 @@ connection.on("ReceiveMessage", function (user, message) {
     document.getElementById("chatBox").appendChild(p);
 });
 
-connection.on("UserConnected", function(connectionId)
+connection.on("UserConnected", function(connectionId, count)
 {
     var totalNumInGroup = document.getElementById("userCount").value;
 
     console.log("User is connected with connection ID: " + connectionId)
 
+    console.log("Number of users connected: " + count);
+
     var groupElement = document.getElementById("group");
-    //var groupValue = groupElement.options[groupElement.selectedIndex].value;
 
     console.log("I joined the group: " + groupElement.value);
 
@@ -42,21 +41,19 @@ connection.on("UserConnected", function(connectionId)
     });
 
 
-    // userCount++;
+    if (count < totalNumInGroup) {
+        console.log("Not enough users connected, Users Connected: " + count + "/" + totalNumInGroup);
+    }
 
-    // if (userCount < totalNumInGroup) {
-    //     console.log("Not enough users connected, Users Connected: " + userCount + "/" + totalNumInGroup);
-    // }
+    if (count == totalNumInGroup)
+    {
+        console.log("Enough members joined, you can start the task");
 
-    // if (userCount == totalNumInGroup)
-    // {
-    //     console.log("Enough members joined, you can start the task");
-
-    //     document.getElementById("itemBank").style.pointerEvents = "auto";
-    //     document.getElementById("chessBoard").style.pointerEvents = "auto";
-    //     document.getElementById("itemBank").style.opacity = "1.0";
-    //     document.getElementById("chessBoard").style.opacity = "1.0";
-    // }
+        document.getElementById("itemBank").style.pointerEvents = "auto";
+        document.getElementById("chessBoard").style.pointerEvents = "auto";
+        document.getElementById("itemBank").style.opacity = "1.0";
+        document.getElementById("chessBoard").style.opacity = "1.0";
+    }
 
     event.preventDefault();
 });
@@ -74,6 +71,11 @@ connection.on("UserDisconnected", function(connectionId)
         }
     }
 });
+
+// connection.on("UserNumber", function(count)
+// {
+//     console.log("Number of users joined: " + count);
+// });
 
 connection.start().then(function() {
 

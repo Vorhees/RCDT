@@ -106,16 +106,22 @@ namespace RCDT.Hubs
 
         public override async Task OnConnectedAsync()
         {
-            await Clients.All.SendAsync("UserConnected", Context.ConnectionId);
 
             UserCount.connectedUsers.Add(Context.ConnectionId);
 
             UserCount.count = UserCount.connectedUsers.Count;
 
+            await Clients.All.SendAsync("UserConnected", Context.ConnectionId, UserCount.count);
+
             Console.WriteLine("Users connected: " + UserCount.count);
 
             await base.OnConnectedAsync();
         }
+
+        // public async Task usersJoined()
+        // {
+        //     await Clients.All.SendAsync("UserNumber", UserCount.count);
+        // }
 
         public override async Task OnDisconnectedAsync(Exception exception)
         {
