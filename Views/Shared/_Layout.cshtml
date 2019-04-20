@@ -33,63 +33,55 @@
         </div>
 
         <ul class="list-unstyled components">
-            <!--<p>Account</p>-->
-            <li class="nav-item">
-                <a class="nav-link active">
-                  <span data-feather="home"></span>
-                  Dashboard <span class="sr-only">(current)</span>
-                </a>
-            </li>
             
             <!--Admin Menu Options-->
             @if (User.IsInRole("Admin"))
             {
-            <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="AdminDashboard" asp-action="ManageUsers">
-                  <span data-feather="file"></span>
-                  Manage Accounts
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register">
-                  Register Users
-                </a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="AdminDashboard" asp-action="Index">
+                        <span data-feather="users"></span> 
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register">
+                        Register Users
+                    </a>
+                </li>
 
             <!--Researcher Menu Options-->
             }
             @if (User.IsInRole("Researcher"))
             {
-              <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="ResearcherDashboard" asp-action="ManageParticipants">
-                  <span data-feather="file"></span>
-                  Manage Participants
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="RegisterParticipant">
-                  Register Participants
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="ResearcherDashboard" asp-action="ManageTasks">
-                  <span data-feather="users"></span>
-                  Manage Tasks
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" asp-area=""
-                asp-controller="ResearcherDashboard" asp-action="CreateTask">
-                  <span data-feather="bar-chart-2"></span>
-                  Create Task
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link">
-                  <span data-feather="layers"></span>
-                  Settings
-                </a>
-              </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="ResearcherDashboard" asp-action="Index">
+                        <span data-feather="users"></span> 
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="ResearcherDashboard" asp-action="ManageParticipants">
+                        <span data-feather="file"></span> 
+                        Manage Participants
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Account" asp-action="RegisterParticipant">
+                        Register Participants
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="ResearcherDashboard" asp-action="CreateTask">
+                        <span data-feather="bar-chart-2"></span>
+                        Create Task
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <span data-feather="layers"></span>
+                        Settings
+                    </a>
+                </li>
             }
 
             <li>
@@ -126,8 +118,8 @@
                 else
                 {
                     <div class="nav-left">
-                            <input type="image" src="~/images/hamburger_menu_icon.png" id="sbCollapse" style="width:40px;height:40px;"> 
-                                <i class="fas fa-align-left"></i>
+                        <input type="image" src="~/images/hamburger_menu_icon.png" id="sbCollapse" style="width:40px;height:40px;"> 
+                            <i class="fas fa-align-left"></i>
                         &nbsp
                     </div>
                     

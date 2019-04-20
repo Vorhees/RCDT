@@ -287,3 +287,16 @@ ul ul a {
   width: 100%;
 
 }
+
+td {
+  width: 25%;
+}
+
+td.task {
+  width: 18%;
+}
+
+
+td.button {
+  width: 100%;
+}

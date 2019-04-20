@@ -32,6 +32,7 @@ namespace RCDT.Controllers
         {
             return View(await _context.Users.Select(user =>
             new ApplicationUser{
+                ParticipantUserId = user.ParticipantUserId,
                 Email = user.Email,
                 UserName = user.UserName,
                 Role = user.Role,

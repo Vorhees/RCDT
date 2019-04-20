@@ -1,47 +1,47 @@
-@model TaskModel
+@model IEnumerable<RCDT.Models.TaskModel>
 
-<body>
-    <div class="container-fluid">
-      <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-          <div class="sidebar-sticky">
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link active">
-                  <span data-feather="home"></span>
-                  Dashboard <span class="sr-only">(current)</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="ResearcherDashboard" asp-action="ManageParticipants">
-                  <span data-feather="file"></span>
-                  Manage Participants
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="RegisterParticipant">
-                  Register Participants
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="ResearcherDashboard" asp-action="ManageTasks">
-                  <span data-feather="users"></span>
-                  Manage Tasks
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" asp-area=""
-                asp-controller="ResearcherDashboard" asp-action="CreateTask">
-                  <span data-feather="bar-chart-2"></span>
-                  Create Task
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link">
-                  <span data-feather="layers"></span>
-                  Settings
-                </a>
-              </li>
-          </ul>
+@{
+    ViewData["Title"] = "Researcher Dashboard";
+}
+
+<section>
+<div class="row">
+  <div class="col-md-4"></div>
+  <div style="text-align:center"><h5><b>Task List</b></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="manage-table">
+      <table id="taskTable" class="table table-hover" style="width: 0px; margin-right: 10px; float:left">
+        <thead>
+          <tr>
+            <th scope="col">Task Session ID</th>
+            <th scope="col">Task Type</th>
+            <th scope="col"># Participants</th>
+            <th scope="col"># Confederates</th>
+            <th scope="col">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (var user in Model)
+          {
+            <tr>
+                <td class="task">@Html.DisplayFor(modelItem => user.TaskSessionID)</td>
+                <td class="task">@Html.DisplayFor(modelItem => user.TaskType)</td>
+                <td class="task">@Html.DisplayFor(modelItem => user.participantNumber)</td>
+                <td class="task">@Html.DisplayFor(modelItem => user.confederateNumber)</td>
+                <td class="button" style="width:200px">
+                    <a  class="btn btn-info" style="width:50px" asp-controller="Chessboard" asp-action="Index" asp-route-id="@user.TaskSessionID"><font size="-5">Enter</font></a>
+                    <a  class="btn btn-danger" style="width:50px" asp-action="ViewTask" asp-route-id="@user.TaskSessionID"><font size="-5">View</font></a>
+                    <a  class="btn btn-outline-info" style="width:50px" asp-action="EditTask" asp-route-id="@user.TaskSessionID"><font size="-5">Edit</font></a>
+                    <a  class="btn btn-outline-danger" style="width:50px" asp-action="DeleteTask" asp-route-id="@user.TaskSessionID"><font size="-5">Delete</font></a>
+                </td>
+            </tr>
+          }
+      </table>
     </div>
-</body>
+  </div>
+</div>
+</section>

@@ -1,47 +1,97 @@
+@model IEnumerable<RCDT.Models.ApplicationUser>
+
 @{
- ViewData["Title"] = "Admin Dashboard";
+    ViewData["Title"] = "Admin Dashboard";
 }
-<body>
-    <div class="container-fluid">
-      <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-          <div class="sidebar-sticky">
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link active">
-                  <span data-feather="home"></span>
-                  Dashboard <span class="sr-only">(current)</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="AdminDashboard" asp-action="ManageUsers">
-                  <span data-feather="file"></span>
-                  Manage Accounts
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register">
-                  Register Users
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link">
-                  <span data-feather="users"></span>
-                  TBC
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link">
-                  <span data-feather="bar-chart-2"></span>
-                  TBC
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link">
-                  <span data-feather="layers"></span>
-                  TBC
-                </a>
-              </li>
-            </ul>
+
+<!--<script>
+    function toggleUserTable()
+    {
+        var ut = document.getElementById("userTable");
+        ut.style.display = (ut.style.display == "table") ? "none" : "table";
+    }
+    function toggleParticipantTable()
+    {
+        var pt = document.getElementById("participantTable");
+        pt.style.display = (pt.style.display == "table") ? "none" : "table";
+    }
+</script>-->
+<section>
+<div class="row">
+  <div class="col-md-4"></div>
+  <div style="text-align:center"><h5><b>User List</b></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="manage-table">
+      <table id="userTable" class="table table-hover" style="width: 0px; margin-right: 10px; float:left">
+        <thead>
+          <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col">Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (var user in Model)
+          {
+            @if (user.Role != "Participant" && user.UserName != "testAdmin1@test.com")
+            {
+              <tr>
+                <td>@Html.DisplayFor(modelItem => user.UserName)</td>
+                <td>@Html.DisplayFor(modelItem => user.Email)</td>
+                <td>@Html.DisplayFor(modelItem => user.Role)</td>
+                <td class="button">
+                  <a  class="btn btn-info" width="50%" asp-action="EditUser" asp-route-id="@user.UserName"><font size="-1">Edit</font></a>
+                  <a  class="btn btn-danger" width="50%" asp-action="DeleteUser" asp-route-id="@user.UserName"><font size="-1">Delete</font></a>
+                </td>
+              </tr>
+            }
+          }
+      </table>
     </div>
-</body>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4"></div>
+  <div style="text-align:center"><h5><b>Participant List</b></h5></div>
+</div>
+
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="manage-table">
+      <table id="participantTable" class="table table-hover" style="width: 0px; margin-right: 10px;">
+        <thead>
+          <tr>
+            <th>Participant ID</th>
+            <th>Session Key</th>
+            <th>Role</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (var user in Model)
+          {
+            @if (user.Role == "Participant")
+            {
+              <tr>
+                <td>@Html.DisplayFor(modelItem => user.ParticipantUserId)</td>
+                <td>@Html.DisplayFor(modelItem => user.UserName)</td>
+                <td>@Html.DisplayFor(modelItem => user.Role)</td>
+                <td class="button" style="width:200px">
+                  <a  class="btn btn-info" width="50%" asp-action="EditParticipant" asp-route-id="@user.UserName"><font size="-1">Edit</font></a>
+                  <a  class="btn btn-danger" width="50%" asp-action="DeleteUser" asp-route-id="@user.UserName"><font size="-1">Delete</font></a>
+                </td>
+              </tr>
+            }
+          }
+      </table>
+    </div>
+  </div>
+</div>
+</section>
