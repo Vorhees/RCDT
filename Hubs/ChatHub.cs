@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 using RCDT.Models;
 using System;
 using System.Linq;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace RCDT.Hubs
 {
@@ -44,7 +47,7 @@ namespace RCDT.Hubs
         //     // SaveChat(username, message);
         // }
 
-        public Task JoinGroup(string group)
+        public async Task JoinGroup(string group)
         {
             // var task = _context.Users.Where(taskID => taskID.TaskSessionID == group);
 
@@ -64,7 +67,8 @@ namespace RCDT.Hubs
             // countOfUsers++;
             // Console.WriteLine("Number of users connected: " + countOfUsers);
 
-            return Groups.AddToGroupAsync(Context.ConnectionId, group);
+            await Groups.AddToGroupAsync(Context.ConnectionId, group);
+            
         }
 
         // public bool taskStartCheck()
@@ -103,6 +107,13 @@ namespace RCDT.Hubs
         public override async Task OnConnectedAsync()
         {
             await Clients.All.SendAsync("UserConnected", Context.ConnectionId);
+
+            UserCount.connectedUsers.Add(Context.ConnectionId);
+
+            UserCount.count = UserCount.connectedUsers.Count;
+
+            Console.WriteLine("Users connected: " + UserCount.count);
+
             await base.OnConnectedAsync();
         }
 
@@ -113,7 +124,22 @@ namespace RCDT.Hubs
             // validUsers = 0;
 
             await Clients.All.SendAsync("UserDisconnected", Context.ConnectionId);
+
+            UserCount.connectedUsers.Remove(Context.ConnectionId);
+
+            UserCount.count = UserCount.connectedUsers.Count;
+
+            Console.WriteLine("Users connected: " + UserCount.count);
+
             await base.OnDisconnectedAsync(exception);
         }
+    }
+
+    public static class UserCount
+    {
+        public static HashSet<string> connectedUsers = new HashSet<string>();
+
+        [JsonProperty("count")]
+        public static int count { get; set; }
     }
 }

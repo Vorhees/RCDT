@@ -1,7 +1,7 @@
 "use strict";
 
-var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 var userCount = 0;
+var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 
 // Disabled until connection is established.
 document.getElementById("sendButton").disabled = true;
@@ -9,18 +9,20 @@ document.getElementById("sendButton").disabled = true;
 // Disabled until all group members join the connection.
 document.getElementById("itemBank").style.pointerEvents = "none";
 document.getElementById("chessBoard").style.pointerEvents = "none";
+document.getElementById("itemBank").style.opacity = "0.4";
+document.getElementById("chessBoard").style.opacity = "0.4";
 
 connection.on("ReceiveMessage", function (user, message) {
     
     var msg = message.replace( /&/g, "&amp;" ).replace( /</g, "&lt;" ).replace( />/g, "&gt;" );
     var encodedMsg = user + ": " + msg;
     //var encodedMsg = msg;
+
     var p = document.createElement("p");
 
     p.textContent = encodedMsg;
 
     document.getElementById("chatBox").appendChild(p);
-
 });
 
 connection.on("UserConnected", function(connectionId)
@@ -39,19 +41,22 @@ connection.on("UserConnected", function(connectionId)
         return console.error(err.toString());
     });
 
-    userCount++;
 
-    if (userCount < totalNumInGroup) {
-        console.log("Not enough users connected, Users Connected: " + userCount + "/" + totalNumInGroup);
-    }
+    // userCount++;
 
-    if (userCount == totalNumInGroup)
-    {
-        console.log("Enough members joined, you can start the task");
+    // if (userCount < totalNumInGroup) {
+    //     console.log("Not enough users connected, Users Connected: " + userCount + "/" + totalNumInGroup);
+    // }
 
-        document.getElementById("itemBank").style.pointerEvents = "auto";
-        document.getElementById("chessBoard").style.pointerEvents = "auto";
-    }
+    // if (userCount == totalNumInGroup)
+    // {
+    //     console.log("Enough members joined, you can start the task");
+
+    //     document.getElementById("itemBank").style.pointerEvents = "auto";
+    //     document.getElementById("chessBoard").style.pointerEvents = "auto";
+    //     document.getElementById("itemBank").style.opacity = "1.0";
+    //     document.getElementById("chessBoard").style.opacity = "1.0";
+    // }
 
     event.preventDefault();
 });

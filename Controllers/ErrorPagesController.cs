@@ -9,10 +9,16 @@ using RCDT.Models;
 
 namespace RCDT.Controllers
 {
-     public class RegisterErrorPageController : Controller
+     public class ErrorPagesController : Controller
      {
         [Authorize(Roles = "Admin")]
-        public IActionResult Index()
+        public IActionResult RegisterError()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Admin, Researcher")]
+        public IActionResult TaskCapacityError()
         {
             return View();
         }

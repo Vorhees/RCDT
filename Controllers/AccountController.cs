@@ -178,12 +178,21 @@ namespace RCDT.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RegisterParticipant(RegisterParticipantViewModel participantViewModel, string returnUrl = null)
+        public async Task<IActionResult> RegisterParticipant(RegisterParticipantViewModel participantViewModel, TaskModel tm, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             // //bool comboExist = await _context.Users.AnyAsync(
             //     x => x.UserName == participantViewModel.UserID);
-                
+
+            // var taskCapacityCheck =  _context.Users.Where(taskID => taskID.TaskSessionID == participantViewModel.TaskSessionID);
+            // var numUsers = _context.Tasks.Where(num => num.participantNumber > taskCapacityCheck.Count());
+
+            // if (numUsers.Count() > taskCapacityCheck.Count())
+            // {
+            //     return RedirectToAction("TaskCapacityError", "ErrorPages");
+            // }
+            
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = participantViewModel.SessionKey, ParticipantUserId = participantViewModel.UserID, TaskSessionID = participantViewModel.TaskSessionID, Role = "Participant" };
@@ -200,6 +209,16 @@ namespace RCDT.Controllers
                     //await _signInManager.SignInAsync(user, isPersistent: false);
 
                     _logger.LogInformation("Participant's account was created");
+
+                    // foreach (var users in _userManager.Users)
+                    // {
+                    //     if (users.NumUsersInGroup != numUsers.Count())
+                    //     {
+                    //         _context.Users.Update(users);
+                    //     }
+                    // }
+
+                    // _context.SaveChanges();
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -221,7 +240,7 @@ namespace RCDT.Controllers
             
             if (duplicateExists)
             {
-                return RedirectToAction("Index", "RegisterErrorPage");
+                return RedirectToAction("RegisterError", "ErrorPages");
             }
 
             if (ModelState.IsValid)
