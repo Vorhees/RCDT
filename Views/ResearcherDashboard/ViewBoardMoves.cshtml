@@ -24,10 +24,10 @@
                     @foreach (var user in Model)
                     {
                         <tr>
-                        <td>@Html.DisplayFor(modelItem => TaskSessionId)</td>
-                        <td>@Html.DisplayFor(modelItem => UserName)</td>
-                        <td>@Html.DisplayFor(modelItem => dateTime)</td>
-                        <td>@Html.DisplayFor(modelItem => BoardState)</td>
+                        <td>@Html.DisplayFor(modelItem => user.TaskSessionID)</td>
+                        <td>@Html.DisplayFor(modelItem => user.UserName)</td>
+                        <td>@Html.DisplayFor(modelItem => user.dateTime)</td>
+                        <td>@Html.DisplayFor(modelItem => user.BoardState)</td>
                         </tr>
                     }
                 </table>

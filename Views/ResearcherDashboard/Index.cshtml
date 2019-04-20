@@ -33,10 +33,14 @@
                 <td class="task">@Html.DisplayFor(modelItem => user.confederateNumber)</td>
                 <td class="button" style="width:200px">
                     <a  class="btn btn-info" style="width:50px" asp-controller="Chessboard" asp-action="Index" asp-route-id="@user.TaskSessionID"><font size="-5">Enter</font></a>
+
                     <a  class="btn btn-danger" style="width:50px" asp-action="ViewTask" asp-route-id="@user.TaskSessionID"><font size="-5">View</font></a>
+
                     <a  class="btn btn-outline-info" style="width:50px" asp-action="EditTask" asp-route-id="@user.TaskSessionID"><font size="-5">Edit</font></a>
+
                     <a  class="btn btn-outline-danger" style="width:50px" asp-action="DeleteTask" asp-route-id="@user.TaskSessionID"><font size="-5">Delete</font></a>
-                    <a class="btn btn-danger" style=width:50px" asp-action="ViewTaskMoveLog" asp-route-id=@user.TaskSessionID"><font size="-5">Move Log</font></a>
+
+                    <a  class="btn btn-outline-danger" style="width:50px" asp-action="ViewBoardMoves" asp-route-id="@user.TaskSessionID"><font size="-5">Move Log</font></a>
                 </td>
             </tr>
           }

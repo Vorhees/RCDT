@@ -1,7 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-
 namespace RCDT.Models
 {
     public class ChessBoardMoveLog

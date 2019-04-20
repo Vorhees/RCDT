@@ -47,6 +47,7 @@ namespace RCDT.Controllers
                    dateTime = DateTime.UtcNow,
                    BoardState = nextMove.BoardState
                 };
+                
                 _context.ChessBoardMoveLog.Add(move);
                 _context.SaveChanges();
          }

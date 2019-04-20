@@ -178,6 +178,18 @@ namespace RCDT.Controllers
             return View(task);
         }
 
+        public IActionResult ViewBoardMoves(string id)
+        {
+            var taskSesh = _context.ChessBoardMoveLog.Where(taskID => taskID.TaskSessionID == id).ToList();
+
+            if (taskSesh == null)
+            {
+                return NotFound();
+            }
+
+            return View(taskSesh);
+        }
+
         // private IEnumerable<SelectListItem> GetTaskTypes()
         // {
         //     return new SelectListItem[]
