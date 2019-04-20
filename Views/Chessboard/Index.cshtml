@@ -7,29 +7,27 @@
 
 <head>
     <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script>
-                
+    <script>                
         const audio = document.querySelector('audio');
-        console.log(audio);
         const constraints = window.constraints = {
             audio: true,
             video: false
         };
-        function handleSuccess(stream) {
+        function streamAudio(stream) {
+            console.log('in streamAudio');
             const audioTracks = stream.getAudioTracks();
-            console.log('Got stream with constraints:', constraints);
-            console.log('Using audio device: ' + audioTracks[0].label);
             stream.oninactive = function() {
                 console.log('Stream ended');
             };
-            window.stream = stream; // make variable available to browser console
+            window.stream = stream;
             audio.srcObject = stream;
         }
         function handleError(error) {
             console.log('navigator.MediaDevices.getUserMedia error: ', error.message, error.name);
         }
-        navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
-
+        console.log('before navigator line');
+        navigator.mediaDevices.getUserMedia(constraints).then(streamAudio).catch(handleError);
+        console.log('after navigator line');
         var moveNumber = 0;
         var count = 0;
         var letter = ["a","b","c","d","e","f","g","h"];
