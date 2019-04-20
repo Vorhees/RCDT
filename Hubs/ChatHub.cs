@@ -7,6 +7,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Identity;
 
 namespace RCDT.Hubs
 {
@@ -14,15 +15,17 @@ namespace RCDT.Hubs
     {
         //private Models.ApplicationUser user;
         private readonly DataContext _context;
+        private UserManager<ApplicationUser> _userManager;
         // private static int countOfUsers = 0;
         // private static int validUsers = 0;
        // private readonly TaskModel taskModel;
 
         public int messageID = 0;
 
-        public ChatHub(DataContext context)
+        public ChatHub(DataContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // public async Task SendMessage(string username, string message)
@@ -106,8 +109,14 @@ namespace RCDT.Hubs
 
         public override async Task OnConnectedAsync()
         {
+            var user = await _userManager.FindByNameAsync(Context.User.Identity.Name);
 
-            UserCount.connectedUsers.Add(Context.ConnectionId);
+            var isResearcher = await _userManager.IsInRoleAsync(user, "Researcher");
+
+            if (!isResearcher)
+            {
+                UserCount.connectedUsers.Add(Context.ConnectionId);
+            }
 
             UserCount.count = UserCount.connectedUsers.Count;
 
