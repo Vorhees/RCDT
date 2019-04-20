@@ -22,11 +22,13 @@ namespace RCDT.Controllers
     public class ResearcherDashboardController : Controller
     {
         private DataContext _context;
+        private UserManager<ApplicationUser> _userManager;
         
         //[Authorize(Policy = "RequireResearcherRole")]
-        public ResearcherDashboardController(DataContext context)
+        public ResearcherDashboardController(DataContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
  
         public IActionResult Index()
@@ -188,6 +190,38 @@ namespace RCDT.Controllers
             }
 
             return View(taskSesh);
+        }
+
+        public async Task<IActionResult> DeleteParticipant(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _userManager.FindByNameAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(new ApplicationUser
+            {
+                UserName = user.UserName,
+                ParticipantUserId = user.ParticipantUserId,
+                Role = user.Role
+            });
+        }
+
+        [HttpPost, ActionName("DeleteParticipant")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ParticipantDelete(string id)
+        {
+            var user = await _userManager.FindByNameAsync(id);
+            await _userManager.DeleteAsync(user);
+
+            return RedirectToAction("ManageParticipants", "ResearcherDashboard");
         }
 
         // private IEnumerable<SelectListItem> GetTaskTypes()

@@ -33,6 +33,9 @@
                 <td>@Html.DisplayFor(modelItem => user.UserName)</td>
                 <td>@Html.DisplayFor(modelItem => user.TaskSessionID)</td>
                 <td>@Html.DisplayFor(modelItem => user.Role)</td>
+                <td>
+                  <a  class="btn btn-outline-danger" style="width:50px" asp-action="DeleteParticipant" asp-route-id="@user.UserName"><font size="-5">Delete</font></a>
+                </td>
               </tr>
             }
           }
