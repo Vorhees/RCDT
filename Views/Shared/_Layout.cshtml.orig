@@ -108,9 +108,18 @@
                 @if (!User.IsInRole("Admin") && !User.IsInRole("Research Assistant") && !User.IsInRole("IRB Reviewer") && !User.IsInRole("Transcriber") && !User.IsInRole("Researcher") && !User.IsInRole("Participant"))
                 {
                     <div class="nav-middle">
+<<<<<<< HEAD
                         <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Login"><h2>RCDT</h2></a>
                     </div>
-                    <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img src="~/images/home.png"></a>
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/home.png">
+=======
+                        <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Login">RCDT</a>
+                    </div>
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                            <img src="~/images/home_icon.png" id="homeImage" style="width:40px;height:40px;margin-bottom:20px;" />
+>>>>>>> 4dae81fe1f0740021f523fe5a530d410998fa3e4
+                    </a>
                 }
                 else
                 {
@@ -122,7 +131,13 @@
                     
                     <div class="nav-middle">
                         <a class="navbar-brand"><h2>RCDT</h2></a>
+<<<<<<< HEAD
                         <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img src="~/images/home.png"></a>
+=======
+                        <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                            <img src="~/images/home_icon.png" id="homeImage" style="width:40px;height:40px;margin-bottom:20px;" />
+                        </a>
+>>>>>>> 4dae81fe1f0740021f523fe5a530d410998fa3e4
                     </div>
                 }
                 <div class="nav-left">
