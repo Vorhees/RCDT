@@ -104,10 +104,10 @@
     <!-- Page Content -->
     <div id="content" class="fixed">
         <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
-            <div class="container-fluid">
+            <div class="container-fluid" id="navbarcontainer"> 
                 @if (!User.IsInRole("Admin") && !User.IsInRole("Research Assistant") && !User.IsInRole("IRB Reviewer") && !User.IsInRole("Transcriber") && !User.IsInRole("Researcher") && !User.IsInRole("Participant"))
                 {
-                    <div class="nav-middle">
+                    <div class="nav-middle" >
                         <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Login"><h4>RCDT</h4></a>
                     </div>
                     <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img src="~/images/home.png" style="margin-bottom:20px"></a>

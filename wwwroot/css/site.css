@@ -364,3 +364,7 @@ td.button {
   background: linear-gradient(to right, rgb(58, 123, 213, 0.2), rgb(0, 210, 255, 0.2)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
    
 }
+
+#navbarcontainer{
+  visibility: hidden;  
+}

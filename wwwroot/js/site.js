@@ -8,4 +8,21 @@ $(document).ready(function () {
         $('#sidebar').toggleClass('active');
     });
 
+    $('#navbar').on('mouseover', function () {
+        setVisible();
+    });
+
+    $('#navbar').on('mouseleave', function () {
+        setHidden();
+    });
 });
+
+function setVisible()
+  {
+    document.getElementById("navbarcontainer").style.visibility="visible";
+  }
+
+function setHidden()
+  {
+    document.getElementById("navbarcontainer").style.visibility="hidden";
+  }
