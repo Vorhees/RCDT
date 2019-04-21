@@ -1,23 +1,22 @@
-        const audio = document.querySelector('audio');
-        const constraints = window.constraints = {
-            audio: true,
-            video: false
-        };
-        function streamAudio(stream) {
-            console.log('in streamAudio');
-            const audioTracks = stream.getAudioTracks();
-            stream.oninactive = function() {
-                console.log('Stream ended');
-            };
-            window.stream = stream;
-            audio.srcObject = stream;
-        }
-        function handleError(error) {
-            console.log('navigator.MediaDevices.getUserMedia error: ', error.message, error.name);
-        }
-        console.log('before navigator line');
-        navigator.mediaDevices.getUserMedia(constraints).then(streamAudio).catch(handleError);
-        console.log('after navigator line');
+var constraints = {audio: true, video: false};
+
+navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream){
+    var audio = document.querySelector('audio');
+    audio.srcObject = mediaStream;
+    audio.onloadedmetadata = function(e){
+        audio.play();
+    };
+}).catch(function(err){console.log(err.name + err.message);});
+
+
+
+
+
+
+
+
+
+
         var moveNumber = 0;
         var count = 0;
         var letter = ["a","b","c","d","e","f","g","h"];
