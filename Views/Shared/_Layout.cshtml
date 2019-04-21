@@ -108,12 +108,11 @@
                 @if (!User.IsInRole("Admin") && !User.IsInRole("Research Assistant") && !User.IsInRole("IRB Reviewer") && !User.IsInRole("Transcriber") && !User.IsInRole("Researcher") && !User.IsInRole("Participant"))
                 {
                     <div class="nav-middle">
-                        <a class="navbar-brand"><h2>RCDT</h2></a>
+                        <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Login">RCDT</a>
                     </div>
                     <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                        Home
+                            <img src="~/images/home_icon.png" id="homeImage" style="width:40px;height:40px;margin-bottom:20px;" />
                     </a>
-                    <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
                 }
                 else
                 {
@@ -125,7 +124,9 @@
                     
                     <div class="nav-middle">
                         <a class="navbar-brand"><h2>RCDT</h2></a>
-                        <a class="navbar-brand" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                            <img src="~/images/home_icon.png" id="homeImage" style="width:40px;height:40px;margin-bottom:20px;" />
+                        </a>
                     </div>
                 }
                 <div class="nav-left">
@@ -137,7 +138,7 @@
                         {
                             <li class="nav-item">
                                 <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logout" class="navbar-right">
-                                    <input type="image" class="btn btn-link navbar-btn nav-link text-dark" value="Submit" src="~/images/logout.png" style="width:47px;height:50px;">
+                                    <input type="image" class="btn btn-link navbar-btn nav-link text-dark" value="Submit" src="~/images/logout.png" style="width:47px;height:50px;margin-bottom:20px;">
                                 </form>
                             </li>
                         }
