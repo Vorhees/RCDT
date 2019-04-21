@@ -1,9 +1,8 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+﻿@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 a.navbar-brand {
   white-space: normal;
-  text-align: center;
+  text-align: left;
   word-break: break-all;
 }
 
@@ -76,7 +75,6 @@ html {
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 body {
     font-family: 'Poppins', sans-serif;
-    background: white;
 }
 
 p {
@@ -218,9 +216,9 @@ a[data-toggle="collapse"] {
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 
-body {
+body#homePage {
     font-family: 'Poppins', sans-serif;
-    background: #fafafa;
+    background: linear-gradient(to right, #c9d6ff, #e2e2e2);
 }
 
 p {
@@ -285,7 +283,6 @@ ul ul a {
 
 #content {
   width: 100%;
-
 }
 
 td {
@@ -299,4 +296,64 @@ td.task {
 
 td.button {
   width: 100%;
+}
+
+/* navbar */
+.navbar.navbar-expand-lg.navbar-light{
+  background: white;
+}
+.navbar .navbar-brand {
+  color: #59abbf;
+}
+.navbar .navbar-brand:hover,
+.navbar .navbar-brand:focus {
+  color: #151313;
+}
+.navbar .navbar-text {
+  color: #59abbf;
+}
+.navbar .navbar-text a {
+  color: #151313;
+}
+.navbar .navbar-text a:hover,
+.navbar .navbar-text a:focus {
+  color: #151313; 
+}
+.navbar .navbar-nav .nav-link {
+  color: #59abbf;
+  border-radius: .25rem;
+  margin: 0 0.25em;
+}
+.navbar .navbar-nav .nav-link:not(.disabled):hover,
+.navbar .navbar-nav .nav-link:not(.disabled):focus {
+  color: #151313;
+}
+.navbar .navbar-nav .nav-item.active .nav-link,
+.navbar .navbar-nav .nav-item.active .nav-link:hover,
+.navbar .navbar-nav .nav-item.active .nav-link:focus,
+.navbar .navbar-nav .nav-item.show .nav-link,
+.navbar .navbar-nav .nav-item.show .nav-link:hover,
+.navbar .navbar-nav .nav-item.show .nav-link:focus {
+  color: #151313;
+  background-color: #f0e1e0;
+}
+.navbar .navbar-toggle {
+  border-color: #f0e1e0;
+}
+.navbar .navbar-toggle:hover,
+.navbar .navbar-toggle:focus {
+  background-color: #f0e1e0;
+}
+.navbar .navbar-toggle .navbar-toggler-icon {
+  color: #59abbf;
+}
+.navbar .navbar-collapse,
+.navbar .navbar-form {
+  border-color: #59abbf;
+}
+.navbar .navbar-link {
+  color: #59abbf;
+}
+.navbar .navbar-link:hover {
+  color: #151313;
 }

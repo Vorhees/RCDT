@@ -103,12 +103,12 @@
 
     <!-- Page Content -->
     <div id="content" class="fixed">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
             <div class="container-fluid">
                 @if (!User.IsInRole("Admin") && !User.IsInRole("Research Assistant") && !User.IsInRole("IRB Reviewer") && !User.IsInRole("Transcriber") && !User.IsInRole("Researcher") && !User.IsInRole("Participant"))
                 {
                     <div class="nav-middle">
-                        <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Login"><h2>RCDT</h2></a>
+                    <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Login"><h4>RCDT</h4></a>
                     </div>
                     <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img src="~/images/home.png"></a>
                 }
@@ -121,7 +121,6 @@
                     </div>
                     
                     <div class="nav-middle">
-                        <a class="navbar-brand"><h2>RCDT</h2></a>
                         <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img src="~/images/home.png"></a>
                     </div>
                 }

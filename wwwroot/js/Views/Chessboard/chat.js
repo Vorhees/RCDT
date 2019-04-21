@@ -17,6 +17,7 @@ connection.on("ReceiveMessage", function (user, message) {
     //var encodedMsg = msg;
 
     var p = document.createElement("p");
+    p.style.color = "blue";
 
     p.textContent = encodedMsg;
 
