@@ -303,14 +303,14 @@ td.button {
   background: white;
 }
 .navbar .navbar-brand {
-  color: #59abbf;
+  color: rgb(0, 0, 0);
 }
 .navbar .navbar-brand:hover,
 .navbar .navbar-brand:focus {
-  color: #151313;
+  color: #0099ff;
 }
 .navbar .navbar-text {
-  color: #59abbf;
+  color: rgb(89, 171, 191);
 }
 .navbar .navbar-text a {
   color: #151313;
@@ -356,4 +356,11 @@ td.button {
 }
 .navbar .navbar-link:hover {
   color: #151313;
+}
+
+#navbar{
+  background: rgb(0, 210, 255, 0.2);  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, rgb(58, 123, 213, 0.2), rgb(0, 210, 255 0.2));  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, rgb(58, 123, 213, 0.2), rgb(0, 210, 255, 0.2)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+   
 }
