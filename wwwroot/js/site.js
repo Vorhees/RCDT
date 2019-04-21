@@ -8,7 +8,7 @@ $(document).ready(function () {
         $('#sidebar').toggleClass('active');
     });
 
-    $('#navbar').on('mouseover', function () {
+    $('#dummy').on('mouseover', function () {
         setVisible();
     });
 
@@ -19,10 +19,18 @@ $(document).ready(function () {
 
 function setVisible()
   {
-    document.getElementById("navbarcontainer").style.visibility="visible";
+    document.getElementById("navbar").style="margin-top:0px";
+    document.getElementById("navbar").style.height="100px";
+    document.getElementById("navbar").style.visibility="visible";
+    document.getElementById("dummy").style="margin-top:0px";
+    document.getElementById("dummy").style.visibility="hidden";
   }
 
 function setHidden()
   {
-    document.getElementById("navbarcontainer").style.visibility="hidden";
+    document.getElementById("navbar").style="margin-top:-100px";
+    document.getElementById("navbar").style.visibility="hidden";
+    document.getElementById("navbar").style.height="50px";
+    document.getElementById("dummy").style="margin-top:100px";
+    document.getElementById("dummy").style.visibility="visible";
   }
