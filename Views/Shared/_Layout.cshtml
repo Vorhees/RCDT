@@ -108,12 +108,11 @@
                 @if (!User.IsInRole("Admin") && !User.IsInRole("Research Assistant") && !User.IsInRole("IRB Reviewer") && !User.IsInRole("Transcriber") && !User.IsInRole("Researcher") && !User.IsInRole("Participant"))
                 {
                     <div class="nav-middle">
-                        <a class="navbar-brand"><h2>RCDT</h2></a>
+                        <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Login"><h2>RCDT</h2></a>
                     </div>
                     <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                        Home
+                    <img src="~/images/home.png">
                     </a>
-                    <a class="navbar-brand" asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
                 }
                 else
                 {
@@ -125,7 +124,7 @@
                     
                     <div class="nav-middle">
                         <a class="navbar-brand"><h2>RCDT</h2></a>
-                        <a class="navbar-brand" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img src="~/images/home.png"></a>
                     </div>
                 }
                 <div class="nav-left">
