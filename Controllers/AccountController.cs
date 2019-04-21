@@ -112,9 +112,9 @@ namespace RCDT.Controllers
 
                     return RedirectToAction("Index", "Chessboard", new {id = user.TaskSessionID});
                 }
-                if (string.IsNullOrEmpty(user.TaskSessionID))
+                if (!result.Succeeded || string.IsNullOrEmpty(user.TaskSessionID))
                 {
-                    ModelState.AddModelError(string.Empty, "You do not have a task session ID assigned.");
+                    ModelState.AddModelError(string.Empty, "Invalid login");
 
                     return View(loginParticipantModel);
                 }

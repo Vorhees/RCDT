@@ -29,6 +29,7 @@ connection.on("UserConnected", function(connectionId, count)
     var totalNumInGroup = document.getElementById("userCount").value;
 
     console.log("User is connected with connection ID: " + connectionId)
+    console.log("Total Users in group: " + totalNumInGroup);
 
     console.log("Number of users connected: " + count);
 
@@ -40,7 +41,6 @@ connection.on("UserConnected", function(connectionId, count)
     {
         return console.error(err.toString());
     });
-
 
     if (count < totalNumInGroup) {
         console.log("Not enough users connected, Users Connected: " + count + "/" + totalNumInGroup);
@@ -73,11 +73,6 @@ connection.on("UserDisconnected", function(connectionId)
     }
 });
 
-// connection.on("UserNumber", function(count)
-// {
-//     console.log("Number of users joined: " + count);
-// });
-
 connection.start().then(function() {
 
     document.getElementById("sendButton").disabled = false;
@@ -95,7 +90,6 @@ document.getElementById("sendButton").addEventListener("click", function (event)
     //var groupValue = groupElement.options[groupElement.selectedIndex].value;
 
     connection.invoke("SendMessageToGroup", groupElement, user, message).catch(function (err) {
-        //console.log(user);
         return console.error(err.toString());
     });
 
