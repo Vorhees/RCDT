@@ -16,8 +16,9 @@
         .chess-board .dark { background: #000; }
     </style>
 </head>
-
-<img src="~/images/disconnected.png" id="connectionStatus" onclick = "ChessboardView.audioConnDisconn()" style="vertical-align:right;width:80px;height:70px;">
+<audio id = 'player' controls></audio>
+<!--image that will be used for connect/disconnect/status-->
+<!--<img src="~/images/disconnected.png" id="connectionStatus" onclick = "ChessboardView.audioConnDisconn()" style="vertical-align:right;width:80px;height:70px;">-->
 
 <div class="container" >
     <input type="hidden" id="sess" value="@Model.TaskSessionID"/>

@@ -1,19 +1,19 @@
 var constraints = {audio: true, video: false};
-function audioConnDisconn(){
+//function audioConnDisconn(){
 navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream){
     var audio = document.querySelector('audio');
-    if (connectionStatus.getElementById('disconnected')){
+    //if (connectionStatus.getElementById('disconnected')){
     audio.srcObject = mediaStream;
     audio.onloadedmetadata = function(e){
         audio.play();
 
-    };
-} else{
-    audio.onloadedmetadata = function(e){
-        audio.pause();
-    }
+  //  };
+//} else{
+  //  audio.onloadedmetadata = function(e){
+    //    audio.pause();
+    //}
 }
-}).catch(function(err){console.log(err.name + err.message);});};
+}).catch(function(err){console.log(err.name + err.message);});//};
 
 
 
