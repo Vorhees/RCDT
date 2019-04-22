@@ -91,8 +91,6 @@ namespace RCDT.Hubs
             {
                 // UserCount.UserList.Add(new KeyValuePair<string, string>(user.TaskSessionID, Context.ConnectionId));
 
-                // UserCount.count = UserCount.UserList.ToLookup(kvp => kvp.Key.Contains(user.TaskSessionID)).Distinct().Count();
-
                 UserCount.taskList.Add(user.TaskSessionID);
                 Console.WriteLine("Added: " + user.TaskSessionID);
             }
@@ -108,12 +106,12 @@ namespace RCDT.Hubs
             {
                 Console.WriteLine("Key:" + item.Key + " | Value:" + item.Value);
 
-                if (item.Key == user.TaskSessionID)
+                if (user.TaskSessionID == item.Key)
                 {
                     UserCount.count = res[item.Key];
+
                     Console.WriteLine("Value is: " + UserCount.count);
                 }
-                
             }
 
             await Clients.All.SendAsync("UserConnected", Context.ConnectionId, UserCount.count);
@@ -139,7 +137,7 @@ namespace RCDT.Hubs
     {
         // public static Dictionary<string, string> UserList = new Dictionary<string, string>();
 
-        public static List<KeyValuePair<string, string>> UserList = new List<KeyValuePair<string,string>>();
+        // public static List<KeyValuePair<string, string>> UserList = new List<KeyValuePair<string,string>>();
 
         public static List<string> taskList = new List<string>();
 

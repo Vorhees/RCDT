@@ -125,7 +125,7 @@ namespace RCDT.Controllers
             _context.Tasks.Update(task);
             _context.SaveChanges();
 
-            return RedirectToAction("ManageTasks", "ResearcherDashboard");
+            return RedirectToAction("Index", "ResearcherDashboard");
         }
 
         public async Task<IActionResult> DeleteTask(string id)
@@ -160,7 +160,7 @@ namespace RCDT.Controllers
             _context.Remove<TaskModel>(task);
             _context.SaveChanges();
 
-            return RedirectToAction("ManageTasks", "ResearcherDashboard");
+            return RedirectToAction("Index", "ResearcherDashboard");
         }
 
         public IActionResult ViewTask(string id)
