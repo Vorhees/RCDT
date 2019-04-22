@@ -6,7 +6,6 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using Microsoft.AspNetCore.Identity;
 
 namespace RCDT.Hubs
@@ -17,7 +16,7 @@ namespace RCDT.Hubs
         private readonly DataContext _context;
         private UserManager<ApplicationUser> _userManager;
         // private static int countOfUsers = 0;
-        // private static int validUsers = 0;
+        public static int totalUsers;
        // private readonly TaskModel taskModel;
 
         public int messageID = 0;
@@ -52,44 +51,12 @@ namespace RCDT.Hubs
 
         public async Task JoinGroup(string group)
         {
-            // var task = _context.Users.Where(taskID => taskID.TaskSessionID == group);
+            var task = _context.Users.Where(taskID => taskID.TaskSessionID == group);
 
-            // validUsers = task.Count();
-            
-            // Console.WriteLine("Total number of users in group: " + validUsers);
-
-            // // if (countOfUsers < validUsers)
-            // // {
-            // //     Console.WriteLine("NOT ENOUGH MEMBERS CONNECTED");
-            // // }
-            // // else
-            // // {
-            // //     Console.WriteLine("Enough members connected, You may begin the task");
-            // // }
-
-            // countOfUsers++;
-            // Console.WriteLine("Number of users connected: " + countOfUsers);
+            totalUsers = task.Count();
 
             await Groups.AddToGroupAsync(Context.ConnectionId, group);
-            
         }
-
-        // public bool taskStartCheck()
-        // {
-        //     bool flag = false;
-
-        //     if (countOfUsers < validUsers)
-        //     {
-        //         Console.WriteLine("NOT ENOUGH MEMBERS CONNECTED");
-        //     }
-        //     else
-        //     {
-        //         Console.WriteLine("Enough members connected, You may begin the task");
-        //         flag = true;
-        //     }
-
-        //     return flag;
-        // }
 
         public async Task SendMessageToGroup(string group, string username, string message)
         {
@@ -110,39 +77,57 @@ namespace RCDT.Hubs
         public override async Task OnConnectedAsync()
         {
             var user = await _userManager.FindByNameAsync(Context.User.Identity.Name);
-
             var isResearcher = await _userManager.IsInRoleAsync(user, "Researcher");
+            var isParticipant = await _userManager.IsInRoleAsync(user, "Participant");
 
-            if (!isResearcher)
+            Console.WriteLine("Total users in group: " + totalUsers);
+
+            // if (isResearcher)
+            // {
+            //     UserCount.UserList.Add(new KeyValuePair<string, string>("Researcher", Context.ConnectionId));
+            // }
+
+            if (!isResearcher && isParticipant)
             {
-                UserCount.connectedUsers.Add(Context.ConnectionId);
+                // UserCount.UserList.Add(new KeyValuePair<string, string>(user.TaskSessionID, Context.ConnectionId));
+
+                // UserCount.count = UserCount.UserList.ToLookup(kvp => kvp.Key.Contains(user.TaskSessionID)).Distinct().Count();
+
+                UserCount.taskList.Add(user.TaskSessionID);
+                Console.WriteLine("Added: " + user.TaskSessionID);
             }
 
-            UserCount.count = UserCount.connectedUsers.Count;
+            foreach (var item in UserCount.taskList)
+            {
+                Console.WriteLine("Item in list: " + item);
+            }
+
+            var res = UserCount.taskList.GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count());
+            
+            foreach (var item in res)
+            {
+                Console.WriteLine("Key:" + item.Key + " | Value:" + item.Value);
+
+                if (item.Key == user.TaskSessionID)
+                {
+                    UserCount.count = res[item.Key];
+                    Console.WriteLine("Value is: " + UserCount.count);
+                }
+                
+            }
 
             await Clients.All.SendAsync("UserConnected", Context.ConnectionId, UserCount.count);
-
-            Console.WriteLine("Users connected: " + UserCount.count);
-
+            
             await base.OnConnectedAsync();
         }
 
-        // public async Task usersJoined()
-        // {
-        //     await Clients.All.SendAsync("UserNumber", UserCount.count);
-        // }
-
         public override async Task OnDisconnectedAsync(Exception exception)
         {
-            // // Temporary
-            // countOfUsers = 0;
-            // validUsers = 0;
-
             await Clients.All.SendAsync("UserDisconnected", Context.ConnectionId);
 
-            UserCount.connectedUsers.Remove(Context.ConnectionId);
+            // UserCount.connectedUsers.Remove(Context.ConnectionId);
 
-            UserCount.count = UserCount.connectedUsers.Count;
+            // UserCount.count = UserCount.connectedUsers.Count;
 
             Console.WriteLine("Users connected: " + UserCount.count);
 
@@ -152,9 +137,14 @@ namespace RCDT.Hubs
 
     public static class UserCount
     {
-        public static HashSet<string> connectedUsers = new HashSet<string>();
+        // public static Dictionary<string, string> UserList = new Dictionary<string, string>();
 
-        [JsonProperty("count")]
+        public static List<KeyValuePair<string, string>> UserList = new List<KeyValuePair<string,string>>();
+
+        public static List<string> taskList = new List<string>();
+
+        // public static HashSet<string> groupName = new HashSet<string>();
         public static int count { get; set; }
+        public static int researcherCount { get; set; }
     }
 }
