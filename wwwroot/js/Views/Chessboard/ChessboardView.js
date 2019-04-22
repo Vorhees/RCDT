@@ -1,19 +1,12 @@
 var constraints = {audio: true, video: false};
-
+function audioConnDisconn(){
 navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream){
     var audio = document.querySelector('audio');
     audio.srcObject = mediaStream;
     audio.onloadedmetadata = function(e){
         audio.play();
     };
-}).catch(function(err){console.log(err.name + err.message);});
-
-
-
-
-
-
-
+}).catch(function(err){console.log(err.name + err.message);});};
 
 
 
