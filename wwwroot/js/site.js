@@ -8,16 +8,16 @@ $(document).ready(function () {
         $('#sidebar').toggleClass('active');
     });
 
-    $('#dummy').on('mouseover', function () {
+    /*$('#dummy').on('mouseover', function () {
         setVisible();
     });
 
     $('#navbar').on('mouseleave', function () {
         setHidden();
-    });
+    });*/
 });
 
-function setVisible()
+/*function setVisible()
   {
     document.getElementById("navbar").style="margin-top:0px";
     document.getElementById("navbar").style.height="100px";
@@ -33,4 +33,4 @@ function setHidden()
     document.getElementById("navbar").style.height="50px";
     document.getElementById("dummy").style="margin-top:100px";
     document.getElementById("dummy").style.visibility="visible";
-  }
+  }*/
