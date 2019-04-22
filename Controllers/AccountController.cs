@@ -214,10 +214,13 @@ namespace RCDT.Controllers
         {
             ViewData["ReturnUrl"] = returnUrl;
 
-            bool duplicateExists = await _context.Users.AnyAsync
+            bool duplicateEmail = await _context.Users.AnyAsync
             (u => u.Email == registerModel.Email);
+
+            bool duplicateUsername = await _context.Users.AnyAsync
+            (u => u.UserName == registerModel.Username);
             
-            if (duplicateExists)
+            if (duplicateEmail || duplicateUsername)
             {
                 return RedirectToAction("RegisterError", "ErrorPages");
             }

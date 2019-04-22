@@ -18,7 +18,6 @@ namespace RCDT.Controllers
     {
         private DataContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
-
         private IEmailSender _emailSender;
 
         public AdminDashboardController(DataContext context, UserManager<ApplicationUser> userManager, IEmailSender emailSender)
@@ -96,7 +95,7 @@ namespace RCDT.Controllers
                     }
                 }
                 
-                return RedirectToAction(nameof(ManageUsers));
+                return RedirectToAction(nameof(Index));
             }
 
             return View(appUser);
@@ -171,7 +170,7 @@ namespace RCDT.Controllers
                     }
                 }
                 
-                return RedirectToAction(nameof(ManageUsers));
+                return RedirectToAction(nameof(Index));
             }
 
             return View(appUser);
@@ -211,7 +210,7 @@ namespace RCDT.Controllers
             var user = await _userManager.FindByNameAsync(id);
             await _userManager.DeleteAsync(user);
 
-            return RedirectToAction("ManageUsers", "AdminDashboard");
+            return RedirectToAction("Index", "AdminDashboard");
         }
         
     }

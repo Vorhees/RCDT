@@ -218,7 +218,7 @@ a[data-toggle="collapse"] {
 
 body#homePage {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to right, #c9d6ff, #e2e2e2);
+    background-color: white
 }
 
 p {
@@ -359,8 +359,13 @@ td.button {
   color: #151313;
 }
 
-#navbar{
-  background: rgb(0, 210, 255, 0.2);  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, rgb(58, 123, 213, 0.2), rgb(0, 210, 255 0.2));  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, rgb(58, 123, 213, 0.2), rgb(0, 210, 255, 0.2)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+/* #navbar{
+  background: rgb(0, 210, 255, 0.2);
+  background: -webkit-linear-gradient(to right, rgb(58, 123, 213, 0.2), rgb(0, 210, 255 0.2));  
+  background: linear-gradient(to right, rgb(58, 123, 213, 0.2), rgb(0, 210, 255, 0.2));
+} */
+
+#navbar
+{
+  background-color: white;
 }
