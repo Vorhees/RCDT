@@ -24,7 +24,7 @@ connection.on("ReceiveMessage", function (user, message) {
     document.getElementById("chatBox").appendChild(p);
 });
 
-connection.on("UserConnected", function(connectionId, count)
+connection.on("UserConnected", function(connectionId, count, groupName)
 {
     var totalNumInGroup = document.getElementById("userCount").value;
 
@@ -42,18 +42,28 @@ connection.on("UserConnected", function(connectionId, count)
         return console.error(err.toString());
     });
 
-    if (count < totalNumInGroup) {
-        console.log("Not enough users connected, Users Connected: " + count + "/" + totalNumInGroup);
-    }
-
-    if (count == totalNumInGroup)
+    if (groupElement.value == groupName)
     {
+        console.log("My group name is (html): " + groupElement.value);
+        console.log("My group name is (server): " + groupName);
+
+        if (count < totalNumInGroup) {
+            console.log("Not enough users connected in group: "+ groupName + ", Users Connected: " + count + "/" + totalNumInGroup);
+        }
+
+        if (count == totalNumInGroup)
+        {
         console.log("Enough members joined, you can start the task");
 
         document.getElementById("itemBank").style.pointerEvents = "auto";
         document.getElementById("chessBoard").style.pointerEvents = "auto";
         document.getElementById("itemBank").style.opacity = "1.0";
         document.getElementById("chessBoard").style.opacity = "1.0";
+        }
+    }
+    else
+    {
+        count = count--;
     }
 
     event.preventDefault();
@@ -62,7 +72,7 @@ connection.on("UserConnected", function(connectionId, count)
 connection.on("UserDisconnected", function(connectionId)
 {
     var groupElement = document.getElementById("group");
-
+    count--;
     for (var i = 0; i < groupElement.length; i++)
     {
         if (groupElement.options[i].value == connectionId)

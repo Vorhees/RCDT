@@ -106,27 +106,27 @@ namespace RCDT.Hubs
             {
                 Console.WriteLine("Key:" + item.Key + " | Value:" + item.Value);
 
-                if (user.TaskSessionID == item.Key)
+                if(user.TaskSessionID == item.Key)
                 {
                     UserCount.count = res[item.Key];
 
-                    Console.WriteLine("Value is: " + UserCount.count);
+                    Console.WriteLine("Current value is:  " + UserCount.count); 
                 }
             }
 
-            await Clients.All.SendAsync("UserConnected", Context.ConnectionId, UserCount.count);
+            await Clients.All.SendAsync("UserConnected", Context.ConnectionId, UserCount.count, user.TaskSessionID);
             
             await base.OnConnectedAsync();
         }
 
         public override async Task OnDisconnectedAsync(Exception exception)
         {
+            var user = await _userManager.FindByNameAsync(Context.User.Identity.Name);
+            var res = UserCount.taskList.GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count());
+
+            UserCount.count--;
+
             await Clients.All.SendAsync("UserDisconnected", Context.ConnectionId);
-
-            // UserCount.connectedUsers.Remove(Context.ConnectionId);
-
-            // UserCount.count = UserCount.connectedUsers.Count;
-
             Console.WriteLine("Users connected: " + UserCount.count);
 
             await base.OnDisconnectedAsync(exception);
