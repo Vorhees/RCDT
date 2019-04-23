@@ -66,10 +66,6 @@ connection.on("UserConnected", function(connectionId, count, groupName)
             count = count--;
         }
     }
-    else
-    {
-        count = 0;
-    }
 
     console.log("Number of users connected: " + count);
 
