@@ -31,40 +31,47 @@ connection.on("UserConnected", function(connectionId, count, groupName)
     console.log("User is connected with connection ID: " + connectionId)
     console.log("Total Users in group: " + totalNumInGroup);
 
-    console.log("Number of users connected: " + count);
-
     var groupElement = document.getElementById("group");
-
-    console.log("I joined the group: " + groupElement.value);
 
     connection.invoke("JoinGroup", groupElement.value).catch(function (err)
     {
         return console.error(err.toString());
     });
 
-    if (groupElement.value == groupName)
+    console.log("I joined the group: " + groupElement.value);
+
+    if (groupName != "Researcher")
     {
-        console.log("My group name is (html): " + groupElement.value);
-        console.log("My group name is (server): " + groupName);
-
-        if (count < totalNumInGroup) {
-            console.log("Not enough users connected in group: "+ groupName + ", Users Connected: " + count + "/" + totalNumInGroup);
-        }
-
-        if (count == totalNumInGroup)
+        if (groupElement.value == groupName)
         {
-        console.log("Enough members joined, you can start the task");
+            console.log("My group name is (html): " + groupElement.value);
+            console.log("My group name is (server): " + groupName);
 
-        document.getElementById("itemBank").style.pointerEvents = "auto";
-        document.getElementById("chessBoard").style.pointerEvents = "auto";
-        document.getElementById("itemBank").style.opacity = "1.0";
-        document.getElementById("chessBoard").style.opacity = "1.0";
+            if (count < totalNumInGroup) {
+                console.log("Not enough users connected in group: "+ groupName + ", Users Connected: " + count + "/" + totalNumInGroup);
+            }
+
+            if (count == totalNumInGroup)
+            {
+            console.log("Enough members joined, you can start the task");
+
+            document.getElementById("itemBank").style.pointerEvents = "auto";
+            document.getElementById("chessBoard").style.pointerEvents = "auto";
+            document.getElementById("itemBank").style.opacity = "1.0";
+            document.getElementById("chessBoard").style.opacity = "1.0";
+            }
+        }
+        else
+        {
+            count = count--;
         }
     }
     else
     {
-        count = count--;
+        count = 0;
     }
+
+    console.log("Number of users connected: " + count);
 
     event.preventDefault();
 });
@@ -72,7 +79,6 @@ connection.on("UserConnected", function(connectionId, count, groupName)
 connection.on("UserDisconnected", function(connectionId)
 {
     var groupElement = document.getElementById("group");
-    count--;
     for (var i = 0; i < groupElement.length; i++)
     {
         if (groupElement.options[i].value == connectionId)

@@ -82,10 +82,10 @@ namespace RCDT.Hubs
 
             Console.WriteLine("Total users in group: " + totalUsers);
 
-            // if (isResearcher)
-            // {
-            //     UserCount.UserList.Add(new KeyValuePair<string, string>("Researcher", Context.ConnectionId));
-            // }
+            if (isResearcher)
+            {
+                 user.TaskSessionID = "Researcher";
+            }
 
             if (!isResearcher && isParticipant)
             {
