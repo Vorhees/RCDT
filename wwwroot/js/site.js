@@ -8,6 +8,57 @@ $(document).ready(function () {
         $('#sidebar').toggleClass('active');
     });
 
+    //Change side menu icons when hover
+    $('#dashboardItem').on('mouseover', function () {
+      document.getElementById("dashboard").src="../images/dashboard_hover.png";
+    });
+
+    $('#registerUserItem').on('mouseover', function () {
+      document.getElementById("registerUser").src="../images/add_user_hover.png";
+    });
+
+    $('#manageUserItem').on('mouseover', function () {
+      document.getElementById("manageUser").src="../images/manage_user_hover.png";
+    });
+
+    $('#registerParticipantItem').on('mouseover', function () {
+      document.getElementById("registerParticipant").src="../images/add_user_hover.png";
+    });
+
+    $('#createTaskItem').on('mouseover', function () {
+      document.getElementById("createTask").src="../images/add_task_hover.png";
+    });
+
+    $('#settingsItem').on('mouseover', function () {
+      document.getElementById("settings").src="../images/settings_hover.png";
+    });
+
+    //Change side menu icons back when leave
+    $('#dashboardItem').on('mouseleave', function () {
+      document.getElementById("dashboard").src="../images/dashboard.png";
+    });
+
+    $('#registerUserItem').on('mouseleave', function () {
+      document.getElementById("registerUser").src="../images/add_user.png";
+    });
+
+    $('#manageUserItem').on('mouseleave', function () {
+      document.getElementById("manageUser").src="../images/manage_user.png";
+    });
+
+    $('#registerParticipantItem').on('mouseleave', function () {
+      document.getElementById("registerParticipant").src="../images/add_user.png";
+    });
+
+    $('#createTaskItem').on('mouseleave', function () {
+      document.getElementById("createTask").src="../images/add_task.png";
+    });
+
+    $('#settingsItem').on('mouseleave', function () {
+      document.getElementById("settings").src="../images/settings.png";
+    });
+
+    //For hidden navbar
     /*$('#dummy').on('mouseover', function () {
         setVisible();
     });
@@ -17,6 +68,8 @@ $(document).ready(function () {
     });*/
 });
 
+
+//for hidden navbar
 /*function setVisible()
   {
     document.getElementById("navbar").style="margin-top:0px";

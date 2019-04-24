@@ -37,16 +37,16 @@
             <!--Admin Menu Options-->
             @if (User.IsInRole("Admin"))
             {
-                <li class="nav-item">
+                <li class="nav-item" id="dashboardItem">
                     <a class="nav-link" asp-area="" asp-controller="AdminDashboard" asp-action="Index">
                         <span data-feather="users"></span>
-                        <img src="~/images/dashboard.png">
+                        <img src="~/images/dashboard.png" id="dashboard">
                         Dashboard
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" id="registerUserItem">
                     <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register">
-                        <img src="~/images/add_user.png">
+                        <img src="~/images/add_user.png" id="registerUser">
                         Register Users
                     </a>
                 </li>
@@ -55,37 +55,37 @@
             }
             @if (User.IsInRole("Researcher"))
             {
-                <li class="nav-item">
+                <li class="nav-item" id="dashboardItem">
                     <a class="nav-link" asp-area="" asp-controller="ResearcherDashboard" asp-action="Index">
                         <span data-feather="users"></span> 
-                        <img src="~/images/dashboard.png">
+                        <img src="~/images/dashboard.png" id="dashboard">
                         Dashboard
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" id="manageUserItem">
                     <a class="nav-link" asp-area="" asp-controller="ResearcherDashboard" asp-action="ManageParticipants">
                         <span data-feather="file"></span> 
-                        <img src="~/images/manage_user.png">
+                        <img src="~/images/manage_user.png" id="manageUser"> 
                         Manage Participants
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" id="registerParticipantItem">
                     <a class="nav-link" asp-area="" asp-controller="Account" asp-action="RegisterParticipant">
-                        <img src="~/images/add_user.png">
+                        <img src="~/images/add_user.png" id="registerParticipant">
                         Register Participants
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" id="createTaskItem">
                     <a class="nav-link" asp-area="" asp-controller="ResearcherDashboard" asp-action="CreateTask">
                         <span data-feather="bar-chart-2"></span>
-                        <img src="~/images/add_task.png">
+                        <img src="~/images/add_task.png" id="createTask">
                         Create Task
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">
+                    <a class="nav-link" id="settingsItem">
                         <span data-feather="layers"></span>
-                        <img src="~/images/settings.png">
+                        <img src="~/images/settings.png" id="settings">
                         Settings
                     </a>
                 </li>
