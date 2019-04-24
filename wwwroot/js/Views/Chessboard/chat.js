@@ -72,17 +72,11 @@ connection.on("UserConnected", function(connectionId, count, groupName)
     event.preventDefault();
 });
 
-connection.on("UserDisconnected", function(connectionId)
+connection.on("UserDisconnected", function(connectionId, username, newCount)
 {
     var groupElement = document.getElementById("group");
-    for (var i = 0; i < groupElement.length; i++)
-    {
-        if (groupElement.options[i].value == connectionId)
-        {
-            groupElement.remove(i);
-            console.log("USER: " + connectionId + " has left.");
-        }
-    }
+    console.log("User disconnected: " + username);
+    console.log("New count of users connected: " + newCount);
 });
 
 connection.start().then(function() {

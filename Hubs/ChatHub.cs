@@ -126,7 +126,7 @@ namespace RCDT.Hubs
 
             UserCount.count--;
 
-            await Clients.All.SendAsync("UserDisconnected", Context.ConnectionId);
+            await Clients.All.SendAsync("UserDisconnected", Context.ConnectionId, user.TaskSessionID, UserCount.count);
             Console.WriteLine("Users connected: " + UserCount.count);
 
             await base.OnDisconnectedAsync(exception);
