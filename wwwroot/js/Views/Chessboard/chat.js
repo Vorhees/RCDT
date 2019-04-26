@@ -1,5 +1,6 @@
 "use strict";
 var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+var totalCount = 0;
 
 // Disabled until connection is established.
 document.getElementById("sendButton").disabled = true;
@@ -27,6 +28,7 @@ connection.on("ReceiveMessage", function (user, message) {
 connection.on("UserConnected", function(connectionId, count, groupName)
 {
     var totalNumInGroup = document.getElementById("userCount").value;
+    totalCount = count;
 
     console.log("User is connected with connection ID: " + connectionId)
     console.log("Total Users in group: " + totalNumInGroup);
@@ -47,11 +49,11 @@ connection.on("UserConnected", function(connectionId, count, groupName)
             console.log("My group name is (html): " + groupElement.value);
             console.log("My group name is (server): " + groupName);
 
-            if (count < totalNumInGroup) {
-                console.log("Not enough users connected in group: "+ groupName + ", Users Connected: " + count + "/" + totalNumInGroup);
+            if (totalCount < totalNumInGroup) {
+                console.log("Not enough users connected in group: "+ groupName + ", Users Connected: " + totalCount + "/" + totalNumInGroup);
             }
 
-            if (count == totalNumInGroup)
+            if (totalCount == totalNumInGroup)
             {
             console.log("Enough members joined, you can start the task");
 
@@ -61,11 +63,12 @@ connection.on("UserConnected", function(connectionId, count, groupName)
             document.getElementById("chessBoard").style.opacity = "1.0";
             }
         }
-        else
-        {
-            count = count--;
-        }
     }
+    // else
+    // {
+    //         totalCount = totalCount--;
+    // }
+
 
     console.log("Number of users connected: " + count);
 

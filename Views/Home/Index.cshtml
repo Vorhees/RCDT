@@ -1,10 +1,12 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@model ApplicationUser
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
 @{
     ViewData["Title"] = "Home";
 }
+
 <body id="homePage">
   <div class="container mt-2">
     <div style="margin-top:50px">
@@ -21,12 +23,12 @@
         }
         else
         {
-          <div class="col-md-12">
-            <a class="button">
-            <img src="~/images/participant.png" id="participantImage" style="width:80px;height:70px;" />
-            </a>
-          </div>
-        }
+            <div class="col-md-12">
+              <a class="button" asp-controller="Home" asp-action="ResumeTask" asp-route-id="@UserManager.GetUserName(User)">
+                <img src="~/images/resumetask.png" id="resumetaskImage" style="width:80px;height:70px;" />
+              </a>
+            </div>
+          }
       </div>
     </div>
   </div>
