@@ -1,23 +1,36 @@
 var constraints = {audio: true, video: false};
+var conStatus = document.getElementById('phone');
+var stat = 0;
 function audioConnDisconn(ev){
-    //var conStatus = document.getElementById('connectionStatus').value;
+    if(stat == 0){//document.getElementById('disconnected')){
+        //var conStatus = document.getElementById('disconnected').value;
+        console.log("Status is disconnected. Now connecting.");
+        stat = 1;
+        conStatus.src = "~/images/disconnected.png";
+    } else{
+        //var conStatus = document.getElementById('connected').value;
+        console.log("Status is connected.  Now disconnecting");
+        stat = 0;
+        //document.getElementById('phone').src = "~/images/disconnected.png";
+    }
+    
     //console.log(conStatus);}
     console.log("Connect button clicked");}
 //function audioConnDisconn(){
-    navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream){
-    var audio = document.querySelector('audio');
+    //navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream){
+    //var audio = document.querySelector('audio');
     //if (conStatus == 'disconnected'){
-    audio.srcObject = mediaStream;
-    audio.onloadedmetadata = function(e){
-        audio.play();
+    //audio.srcObject = mediaStream;
+    //audio.onloadedmetadata = function(e){
+      //  audio.play();
 
   //  };
 //} else{
   //  audio.onloadedmetadata = function(e){
     //    audio.pause();
     //}
-}
-}).catch(function(err){console.log(err.name + err.message);});//};
+
+//}).catch(function(err){console.log(err.name + err.message);});//};
 
 //record
 //function recordAudio(stream){
