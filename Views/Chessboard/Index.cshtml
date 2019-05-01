@@ -17,10 +17,6 @@
         .chess-board .dark { background: #000; }
     </style>
 </head>
-
-<!--image that will be used for connect/disconnect/status-->
-<!--<img src="~/images/disconnected.png" id="connectionStatus" onclick = "ChessboardView.audioConnDisconn()" style="vertical-align:right;width:80px;height:70px;">-->
-
 <div class="container" >
     <input type="hidden" id="sess" value="@Model.TaskSessionID"/>
     <input type="hidden" id="UID" value="@UserManager.GetUserName(User)"/>
@@ -267,7 +263,6 @@
         </tr>
     </table>
 </div>
-<audio id = 'player' controls></audio>
+<img src="~/images/disconnected.png" id="disconnected" onclick = "audioConnDisconn(event)" style="display:block;margin-left:auto;margin-right:auto;width:80px;height:70px;">
 <script src="~/lib/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/Views/Chessboard/chat.js"></script>
-

@@ -1,8 +1,12 @@
 var constraints = {audio: true, video: false};
+function audioConnDisconn(ev){
+    //var conStatus = document.getElementById('connectionStatus').value;
+    //console.log(conStatus);}
+    console.log("Connect button clicked");}
 //function audioConnDisconn(){
-navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream){
+    navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream){
     var audio = document.querySelector('audio');
-    //if (connectionStatus.getElementById('disconnected')){
+    //if (conStatus == 'disconnected'){
     audio.srcObject = mediaStream;
     audio.onloadedmetadata = function(e){
         audio.play();
@@ -15,7 +19,17 @@ navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream){
 }
 }).catch(function(err){console.log(err.name + err.message);});//};
 
+//record
+//function recordAudio(stream){
+ //   var audioRecorder = new MediaStreamRecorder(stream);
+   // audioRecorder.mimeType = 'Audio';
+    //audioRecorder.ondataavailable = function (blob){
+      //  var blobUrl = URL.createObjectURL(blob);
+        //document.write('<a href="' + blobURL + '">' + blobUrl + '</a>');
+    //};
+    //audioRecorder.start(3000);
 
+//}
 
         var moveNumber = 0;
         var count = 0;
