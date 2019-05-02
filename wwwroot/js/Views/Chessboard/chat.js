@@ -78,8 +78,9 @@ connection.on("UserConnected", function(connectionId, count, groupName)
 connection.on("UserDisconnected", function(connectionId, username, newCount)
 {
     var groupElement = document.getElementById("group");
+    totalCount--;
     console.log("User disconnected: " + username);
-    console.log("New count of users connected: " + newCount);
+    console.log("New count of users connected: " + totalCount);
 });
 
 connection.start().then(function() {

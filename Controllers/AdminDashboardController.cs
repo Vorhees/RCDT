@@ -126,11 +126,6 @@ namespace RCDT.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditUser(string id, ApplicationUser appUser)
         {
-            // if (id != appUser.UserName)
-            // {
-            //     return NotFound();
-            // }
-
             if (ModelState.IsValid)
             {
                 try
@@ -212,6 +207,5 @@ namespace RCDT.Controllers
 
             return RedirectToAction("Index", "AdminDashboard");
         }
-        
     }
 }
