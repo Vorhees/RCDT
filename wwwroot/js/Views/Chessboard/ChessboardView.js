@@ -1,21 +1,16 @@
 var constraints = {audio: true, video: false};
-var conStatus = document.getElementById('phone');
 var stat = 0;
-function audioConnDisconn(ev){
-    if(stat == 0){//document.getElementById('disconnected')){
-        //var conStatus = document.getElementById('disconnected').value;
+function audioConnDisconn(ev) {
+    if(stat == 0) {
         console.log("Status is disconnected. Now connecting.");
         stat = 1;
-        conStatus.src = "~/images/disconnected.png";
-    } else{
-        //var conStatus = document.getElementById('connected').value;
+        document.getElementById('phone').src = '/images/connected.png';
+    } else {
         console.log("Status is connected.  Now disconnecting");
         stat = 0;
-        //document.getElementById('phone').src = "~/images/disconnected.png";
+        document.getElementById('phone').src = "/images/disconnected.png";
     }
-    
-    //console.log(conStatus);}
-    console.log("Connect button clicked");}
+}
 //function audioConnDisconn(){
     //navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream){
     //var audio = document.querySelector('audio');

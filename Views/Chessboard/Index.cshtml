@@ -20,6 +20,7 @@
 <div class="container" >
     <input type="hidden" id="sess" value="@Model.TaskSessionID"/>
     <input type="hidden" id="UID" value="@UserManager.GetUserName(User)"/>
+    <script src="~/js/Views/Chessboard/ChessboardView.js"></script>
     <table>
         <tr>
             <td>
@@ -263,6 +264,6 @@
         </tr>
     </table>
 </div>
-<img src="~/images/disconnected.png" id="disconnected" onclick = "audioConnDisconn(event)" style="display:block;margin-left:auto;margin-right:auto;width:80px;height:70px;">
+<img src="/images/disconnected.png" id="phone" onclick = "audioConnDisconn(event)" style="display:block;margin-left:auto;margin-right:auto;width:80px;height:70px;">
 <script src="~/lib/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/Views/Chessboard/chat.js"></script>
