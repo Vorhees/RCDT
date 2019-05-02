@@ -11,16 +11,13 @@ participation in a task. Currently the only implemented task is the DMT or
 Director Matcher Task.
 
 
-The DMT is the Director Matcher Task. The task involves a chessboard with
-various colored sprites. The goal of the task is for participants to match
-the boardstate of their task with the board state of a director. The
-director is a designated participant which will be given a script and told
-how to interact with other participants. The participants will not be
-permitted to view any boardstate aside from their own. The participants
-must cooperate using voice and text communication to match the boardstate.
-This cooperation will allow researcher to study human linguistics and code
-switching through the analysis of the captured voice and text interactions
-of participants.
+The DMT involves a chessboard with various colored sprites. The goal of
+this task is for participants to match the boardstate of their task with
+the board state of a director. The participants will not be permitted to 
+view any boardstate aside from their own. The participants must cooperate
+using voice and text to match the boardstate. This cooperation will allow
+researcher to study linguistics and code switching through the analysis of
+the captured voice and text interactions of participants.
 
 To begin a research group must use the initially seeded Admin to register
 researcher and admin accounts as neccessary. The initially seeded Admin is
