@@ -7,14 +7,15 @@ README FOR RCDT
 --------------------------------------------------------------------------
 This application is designed as a human linguistics research application.
 The application captures audio and text feed from the participants during
-participation in a task. Currently the only implemented task is the DMT.
+participation in a task. Currently the only implemented task is the DMT or
+Director Matcher Task.
 
 
 The DMT is the Director Matcher Task. The task involves a chessboard with
 various colored sprites. The goal of the task is for participants to match
-the boardstate of their task with the board state of a confederate. The 
-Confederate is a designated participant which will be given a script and
-told how to interact with other participants. The participants will not be
+the boardstate of their task with the board state of a director. The
+director is a designated participant which will be given a script and told
+how to interact with other participants. The participants will not be
 permitted to view any boardstate aside from their own. The participants
 must cooperate using voice and text communication to match the boardstate.
 This cooperation will allow researcher to study human linguistics and code
