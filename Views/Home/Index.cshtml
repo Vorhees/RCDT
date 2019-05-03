@@ -21,14 +21,20 @@
             </a>
           </div>
         }
-        else
+        else if(User.IsInRole("Participant") && SignInManager.IsSignedIn(User))
         {
             <div class="col-md-12">
               <a class="button" asp-controller="Home" asp-action="ResumeTask" asp-route-id="@UserManager.GetUserName(User)">
                 <img src="~/images/resumetask.png" id="resumetaskImage" style="width:80px;height:70px;" />
               </a>
             </div>
-          }
+        }
+        else
+        {
+          <div class="col-md-12">
+            <img src="~/images/participant.png" id="participantImage" style="width:80px;height:70px;" />
+          </div>
+        }
       </div>
     </div>
   </div>

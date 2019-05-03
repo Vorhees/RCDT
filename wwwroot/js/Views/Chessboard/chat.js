@@ -49,28 +49,24 @@ connection.on("UserConnected", function(connectionId, count, groupName)
             console.log("My group name is (html): " + groupElement.value);
             console.log("My group name is (server): " + groupName);
 
-            if (totalCount < totalNumInGroup) {
+            if (totalCount < totalNumInGroup) 
+            {
                 console.log("Not enough users connected in group: "+ groupName + ", Users Connected: " + totalCount + "/" + totalNumInGroup);
             }
 
             if (totalCount == totalNumInGroup)
             {
-            console.log("Enough members joined, you can start the task");
+                console.log("Enough members joined, you can start the task");
 
-            document.getElementById("itemBank").style.pointerEvents = "auto";
-            document.getElementById("chessBoard").style.pointerEvents = "auto";
-            document.getElementById("itemBank").style.opacity = "1.0";
-            document.getElementById("chessBoard").style.opacity = "1.0";
+                document.getElementById("itemBank").style.pointerEvents = "auto";
+                document.getElementById("chessBoard").style.pointerEvents = "auto";
+                document.getElementById("itemBank").style.opacity = "1.0";
+                document.getElementById("chessBoard").style.opacity = "1.0";
             }
         }
     }
-    // else
-    // {
-    //         totalCount = totalCount--;
-    // }
 
-
-    console.log("Number of users connected: " + count);
+    console.log("Number of users connected: " + totalCount);
 
     event.preventDefault();
 });
@@ -78,7 +74,7 @@ connection.on("UserConnected", function(connectionId, count, groupName)
 connection.on("UserDisconnected", function(connectionId, username, newCount)
 {
     var groupElement = document.getElementById("group");
-    totalCount--;
+    totalCount = newCount;
     console.log("User disconnected: " + username);
     console.log("New count of users connected: " + totalCount);
 });
