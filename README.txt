@@ -7,7 +7,7 @@ README FOR RCDT
 --------------------------------------------------------------------------
 This application is designed as a human linguistics research application.
 The application captures audio and text feed from the participants during
-participation in a task. Currently the only implemented task is the DMT or
+participation in a task. Currently the only implemented task is the DMT:
 Director Matcher Task.
 
 

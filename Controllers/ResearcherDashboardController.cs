@@ -118,6 +118,21 @@ namespace RCDT.Controllers
 
             task.TaskSessionID = task.TaskSessionID;
             task.TaskType = "DDMT";
+
+            if (tm.participantNumber > 6 || tm.confederateNumber > 6)
+            {
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+
+                return View(new TaskModel
+                {
+                    TaskSessionID = task.TaskSessionID,
+                    TaskType = "DDMT",
+                    participantNumber = task.participantNumber,
+                    confederateNumber = task.confederateNumber,
+                    taskEditedTime = task.taskEditedTime
+                });
+            }
+
             task.participantNumber = tm.participantNumber;
             task.confederateNumber = tm.confederateNumber;
             task.taskEditedTime = DateTime.Now;

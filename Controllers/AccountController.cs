@@ -206,7 +206,6 @@ namespace RCDT.Controllers
             return View(participantViewModel);
         }
         
-
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
