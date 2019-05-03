@@ -1,20 +1,43 @@
 var constraints = {audio: true, video: false};
 var stat = 0;
+var mRecorder;
 function audioConnDisconn(ev) {
     if(stat == 0) {
         console.log("Status is disconnected. Now connecting.");
         stat = 1;
         document.getElementById('phone').src = '/images/connected.png';
+        //var remoteMedia = document.getElementById('remote');
+
+       // navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream){
+         //   const userAudio = document.querySelector('audio');
+           // userAudio.srcObject = mediaStream;
+            //userAudio.onloadedmetadata = function(ev){
+              //  userAudio.play();
+           // }
+           // console.log("it got here");
+        //});
+      navigator.getUserMedia(constraints, mediaSuccess, medError);
     } else {
         console.log("Status is connected.  Now disconnecting");
         stat = 0;
         document.getElementById('phone').src = "/images/disconnected.png";
+        mRecorder.stop();
     }
 }
-//function audioConnDisconn(){
-    //navigator.mediaDevices.getUserMedia(constraints).then(function(mediaStream){
-    //var audio = document.querySelector('audio');
-    //if (conStatus == 'disconnected'){
+
+function mediaSuccess(stream){
+    mRecorder = new MediaStreamRecorder(stream);
+    mRecorder.mimeType = 'audio/wav';
+    mRecorder.ondataavailable = function (blob) {
+        var blobURL = URL.createObjectURL(blob);
+        console.log('<a href="' + blobURL + '">', '</a>');
+    };
+    mRecorder.start(2000);
+}
+
+function medError(e){
+    console.error('media error', e);
+}
     //audio.srcObject = mediaStream;
     //audio.onloadedmetadata = function(e){
       //  audio.play();
