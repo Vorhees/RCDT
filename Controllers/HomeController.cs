@@ -18,6 +18,7 @@ namespace RCDT.Controllers
         {
             _userManager = userManager;
         }
+
        // [Authorize(Roles = "Admin")]
         public IActionResult Index(ApplicationUser user)
         {
@@ -30,19 +31,6 @@ namespace RCDT.Controllers
 
             return RedirectToAction("Index", "Chessboard", new {id = user.TaskSessionID});
         }
-
-        /*
-        [HttpPost]
-        public ActionResult Index(RegisterParticipantViewModel participantViewModel)
-        {
-            if (ModelState.IsValid)
-            {
-                return RedirectToAction("Index", "Chessboard");
-            }
-
-            return View(participantViewModel);
-        }
-        */
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

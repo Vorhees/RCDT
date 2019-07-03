@@ -17,22 +17,12 @@ namespace RCDT.Data
 
         }
 
-        /*
-        public DataContext() : base()
-        {
-            
-        }
-        */
-
-       // public DbSet<AdminUser> adminUser { get; set; }
-        //public DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<TaskModel> Tasks { get; set; }
         public DbSet<ChatLog> ChatLog { get; set; }
         public DbSet<ChessBoardMoveLog> ChessBoardMoveLog { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<AdminUser>().ToTable("Admin");
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<ApplicationUser>()
@@ -49,10 +39,6 @@ namespace RCDT.Data
             modelBuilder.Entity<IdentityUserLogin<string>>().ToTable("UserLogins");
             modelBuilder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims");
             modelBuilder.Entity<IdentityUserToken<string>>().ToTable("UserTokens");
-
-            // modelBuilder.Entity<ApplicationUser>(mb => {
-            //     mb.Property( u => u.UserName).
-            // })
         }
     }
 }

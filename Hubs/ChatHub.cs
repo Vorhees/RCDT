@@ -12,13 +12,9 @@ namespace RCDT.Hubs
 {
     public class ChatHub : Hub
     {
-        //private Models.ApplicationUser user;
         private readonly DataContext _context;
         private UserManager<ApplicationUser> _userManager;
-        // private static int countOfUsers = 0;
         public static int totalUsers;
-       // private readonly TaskModel taskModel;
-
         public int messageID = 0;
 
         public ChatHub(DataContext context, UserManager<ApplicationUser> userManager)
@@ -89,8 +85,6 @@ namespace RCDT.Hubs
 
             if (!isResearcher && isParticipant)
             {
-                // UserCount.UserList.Add(new KeyValuePair<string, string>(user.TaskSessionID, Context.ConnectionId));
-
                 UserCount.taskList.Add(user.TaskSessionID);
                 Console.WriteLine("Added: " + user.TaskSessionID);
             }
@@ -123,7 +117,7 @@ namespace RCDT.Hubs
         {
             var user = await _userManager.FindByNameAsync(Context.User.Identity.Name);
             var res = UserCount.taskList.GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count());
-
+        
             UserCount.count--;
 
             await Clients.All.SendAsync("UserDisconnected", Context.ConnectionId, user.TaskSessionID, UserCount.count);

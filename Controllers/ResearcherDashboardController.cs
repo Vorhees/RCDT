@@ -180,11 +180,6 @@ namespace RCDT.Controllers
 
         public IActionResult ViewTask(string id)
         {
-            // if (id == null)
-            // {
-            //     return NotFound();
-            // }
-
             var task = _context.ChatLog.Where(taskID => taskID.TaskSessionId == id).ToList();
 
             if (task == null)
@@ -238,14 +233,5 @@ namespace RCDT.Controllers
 
             return RedirectToAction("ManageParticipants", "ResearcherDashboard");
         }
-
-        // private IEnumerable<SelectListItem> GetTaskTypes()
-        // {
-        //     return new SelectListItem[]
-        //     {
-        //         new SelectListItem() { Text = "DDMT", Value = "DDMT" },
-        //         new SelectListItem() { Text = "TBC", Value = "To be added" }
-        //     };
-        // }
     }
 }

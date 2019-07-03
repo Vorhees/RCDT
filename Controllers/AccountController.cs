@@ -25,12 +25,12 @@ namespace RCDT.Controllers
     {
        private readonly UserManager<ApplicationUser> _userManager;
        private readonly SignInManager<ApplicationUser> _signInManager;
-       //private readonly UserManager<ParticipantUser> _participantUserManager;
+        //private readonly UserManager<ParticipantUser> _participantUserManager;
        //private readonly SignInManager<ParticipantUser> _participantSignInManager;
        private IEmailSender _emailSender;
        private readonly ILogger _logger;
 
-       //private readonly IHttpContextAccessor _context;
+        //private readonly IHttpContextAccessor _context;
        private readonly DataContext _context;
        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ILogger<AccountController> logger, DataContext context, IEmailSender emailSender)
         {
@@ -169,7 +169,7 @@ namespace RCDT.Controllers
            /*
            ViewBag.Name = new SelectList(_context.Roles.Where(u => !u.Name.Contains("Admin") && !u.Name.Contains("IRB Reviewer") && !u.Name.Contains("Transcriber") && !u.Name.Contains("Researcher") && !u.Name.Contains("Research Assistant")).ToList(), "Name", "Name");
            */
-
+            
             ViewData["ReturnUrl"] = returnUrl;
 
             return View();
@@ -194,7 +194,7 @@ namespace RCDT.Controllers
 
                     await _userManager.AddToRoleAsync(user, "Participant");
 
-                    // Signs Participant in after registration.
+// Signs Participant in after registration.
                     //await _signInManager.SignInAsync(user, isPersistent: false);
 
                     _logger.LogInformation("Participant's account was created");
@@ -240,7 +240,7 @@ namespace RCDT.Controllers
                     var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
 
                     await _emailSender.SendEmailAsync(registerModel.Email, "Confirm your email", $"Please confirm your account by: <a href='{ HtmlEncoder.Default.Encode(callbackUrl) }'> Clicking here </a>");
-
+                    
                     //await _signInManager.SignInAsync(user, isPersistent: false);
 
                     _logger.LogInformation("User created a new account");
@@ -273,7 +273,7 @@ namespace RCDT.Controllers
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
-        /* Older code.
+                /* Older code.
         public IActionResult Index()
         {
             return View();
